@@ -18,3 +18,28 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(function () {
+
+
+	Route::middleware(['guest:admin'])->group(function () {
+
+		Route::get('login', 'AuthController@showLoginPage')->name('login');
+		Route::get('password/reset', 'AuthController@showResetLinkRequestPage')->name('password.request');
+		Route::post('password/email', 'AuthController@sentResetLinkEmail')->name('password.email');
+		Route::get('password/reset/{token}', 'AuthController@showPasswordResetPage')->name('password.reset');
+		Route::post('password/reset', 'AuthController@resetPassword')->name('password.reset.post');
+
+	});
+
+
+	Route::middleware(['auth:admin'])->group(function () {
+
+		Route::post('logout', 'AuthController@logout')->name('logout');
+
+	});
+
+
+});
