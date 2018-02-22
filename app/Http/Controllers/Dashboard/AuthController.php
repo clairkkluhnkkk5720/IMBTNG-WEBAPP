@@ -13,6 +13,11 @@ class AuthController extends Controller
     	return view('dashboard.auth.login');
     }
 
+    public function login ()
+    {
+    	// Logs in the admin user
+    }
+
     public function showResetLinkRequestPage ()
     {
     	return view('dashboard.auth.password.request');
