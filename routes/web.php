@@ -39,6 +39,8 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 
 		Route::post('logout', 'AuthController@logout')->name('logout');
 
+		Route::get('/', 'IndexController')->name('index');
+
 	});
 
 

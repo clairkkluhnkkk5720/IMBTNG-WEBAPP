@@ -1,1 +1,1 @@
-Login
+@extends('dashboard.layouts.auth')
