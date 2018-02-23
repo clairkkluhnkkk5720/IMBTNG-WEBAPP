@@ -11,7 +11,9 @@ class IndexController extends Controller
     {
     	$admin = $this->getAdmin();
 
-    	return $admin;
+    	// return $admin;
+
+    	return view('dashboard.layouts.app');
     }
 
     protected function getAdmin ()
