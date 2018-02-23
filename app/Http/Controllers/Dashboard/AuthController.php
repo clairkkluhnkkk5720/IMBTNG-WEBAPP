@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Auth;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -93,17 +95,41 @@ class AuthController extends Controller
 
     public function showResetLinkRequestPage ()
     {
-    	return view('dashboard.auth.password.request');
-    }
-
-    public function showPasswordResetPage ($token)
-    {
-    	return view('dashboard.auth.password.reset');
+    	return view('dashboard.auth.passwords.email');
     }
 
     public function sentResetLinkEmail (Request $request)
     {
-    	// Send email & redirect to password reset page
+        $key = $this->validateResetUsername($request);
+
+        $admin = Admin::where($key, $request->username)->first();
+
+        if (!$admin) {
+            return back()->with(
+                'global.error',
+                'Email or Username not found in our database.'
+            );
+        }
+
+        $broker = Password::broker();
+    }
+
+    protected function validateResetUsername (Request $request)
+    {
+        $username = $request->username;
+
+        $key = filter_var($username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        $this->validate($request, [
+            'username' => "required|string|min:6|exists:admins,{$key}"
+        ]);
+
+        return $key;
+    }
+
+    public function showPasswordResetPage ($token)
+    {
+    	return view('dashboard.auth.passwords.reset');
     }
 
     public function resetPassword (Request $request)

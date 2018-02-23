@@ -10,12 +10,10 @@
 	{{-- {{ var_dump($errors) }} --}}
 
 	<form action="{{ route('dashboard.login.post') }}" method="post">
-		<div class="form-group has-feedback @if ($errors->has('username') or $errors->has('email')) has-error @endif">
-			<input type="text" name="username" class="form-control" placeholder="Email or Username" required>
+		<div class="form-group has-feedback @if ($errors->has('email')) has-error @endif">
+			<input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email') }}" required>
 			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-			@if ($errors->has('username'))
-				<span class="help-block">{{ $errors->first('username') }}</span>
-			@elseif ($errors->has('email'))
+			@if ($errors->has('email'))
 				<span class="help-block">{{ $errors->first('email') }}</span>
 			@endif
 		</div>

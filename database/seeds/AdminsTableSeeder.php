@@ -18,7 +18,6 @@ class AdminsTableSeeder extends Seeder
         $admin->firstname = "John";
         $admin->lastname  = 'Doe';
         $admin->email     = 'john@imbting.com';
-        $admin->username  = 'johndoe';
         $admin->phone     = '01612121212';
         $admin->password  = Hash::make('secret');
 
