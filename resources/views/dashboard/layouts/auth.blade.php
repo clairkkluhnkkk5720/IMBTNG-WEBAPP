@@ -36,6 +36,28 @@
 		<a href="{{ route('dashboard.index') }}"><b>IMBTING</b></a>
 	</div>
 	<!-- /.login-logo -->
+
+	@if (session()->has('global.success'))
+		<div class="alert alert-success alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			{{ session('global.success') }}
+		</div>
+	@endif
+
+	@if (session()->has('global.warning'))
+		<div class="alert alert-warning alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			{{ session('global.warning') }}
+		</div>
+	@endif
+
+	@if (session()->has('global.error'))
+		<div class="alert alert-danger alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			{{ session('global.error') }}
+		</div>
+	@endif
+
 	<div class="login-box-body">
 
 		@yield('contents')

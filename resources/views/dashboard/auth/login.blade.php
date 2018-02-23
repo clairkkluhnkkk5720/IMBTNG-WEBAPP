@@ -7,14 +7,24 @@
 
 	<p class="login-box-msg">Please Login to Continue</p>
 
+	{{-- {{ var_dump($errors) }} --}}
+
 	<form action="{{ route('dashboard.login.post') }}" method="post">
-		<div class="form-group has-feedback">
+		<div class="form-group has-feedback @if ($errors->has('username') or $errors->has('email')) has-error @endif">
 			<input type="text" name="username" class="form-control" placeholder="Email or Username" required>
 			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			@if ($errors->has('username'))
+				<span class="help-block">{{ $errors->first('username') }}</span>
+			@elseif ($errors->has('email'))
+				<span class="help-block">{{ $errors->first('email') }}</span>
+			@endif
 		</div>
-		<div class="form-group has-feedback">
+		<div class="form-group has-feedback @if ($errors->has('password')) has-error @endif">
 			<input type="password" name="password" class="form-control" placeholder="Password" required>
 			<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			@if ($errors->has('password'))
+				<span class="help-block">{{ $errors->first('password') }}</span>
+			@endif
 		</div>
 		<div class="row">
 			<div class="col-xs-8">
