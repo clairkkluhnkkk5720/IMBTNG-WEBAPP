@@ -45,7 +45,7 @@ class AuthController extends Controller
 
     protected function attemptLogin (Request $request)
     {
-        return auth()->guard('admin')->attempt(
+        return Auth::guard('admin')->attempt(
             $this->getLoginCredentials($request),
             $request->filled('remember')
         );
@@ -79,6 +79,18 @@ class AuthController extends Controller
         );
     }
 
+    public function logout (Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('dashboard.login')->with(
+            'global.success',
+            'You are logged out now.'
+        );
+    }
+
     public function showResetLinkRequestPage ()
     {
     	return view('dashboard.auth.password.request');
@@ -97,10 +109,5 @@ class AuthController extends Controller
     public function resetPassword (Request $request)
     {
     	// reset user password
-    }
-
-    public function logout ()
-    {
-    	// logs out user
     }
 }
