@@ -9,7 +9,7 @@
 
 	<form action="{{ route('dashboard.login.post') }}" method="post">
 		<div class="form-group has-feedback">
-			<input type="email" name="email" class="form-control" placeholder="Email or Username" required>
+			<input type="text" name="username" class="form-control" placeholder="Email or Username" required>
 			<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 		</div>
 		<div class="form-group has-feedback">
@@ -19,14 +19,13 @@
 		<div class="row">
 			<div class="col-xs-8">
 				<div class="checkbox icheck">
-					<label><input type="checkbox">&nbsp;&nbsp;&nbsp;Remember Me</label>
+					<label><input name="remember" type="checkbox">&nbsp;&nbsp;&nbsp;Remember Me</label>
 				</div>
 			</div>
 			<!-- /.col -->
 			<div class="col-xs-4">
 				{{ csrf_field() }}
 				<button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
-				}
 			</div>
 			<!-- /.col -->
 		</div>

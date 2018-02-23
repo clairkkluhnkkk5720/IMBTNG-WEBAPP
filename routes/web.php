@@ -27,7 +27,7 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 	Route::middleware(['guest:admin'])->group(function () {
 
 		Route::get('login', 'AuthController@showLoginPage')->name('login');
-		Route::post('login', 'AdminController@login')->name('login.post');
+		Route::post('login', 'AuthController@login')->name('login.post');
 		Route::get('password/reset', 'AuthController@showResetLinkRequestPage')->name('password.request');
 		Route::post('password/email', 'AuthController@sentResetLinkEmail')->name('password.email');
 		Route::get('password/reset/{token}', 'AuthController@showPasswordResetPage')->name('password.reset');
