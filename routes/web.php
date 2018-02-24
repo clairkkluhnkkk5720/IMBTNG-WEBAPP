@@ -38,6 +38,7 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 		
 		Route::get('/', 'IndexController')->name('index');
+		Route::resource('roles', 'RolesController');
 	});
 
 

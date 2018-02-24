@@ -34,7 +34,7 @@
 				</ul>
 			</li>
 
-			<li class="treeview">
+			<li class="treeview @if (strpos(currentRouteName(), 'dashboard.roles.') !== false) active menu-open @endif">
 				<a href="#">
 					<i class="fa fa-universal-access"></i>
 					<span>Roles</span>
@@ -43,7 +43,9 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-circle-o"></i> All Roles</a></li>
+					<li @if (currentRouteName() === 'dashboard.roles.index') class="active" @endif>
+						<a href="{{ route('dashboard.roles.index') }}"><i class="fa fa-circle-o"></i> All Roles</a>
+					</li>
 					<li><a href="#"><i class="fa fa-circle-o"></i> Create New Role</a></li>
 				</ul>
 			</li>
