@@ -47,7 +47,50 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $this->validateRole($request);
+
+        $role = new Role;
+
+        $role->name    = $request->name;
+        $role->details = $request->details;
+
+        if (! $role->save()) {
+            return back()->with(
+                'global.error',
+                'Something went wrong while creating the Role. Please try again later.'
+            );
+        }
+
+        $permissions = $request->permissions;
+
+        if (! $role->permissions()->attach($permissions)) {
+            return redirect()->route('dashboard.roles.index')->with(
+                'global.warning',
+                'Role is created successfully but couldn\'t attach the permissions.'
+            );
+        }
+
+        return redirect()->route('dashboard.roles.index')->with(
+            'global.success',
+            'Role is created successfully.'
+        );
+    }
+
+    /**
+     * Validates role
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateRole (Request $request)
+    {
+        $rules = [
+            'name'        => 'required|string',
+            'details'     => 'required|string',
+            'permissions' => 'required|array|min:1',
+        ];
+
+        $this->validate($request, $rules);
     }
 
     /**
