@@ -37,7 +37,7 @@
 			</table>
 		</div>
 		<!-- /.box-body -->
-		@if ($roles->hasMorePages())
+		@if ($roles->total() > 15)
 			<div class="box-footer clearfix">
 				{{-- <ul class="pagination pagination-sm no-margin pull-right">
 					<li><a href="#">&laquo;</a></li>
