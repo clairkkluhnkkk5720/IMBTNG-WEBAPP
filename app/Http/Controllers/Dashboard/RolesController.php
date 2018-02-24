@@ -116,9 +116,20 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit (Role $role)
     {
-        //
+        $permissions = Permission::all();
+
+        $rolePermissions = [];
+
+        foreach ($role->permissions as $permission) {
+            $rolePermissions[] = $permission->id;
+        }
+
+        return view(
+            'dashboard.roles.edit',
+            compact('role', 'permissions', 'rolePermissions')
+        );
     }
 
     /**
@@ -128,9 +139,27 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update (Request $request, Role $role)
     {
-        //
+        $this->validateRole($request);
+
+        $role->name    = $request->name;
+        $role->details = $request->details;
+
+        if (!$role->save()) {
+            return back()->with(
+                'global.error',
+                'Something went wrong while updating the Role. Please try again.'
+            );
+        }
+
+        $role->permissions()->detach();
+        $role->permissions()->attach($request->permissions);
+
+        return redirect()->route('dashboard.roles.show', $role->id)->with(
+            'global.success',
+            'Role is updated successfully'
+        );
     }
 
     /**
