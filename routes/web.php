@@ -35,7 +35,8 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 	});
 
 	Route::middleware(['auth.admin'])->group(function () {
-		Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+		
 		Route::get('/', 'IndexController')->name('index');
 	});
 
