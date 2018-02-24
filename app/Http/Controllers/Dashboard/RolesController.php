@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Role;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,7 +31,12 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::all();
+
+        return view(
+            'dashboard.roles.create',
+            compact('permissions')
+        );
     }
 
     /**
@@ -41,7 +47,7 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

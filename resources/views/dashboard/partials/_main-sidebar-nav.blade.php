@@ -46,7 +46,9 @@
 					<li @if (currentRouteName() === 'dashboard.roles.index') class="active" @endif>
 						<a href="{{ route('dashboard.roles.index') }}"><i class="fa fa-circle-o"></i> All Roles</a>
 					</li>
-					<li><a href="#"><i class="fa fa-circle-o"></i> Create New Role</a></li>
+					<li @if (currentRouteName() === 'dashboard.roles.create') class="active" @endif>
+						<a href="{{ route('dashboard.roles.create') }}"><i class="fa fa-circle-o"></i> Create New Role</a>
+					</li>
 				</ul>
 			</li>
 		</ul>

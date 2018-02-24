@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | @yield('title')</title>
+  <title>IMBTING | @yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -26,6 +26,8 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  @yield('styles')
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -340,8 +342,10 @@
 <!-- ChartJS -->
 <script src="/dashboard-assets/bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/dashboard-assets/dist/js/pages/dashboard2.js"></script>
+{{-- <script src="/dashboard-assets/dist/js/pages/dashboard2.js"></script> --}}
 <!-- AdminLTE for demo purposes -->
 <script src="/dashboard-assets/dist/js/demo.js"></script>
+
+@yield('scripts');
 </body>
 </html>
