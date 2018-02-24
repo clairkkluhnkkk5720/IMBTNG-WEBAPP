@@ -346,6 +346,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/dashboard-assets/dist/js/demo.js"></script>
 
-@yield('scripts');
+@yield('scripts')
 </body>
 </html>

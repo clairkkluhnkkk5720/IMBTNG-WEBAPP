@@ -14,7 +14,7 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
         $roles = Role::latest()->withCount(['admins', 'permissions'])->paginate(15);
 
@@ -29,7 +29,7 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create ()
     {
         $permissions = Permission::all();
 
@@ -45,7 +45,7 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store (Request $request)
     {
         $this->validateRole($request);
 
@@ -99,9 +99,15 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show (Role $role)
     {
-        //
+        $permissions = $role->permissions;
+        $admins      = $role->admins;
+
+        return view(
+            'dashboard.roles.show',
+            compact('role', 'permissions', 'admins')
+        );
     }
 
     /**
