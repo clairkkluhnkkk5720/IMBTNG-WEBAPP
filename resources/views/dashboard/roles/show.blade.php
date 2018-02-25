@@ -4,12 +4,14 @@
 
 @section('contents')
 
+	@include('dashboard.roles.partials._modal-delete', compact('role'))
+
 	<div class="box box-primary">
 		<div class="box-header with-border">
 			<h3 class="box-title">Role</h3>
 			<div class="box-tools">
 				<a href="#" class="btn btn-primary btn-flat btn-sm" title="Edit this role.">Edit</a>
-				<a href="#" class="btn btn-danger btn-flat btn-sm" title="Delete this role.">Delete</a>
+				<a href="#" class="btn btn-danger btn-flat btn-sm" title="Delete this role." data-toggle="modal" data-target="#role-{{ $role->id }}-delete-modal">Delete</a>
 			</div>
 		</div>
 		<div class="box-body">

@@ -168,8 +168,18 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy (Role $role)
     {
-        //
+        if ($role->delete()) {
+            return redirect()->route('dashboard.roles.index')->with(
+                'global.success',
+                'Role is successfully deleted'
+            );
+        }
+
+        return back()->with(
+            'global.error',
+            'Something went wrong while deleting the role. Please try again later.'
+        );
     }
 }
