@@ -21,7 +21,7 @@
 					<th>Total Admins</th>
 					<th class="text-right">Actions</th>
 				</tr>
-				@each('dashboard.roles.partials._single', $roles, 'role')
+				@each('dashboard.roles.partials._single-role', $roles, 'role')
 			</table>
 		</div>
 		<!-- /.box-body -->

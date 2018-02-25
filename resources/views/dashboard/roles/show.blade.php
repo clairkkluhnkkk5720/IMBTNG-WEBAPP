@@ -28,15 +28,7 @@
 							<th>Details</th>
 							<th class="text-right">Actions</th>
 						</tr>
-						@foreach ($permissions as $permission)
-							<tr>
-								<td>{{ formatPermissionName($permission->name) }}</td>
-								<td>{{ $permission->details }}</td>
-								<td class="text-right">
-									<a href="#" class="btn btn-warning btn-xs btn-flat" title="Remove this permission from role.">Remove Permission</a>
-								</td>
-							</tr>
-						@endforeach
+						@each('dashboard.roles.partials._single-role-permission', $permissions, 'permission')
 					</table>
 				</div>
 				<div class="col-lg-6">
@@ -49,16 +41,7 @@
 							<th>Phone</th>
 							<th class="text-right">Actions</th>
 						</tr>
-						@foreach ($admins as $admin)
-							<tr>
-								<td><a href="#">{{ $admin->firstname }} {{ $admin->lastname }}</a></td>
-								<td>{{ $admin->email }}</td>
-								<td>{{ $admin->phone }}</td>
-								<td class="text-right">
-									<a href="#" title="Remove this Admin from this role." class="btn btn-warning btn-xs btn-flat">Remove from Role</a>
-								</td>
-							</tr>
-						@endforeach
+						@each('dashboard.roles.partials._single-role-admin', $admins, 'admin')
 					</table>
 				</div>
 			</div>
