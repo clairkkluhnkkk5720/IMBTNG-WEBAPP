@@ -29,8 +29,8 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-circle-o"></i> All Admins</a></li>
-					<li><a href="#"><i class="fa fa-circle-o"></i> Create New Role</a></li>
+					<li><a href="{{ route('dashboard.admins.index') }}"><i class="fa fa-circle-o"></i> All Admins</a></li>
+					<li><a href="{{ route('dashboard.admins.create') }}"><i class="fa fa-circle-o"></i> Create New Admin</a></li>
 				</ul>
 			</li>
 

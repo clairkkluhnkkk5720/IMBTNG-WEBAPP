@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of Admins.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
-        //
+        $admins = Admin::latest()->paginate(15);
+
+        return view(
+            'dashboard.admins.index',
+            compact('admins')
+        );
     }
 
     /**
