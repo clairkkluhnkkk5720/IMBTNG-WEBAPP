@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Role;
+use App\Models\Admin;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -186,13 +187,46 @@ class RolesController extends Controller
     /**
      * Remove a permission from the role
      * 
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Ap\Models\Role           $role
-     * @param  \App\Models\Permission    $permission 
+     * @param  \App\Models\Role        $role
+     * @param  \App\Models\Permission  $permission 
      * @return \Illuminate\Http\Response
      */
     public function removePermission (Role $role, Permission $permission)
     {
-        
+        if ($role->permissions()->detach($permission)) {
+            $permissionName = formatPermissionName($permission->name);
+
+            return back()->with(
+                'global.success',
+                "Permission <strong>{$permissionName}</strong> is remove successfully."
+            );
+        }
+
+        return back()->with(
+            'global.error',
+            'Semething went wrong while removing the permission. Please try again later.'
+        );
+    }
+
+    /**
+     * Remove an admin from the role
+     * 
+     * @param  \App\Models\Admin  $Admin
+     * @param  \App\Models\Role   $permission 
+     * @return \Illuminate\Http\Response
+     */
+    public function removeAdminRole (Role $role, Admin $admin)
+    {
+        if ($role->admins()->detach($role)) {
+            return back()->with(
+                'global.success',
+                "Admin <strong>{$admin->firstname} {$admin->lastname}</strong> is remove from this role successfully"
+            );
+        }
+
+        return back()->with(
+            'global.error',
+            'Semething went wrong while removing an Admin from this role. Please try again later.'
+        );
     }
 }

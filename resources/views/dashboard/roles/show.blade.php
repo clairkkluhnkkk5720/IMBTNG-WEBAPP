@@ -4,13 +4,13 @@
 
 @section('contents')
 
-	@include('dashboard.roles.partials._modal-delete', compact('role'))
+	@include('dashboard.roles.partials._modal-delete-role', compact('role'))
 
 	<div class="box box-primary">
 		<div class="box-header with-border">
 			<h3 class="box-title">Role</h3>
 			<div class="box-tools">
-				<a href="#" class="btn btn-primary btn-flat btn-sm" title="Edit this role.">Edit</a>
+				<a href="{{ route('dashboard.roles.edit', $role->id) }}" class="btn btn-primary btn-flat btn-sm" title="Edit this role.">Edit</a>
 				<a href="#" class="btn btn-danger btn-flat btn-sm" title="Delete this role." data-toggle="modal" data-target="#role-{{ $role->id }}-delete-modal">Delete</a>
 			</div>
 		</div>
@@ -28,7 +28,9 @@
 							<th>Details</th>
 							<th class="text-right">Actions</th>
 						</tr>
-						@each('dashboard.roles.partials._single-role-permission', $permissions, 'permission')
+						@foreach($permissions as $permission)
+							@include('dashboard.roles.partials._single-role-permission', compact('role', 'permission'))
+						@endforeach
 					</table>
 				</div>
 				<div class="col-lg-6">
