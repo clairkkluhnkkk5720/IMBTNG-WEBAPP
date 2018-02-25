@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class RolesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all roles.
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +25,7 @@ class RolesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new role.
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,7 +40,7 @@ class RolesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created role in database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -94,9 +94,9 @@ class RolesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified role.
      *
-     * @param  int  $id
+     * @param  \Aoo\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function show (Role $role)
@@ -111,9 +111,9 @@ class RolesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified role.
      *
-     * @param  int  $id
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function edit (Role $role)
@@ -133,10 +133,10 @@ class RolesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified role in database.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Role          $role
      * @return \Illuminate\Http\Response
      */
     public function update (Request $request, Role $role)
@@ -163,9 +163,9 @@ class RolesController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified role from database.
      *
-     * @param  int  $id
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function destroy (Role $role)
@@ -181,5 +181,18 @@ class RolesController extends Controller
             'global.error',
             'Something went wrong while deleting the role. Please try again later.'
         );
+    }
+
+    /**
+     * Remove a permission from the role
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Ap\Models\Role           $role
+     * @param  \App\Models\Permission    $permission 
+     * @return \Illuminate\Http\Response
+     */
+    public function removePermission (Role $role, Permission $permission)
+    {
+        
     }
 }

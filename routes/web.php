@@ -38,7 +38,9 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 		
 		Route::get('/', 'IndexController')->name('index');
+
 		Route::resource('roles', 'RolesController');
+		Route::delete('roles/{role}/permissions/{permission}', 'RolesController@removePermission')->name('roles.permissions.remove');
 	});
 
 
