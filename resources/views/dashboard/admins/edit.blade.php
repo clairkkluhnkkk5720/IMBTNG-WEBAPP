@@ -1,22 +1,22 @@
 @extends('dashboard.layouts.app')
 
-@section('title', 'Create Admin')
+@section('title', 'Update Admin')
 
 @section('contents')
 
-	<form class="row" method="POST" action="{{ route('dashboard.admins.store') }}">
+	<form class="row" method="POST" action="{{ route('dashboard.admins.update', $admin->id) }}">
 		{{ csrf_field() }}
 		<div class="col-md-6">
 			<div class="box box-success">
 				<div class="box-header with-border">
-					<h3 class="box-title">Create new Admin</h3>
+					<h3 class="box-title">Update Admin Info</h3>
 				</div>
 				<div class="box-body">
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group @if ($errors->has('firstname')) has-error @endif">
 								<label for="admin-firstname">Firstname</label>
-								<input type="text" class="form-control" id="admin-firstname" name="firstname" placeholder="Firstname" value="{{ old('firstname') }}" required>
+								<input type="text" class="form-control" id="admin-firstname" name="firstname" placeholder="Firstname" value="{{ $admin->firstname }}" required>
 								@if ($errors->has('firstname'))
 									<span class="help-block">{{ $errors->first('firstname') }}</span>
 								@endif
@@ -25,7 +25,7 @@
 						<div class="col-lg-6">
 							<div class="form-group @if ($errors->has('lastname')) has-error @endif">
 								<label for="admin-lastname">Lastname</label>
-								<input type="text" class="form-control" id="admin-lastname" name="lastname" placeholder="Lastname" value="{{ old('lastname') }}" required>
+								<input type="text" class="form-control" id="admin-lastname" name="lastname" placeholder="Lastname" value="{{ $admin->lastname }}" required>
 								@if ($errors->has('lastname'))
 									<span class="help-block">{{ $errors->first('lastname') }}</span>
 								@endif
@@ -36,7 +36,7 @@
 						<div class="col-lg-6">
 							<div class="form-group @if ($errors->has('email')) has-error @endif">
 								<label for="admin-email">Email Address</label>
-								<input type="email" class="form-control" id="admin-email" name="email" placeholder="Email Address" value="{{ old('email') }}" required>
+								<input type="email" class="form-control" id="admin-email" name="email" placeholder="Email Address" value="{{ $admin->email }}" required>
 								@if ($errors->has('email'))
 									<span class="help-block">{{ $errors->first('email') }}</span>
 								@endif
@@ -45,7 +45,7 @@
 						<div class="col-lg-6">
 							<div class="form-group @if ($errors->has('phone')) has-error @endif">
 								<label for="admin-phone">Phone</label>
-								<input type="phone" class="form-control" id="admin-phone" name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
+								<input type="phone" class="form-control" id="admin-phone" name="phone" placeholder="Phone" value="{{ $admin->phone }}" required>
 								@if ($errors->has('phone'))
 									<span class="help-block">{{ $errors->first('phone') }}</span>
 								@endif
@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<div class="box-footer visible-md visible-lg">
-					<button type="submit" class="btn btn-md btn-success btn-flat">CREATE ADMIN</button>
+					<button type="submit" class="btn btn-md btn-success btn-flat">UPDATE ADMIN</button>
 				</div>
 			</div>
 		</div>
@@ -85,10 +85,22 @@
 					<h3 class="box-title">Assign Role:</h3>
 				</div>
 				<div class="box-body">
-					@each('dashboard.admins.partials._role-checkbox', $roles, 'role')
+					@foreach ($roles as $role)
+						<div class="form-group">
+							<label>
+								<input type="checkbox" name="roles[]" value="{{ $role->id }}" class="minimal" 
+									@if (in_array($role->id, $adminRoles))
+										checked
+									@endif
+								>
+								&nbsp;&nbsp;{{ $role->name }}
+								<p style="font-weight: normal; padding-left: 27px;">{{ $role->details }}</p>
+							</label>
+						</div>
+					@endforeach
 				</div>
 				<div class="box-footer hidden-md hidden-lg">
-					<button type="submit" class="btn btn-md btn-success btn-flat">CREATE ADMIN</button>
+					<button type="submit" class="btn btn-md btn-success btn-flat">UPDATE ADMIN</button>
 				</div>
 			</div>
 		</div>

@@ -115,9 +115,19 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit (Admin $admin)
     {
-        //
+        $roles      = Role::all();
+        $adminRoles = [];
+
+        foreach ($admin->roles as $role) {
+            $adminRoles[] = $role->id;
+        }
+
+        return view(
+            'dashboard.admins.edit',
+            compact('admin', 'roles', 'adminRoles')
+        );
     }
 
     /**
