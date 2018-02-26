@@ -44,6 +44,7 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		// Route::delete('roles/{role}/admins/{admin}', 'RolesController@removeAdminRole')->name('roles.admins.remove');
 		
 		Route::get('admins/trash', 'AdminsTrashController@index')->name('admins.trash.index');
+		Route::get('admins/trash/{admin}', 'AdminsTrashController@show')->name('admins.trash.show');
 		Route::resource('admins', 'AdminsController');
 	});
 

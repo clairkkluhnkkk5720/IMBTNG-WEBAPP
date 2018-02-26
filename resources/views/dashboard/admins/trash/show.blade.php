@@ -12,7 +12,7 @@
 				<div class="box-body box-profile">
 					<img class="profile-user-img img-responsive img-circle" src="/dashboard-assets/dist/img/user4-128x128.jpg" alt="User profile picture">
 					<h3 class="profile-username text-center">{{ $admin->firstname }} {{ $admin->lastname }}</h3>
-					<a href="#" data-toggle="modal" data-target="#admin-{{ $admin->id }}-delete-modal" class="btn btn-danger btn-block btn-flat"><b>DELETE ADMIN</b></a>
+					<a href="#" data-toggle="modal" data-target="#admin-{{ $admin->id }}-delete-modal" class="btn btn-danger btn-block btn-flat"><b>PERMANENTLY DELETE ADMIN</b></a>
 				</div>
 			</div>
 		</div>
@@ -28,9 +28,10 @@
 					<p>Email: <strong>{{ $admin->email }}</strong></p>
 					<p>Phone: <strong>{{ $admin->phone }}</strong></p>
 					<p>Member From: <strong>{{ $admin->created_at->toFormattedDateString() }}</strong></p>
+					<p>Deleted At: <strong>{{ $admin->deleted_at->toFormattedDateString() }}</strong></p>
 				</div>
 				<div class="box-footer">
-					<a href="{{ route('dashboard.admins.edit', $admin->id) }}" class="btn btn-info btn-block btn-flat"><b>EDIT ADMIN INFO</b></a>
+					<a href="#" class="btn btn-info btn-block btn-flat"><b>RESTORE ADMIN</b></a>
 				</div>
 			</div>
 		</div>

@@ -22,4 +22,21 @@ class AdminsTrashController extends Controller
     		compact('admins')
     	);
     }
+
+    /**
+     * shows the deleted admin profile
+     * 
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show ($id)
+    {
+    	$admin = Admin::onlyTrashed()->findOrFail($id);
+    	$roles = $admin->roles;
+
+    	return view(
+    		'dashboard.admins.trash.show',
+    		compact('admin', 'roles')
+    	);
+    }
 }
