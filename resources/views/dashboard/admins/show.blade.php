@@ -4,13 +4,15 @@
 
 @section('contents')
 
+	@include('dashboard.admins.partials._modal-delete-admin', compact('admin'))
+
 	<div class="row">
 		<div class="col-lg-3 col-md-4">
 			<div class="box box-danger">
 				<div class="box-body box-profile">
 					<img class="profile-user-img img-responsive img-circle" src="/dashboard-assets/dist/img/user4-128x128.jpg" alt="User profile picture">
 					<h3 class="profile-username text-center">{{ $admin->firstname }} {{ $admin->lastname }}</h3>
-					<a href="#" class="btn btn-danger btn-block btn-flat"><b>DELETE ADMIN</b></a>
+					<a href="#" data-toggle="modal" data-target="#admin-{{ $admin->id }}-delete-modal" class="btn btn-danger btn-block btn-flat"><b>DELETE ADMIN</b></a>
 				</div>
 			</div>
 		</div>

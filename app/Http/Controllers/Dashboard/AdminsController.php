@@ -205,8 +205,18 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy (Admin $admin)
     {
-        //
+        if (!$admin->delete()) {
+            return back()->with(
+                'global.error',
+                'Something went wrong while deleting the Admin. Please try again later.'
+            );
+        }
+
+        return redirect()->route('dashboard.admins.index')->with(
+            'global.success',
+            'Admin deleted successfully. You can view deleted admins from Trash.'
+        );
     }
 }
