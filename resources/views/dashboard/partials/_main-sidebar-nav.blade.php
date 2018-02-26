@@ -20,7 +20,7 @@
 				</a>
 			</li>
 
-			<li class="treeview">
+			<li class="treeview @if (strpos(currentRouteName(), 'dashboard.admins.') !== false) active menu-open @endif">
 				<a href="#">
 					<i class="fa fa-users"></i>
 					<span>Admins</span>
@@ -29,8 +29,12 @@
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="{{ route('dashboard.admins.index') }}"><i class="fa fa-circle-o"></i> All Admins</a></li>
-					<li><a href="{{ route('dashboard.admins.create') }}"><i class="fa fa-circle-o"></i> Create New Admin</a></li>
+					<li @if (currentRouteName() === 'dashboard.admins.index') class="active" @endif>
+						<a href="{{ route('dashboard.admins.index') }}"><i class="fa fa-circle-o"></i> All Admins</a>
+					</li>
+					<li @if (currentRouteName() === 'dashboard.admins.create') class="active" @endif>
+						<a href="{{ route('dashboard.admins.create') }}"><i class="fa fa-circle-o"></i> Create New Admin</a>
+					</li>
 				</ul>
 			</li>
 
