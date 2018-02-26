@@ -6,6 +6,7 @@ use Hash;
 use App\Models\Role;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
 class AdminsController extends Controller
@@ -48,7 +49,7 @@ class AdminsController extends Controller
      */
     public function store (Request $request)
     {
-        $this->validateAdmin($request);
+        $this->validateNewAdmin($request);
 
         $admin = new Admin;
 
@@ -74,12 +75,12 @@ class AdminsController extends Controller
     }
 
     /**
-     * validates Admin store or update request
+     * validates new Admin request
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return void
      */
-    protected function validateAdmin(Request $request)
+    protected function validateNewAdmin(Request $request)
     {
         $rules = [
             'firstname' => 'required|string',
@@ -134,12 +135,68 @@ class AdminsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Admin         $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update (Request $request, Admin $admin)
     {
-        //
+        $this->validateExistingAdmin($request, $admin);
+
+        $admin->firstname = $request->firstname;
+        $admin->lastname  = $request->lastname;
+        $admin->email     = $request->email;
+        $admin->phone     = $request->phone;
+
+        if ($request->password) {
+            $admin->password = Hash::make($request->password);
+        }
+
+        if (!$admin->save()) {
+            return back()->with(
+                'global.error',
+                'Something went wrong while updating the Admin. Please try again later.'
+            );
+        }
+
+        $admin->roles()->detach();
+        $admin->roles()->attach($request->roles);
+
+        return redirect()->route('dashboard.admins.show', $admin->id)->with(
+            'global.success',
+            'Admin profile updated successfully.'
+        );
+    }
+
+    /**
+     * validates an existing Admin when updating
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Admin         $admin
+     * @return void
+     */
+    protected function validateExistingAdmin (Request $request, Admin $admin)
+    {
+        $rules = [
+            'firstname' => 'required|string',
+            'lastname'  => 'required|string',
+            'roles'     => 'required|array|min:1',
+
+            'email' => [
+                'required', 'email',
+                Rule::unique('admins')->ignore($admin->id),
+            ],
+
+            'phone' => [
+                'required',
+                Rule::unique('admins')->ignore($admin->id),
+            ],
+        ];
+
+        if ($request->password) {
+            $rules['password'] = 'required|confirmed|min:6|max:16';
+        }
+
+        $this->validate($request, $rules);
     }
 
     /**

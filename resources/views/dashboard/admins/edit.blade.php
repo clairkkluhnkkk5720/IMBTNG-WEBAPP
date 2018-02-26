@@ -6,6 +6,7 @@
 
 	<form class="row" method="POST" action="{{ route('dashboard.admins.update', $admin->id) }}">
 		{{ csrf_field() }}
+		{{ method_field('PUT') }}
 		<div class="col-md-6">
 			<div class="box box-success">
 				<div class="box-header with-border">
@@ -56,7 +57,7 @@
 						<div class="col-lg-6">
 							<div class="form-group @if ($errors->has('password')) has-error @endif">
 								<label for="admin-password">Password</label>
-								<input type="password" class="form-control" id="admin-password" name="password" placeholder="Password" required>
+								<input type="password" class="form-control" id="admin-password" name="password" placeholder="Password">
 								@if ($errors->has('password'))
 									<span class="help-block">{{ $errors->first('password') }}</span>
 								@endif
@@ -65,7 +66,7 @@
 						<div class="col-lg-6">
 							<div class="form-group @if ($errors->has('password_confirmation')) has-error @endif">
 								<label for="admin-password_confirmation">Confirm Password</label>
-								<input type="text" class="form-control" id="admin-password_confirmation" name="password_confirmation" placeholder="Confirm Password" value="{{ old('password_confirmation') }}" required>
+								<input type="text" class="form-control" id="admin-password_confirmation" name="password_confirmation" placeholder="Confirm Password" value="{{ old('password_confirmation') }}">
 								@if ($errors->has('password_confirmation'))
 									<span class="help-block">{{ $errors->first('password_confirmation') }}</span>
 								@endif
