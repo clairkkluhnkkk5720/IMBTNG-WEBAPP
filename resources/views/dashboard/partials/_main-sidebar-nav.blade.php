@@ -35,6 +35,9 @@
 					<li @if (currentRouteName() === 'dashboard.admins.create') class="active" @endif>
 						<a href="{{ route('dashboard.admins.create') }}"><i class="fa fa-circle-o"></i> Create New Admin</a>
 					</li>
+					<li>
+						<a href="{{ route('dashboard.admins.trash.index') }}"><i class="fa fa-circle-o"></i> Trash</a>
+					</li>
 				</ul>
 			</li>
 
