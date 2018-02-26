@@ -99,9 +99,14 @@ class AdminsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show (Admin $admin)
     {
-        //
+        $roles = $admin->roles;
+
+        return view(
+            'dashboard.admins.show',
+            compact('admin', 'roles')
+        );
     }
 
     /**
