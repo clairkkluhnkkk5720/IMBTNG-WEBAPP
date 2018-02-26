@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Hash;
+use App\Models\Role;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,9 +30,14 @@ class AdminsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create ()
     {
-        //
+        $roles = Role::all();
+
+        return view(
+            'dashboard.admins.create',
+            compact('roles')
+        );
     }
 
     /**
@@ -39,9 +46,51 @@ class AdminsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store (Request $request)
     {
-        //
+        $this->validateAdmin($request);
+
+        $admin = new Admin;
+
+        $admin->firstname = $request->firstname;
+        $admin->lastname  = $request->lastname;
+        $admin->email     = $request->email;
+        $admin->phone     = $request->phone;
+        $admin->password  = Hash::make($request->password);
+
+        if (!$admin->save()) {
+            return back()->with(
+                'global.error',
+                'Something went wrong while creating new admin. Please try again later.'
+            )->withInput();
+        }
+
+        $admin->roles()->attach($request->roles);
+
+        return redirect()->route('dashboard.admins.index')->with(
+            'global.success',
+            'A new admin created successfully.'
+        );
+    }
+
+    /**
+     * validates Admin store or update request
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateAdmin(Request $request)
+    {
+        $rules = [
+            'firstname' => 'required|string',
+            'lastname'  => 'required|string',
+            'email'     => 'required|email|unique:admins',
+            'phone'     => 'required|unique:admins',
+            'password'  => 'required|confirmed|min:6|max:16',
+            'roles'     => 'required|array|min:1',
+        ];
+
+        $this->validate($request, $rules);
     }
 
     /**
