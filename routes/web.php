@@ -45,7 +45,26 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		
 		Route::get('admins/trash', 'AdminsTrashController@index')->name('admins.trash.index');
 		Route::get('admins/trash/{admin}', 'AdminsTrashController@show')->name('admins.trash.show');
+		Route::post('admins/trash/{admin}', 'AdminsTrashController@restore')->name('admins.trash.restore');
 		Route::resource('admins', 'AdminsController');
+
+		Route::get('members', 'MembersController@index')->name('members.index');
+		Route::get('members/banned', 'MembersController@banned')->name('members.banned');
+		Route::get('members/{user}', 'MembersController@show')->name('members.show');
+		Route::delete('members/{user}', 'MembersController@ban')->name('members.ban');
+		Route::post('members/{user}/unban', 'MembersController@unban')->name('members.unban');
+		Route::get('members/{user}/transactions', 'MembersController@transactions')->name('members.transactions');
+		Route::get('members/{user}/bets', 'MembersController@bets')->name('members.bets.index');
+		Route::get('members/{user}/bets/winning', 'MembersController@winningBets')->name('members.bets.winning');
+		Route::get('members/{user}/bets/losing', 'MembersController@losingBets')->name('members.bets.losing');
+		Route::get('members/{user}/bets/pending', 'MembersController@pendingBets')->name('members.bets.pending');
+
+		Route::resource('events', 'EventsController');
+		Route::resource('bets', 'BetsController');
+
+		// DEMO
+		// Route::get('events', 'EventsController@index')->name('events.index');
+		// Route::get('bets', 'BetsController@index')->name('bets.index');
 	});
 
 

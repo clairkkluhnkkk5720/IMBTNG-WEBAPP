@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Gate;
 use Hash;
 use App\Models\Role;
 use App\Models\Admin;

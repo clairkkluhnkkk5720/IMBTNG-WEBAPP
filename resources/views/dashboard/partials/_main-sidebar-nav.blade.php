@@ -4,7 +4,7 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="/dashboard-assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+				<img src="{{ asset('/dashboard-assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
 				<p>{{ admin()->firstname }} {{ admin()->lastname }}</p>
@@ -18,6 +18,36 @@
 				<a href="{{ route('dashboard.index') }}">
 					<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 				</a>
+			</li>
+
+			{{-- <li @if (currentRouteName() === 'dashboard.members.index') class="active" @endif>
+				<a href="{{ route('dashboard.members.index') }}"><i class="fa fa-users"></i> <span>Members</span></a>
+			</li> --}}
+
+			<li class="treeview @if (strpos(currentRouteName(), 'dashboard.members.') !== false) active menu-open @endif">
+				<a href="#">
+					<i class="fa fa-users"></i>
+					<span>Members</span>
+					<span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+					</span>
+				</a>
+				<ul class="treeview-menu">
+					<li @if (currentRouteName() === 'dashboard.members.index') class="active" @endif>
+						<a href="{{ route('dashboard.members.index') }}"><i class="fa fa-circle-o"></i> All Members</a>
+					</li>
+					<li @if (currentRouteName() === 'dashboard.members.banned') class="active" @endif>
+						<a href="{{ route('dashboard.members.banned') }}"><i class="fa fa-circle-o"></i> Banned Members</a>
+					</li>
+				</ul>
+			</li>
+
+			<li @if (currentRouteName() === 'dashboard.events.index') class="active" @endif>
+				<a href="{{ route('dashboard.events.index') }}"><i class="fa fa-clone"></i> <span>Events</span></a>
+			</li>
+
+			<li @if (currentRouteName() === 'dashboard.bets.index') class="active" @endif>
+				<a href="{{ route('dashboard.bets.index') }}"><i class="fa fa-usd"></i> <span>Bets</span></a>
 			</li>
 
 			<li class="treeview @if (strpos(currentRouteName(), 'dashboard.admins.') !== false) active menu-open @endif">
