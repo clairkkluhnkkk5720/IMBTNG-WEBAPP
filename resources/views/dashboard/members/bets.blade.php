@@ -13,24 +13,26 @@
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
-			<table class="table table-bordered">
-				<tr>
-					<th>Event</th>
-					<th>Amount</th>
-					<th>Player</th>
-					<th>Bet Placed at</th>
-					<th>Status</th>
-				</tr>
-				@foreach ($bets as $bet)
+			<div class="table-responsive">
+				<table class="table table-bordered">
 					<tr>
-						<td>{{ $bet->event->title }}</td>
-						<td>{{ $bet->amount }}</td>
-						<td>{{ $bet->player->name }}</td>
-						<td>{{ $bet->created_at }}</td>
-						<td>{{ getBetStatus($bet) }}</td>
+						<th>Event</th>
+						<th>Amount</th>
+						<th>Player</th>
+						<th>Bet Placed at</th>
+						<th>Status</th>
 					</tr>
-				@endforeach
-			</table>
+					@foreach ($bets as $bet)
+						<tr>
+							<td>{{ $bet->event->title }}</td>
+							<td>{{ $bet->amount }}</td>
+							<td>{{ $bet->player->name }}</td>
+							<td>{{ $bet->created_at }}</td>
+							<td>{{ getBetStatus($bet) }}</td>
+						</tr>
+					@endforeach
+				</table>
+			</div>
 		</div>
 		{{-- @if ($bets->total() > 15)
 			<div class="box-footer clearfix">

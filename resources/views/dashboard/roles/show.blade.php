@@ -22,29 +22,33 @@
 				<div class="col-lg-6">
 					<h4>Permissions:</h4>
 					<hr>
-					<table class="table table-bordered">
-						<tr>
-							<th>Name</th>
-							<th>Details</th>
-							<th class="text-right">Actions</th>
-						</tr>
-						@foreach($permissions as $permission)
-							@include('dashboard.roles.partials._single-role-permission', compact('role', 'permission'))
-						@endforeach
-					</table>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr>
+								<th>Name</th>
+								<th>Details</th>
+								<th class="text-right">Actions</th>
+							</tr>
+							@foreach($permissions as $permission)
+								@include('dashboard.roles.partials._single-role-permission', compact('role', 'permission'))
+							@endforeach
+						</table>
+					</div>
 				</div>
 				<div class="col-lg-6">
 					<h4>Admins:</h4>
 					<hr>
-					<table class="table table-bordered">
-						<tr>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Phone</th>
-							<th class="text-right">Actions</th>
-						</tr>
-						@each('dashboard.roles.partials._single-role-admin', $admins, 'admin')
-					</table>
+					<div class="table-responsive">
+						<table class="table table-bordered">
+							<tr>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th class="text-right">Actions</th>
+							</tr>
+							@each('dashboard.roles.partials._single-role-admin', $admins, 'admin')
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

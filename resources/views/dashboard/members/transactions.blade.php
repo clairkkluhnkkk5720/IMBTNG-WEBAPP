@@ -13,24 +13,26 @@
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
-			<table class="table table-bordered">
-				<tr>
-					<th>#ID</th>
-					<th>Member</th>
-					<th>Type</th>
-					<th>Amount</th>
-					<th>Details</th>
-				</tr>
-				@foreach ($transactions as $t)
+			<div class="table-responsive">
+				<table class="table table-bordered">
 					<tr>
-						<td>{{ $t->id }}</td>
-						<td>{{ $t->user->firstname }} {{ $t->user->lastname }}</td>
-						<td>{{ $t->type ? 'Credit' : 'Debit' }}</td>
-						<td>{{ $t->amount }} USD</td>
-						<td>{{ $t->details }}</td>
+						<th>#ID</th>
+						<th>Member</th>
+						<th>Type</th>
+						<th>Amount</th>
+						<th>Details</th>
 					</tr>
-				@endforeach
-			</table>
+					@foreach ($transactions as $t)
+						<tr>
+							<td>{{ $t->id }}</td>
+							<td>{{ $t->user->firstname }} {{ $t->user->lastname }}</td>
+							<td>{{ $t->type ? 'Credit' : 'Debit' }}</td>
+							<td>{{ $t->amount }} USD</td>
+							<td>{{ $t->details }}</td>
+						</tr>
+					@endforeach
+				</table>
+			</div>
 		</div>
 		{{-- @if ($bets->total() > 15)
 			<div class="box-footer clearfix">

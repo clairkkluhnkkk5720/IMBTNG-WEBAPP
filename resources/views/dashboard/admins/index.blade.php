@@ -13,17 +13,19 @@
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
-			<table class="table table-bordered">
-				<tr>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Email</th>
-					<th>Phone</th>
-					<th>Member from</th>
-					<th class="text-right">Actions</th>
-				</tr>
-				@each('dashboard.admins.partials._single-admin', $admins, 'admin')
-			</table>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<tr>
+						<th>Firstname</th>
+						<th>Lastname</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Member from</th>
+						<th class="text-right">Actions</th>
+					</tr>
+					@each('dashboard.admins.partials._single-admin', $admins, 'admin')
+				</table>
+			</div>
 		</div>
 		<!-- /.box-body -->
 		@if ($admins->total() > 15)

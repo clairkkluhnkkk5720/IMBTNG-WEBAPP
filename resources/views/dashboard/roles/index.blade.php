@@ -13,16 +13,18 @@
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
-			<table class="table table-bordered">
-				<tr>
-					<th>Name</th>
-					<th>Details</th>
-					<th>Total Permissions</th>
-					<th>Total Admins</th>
-					<th class="text-right">Actions</th>
-				</tr>
-				@each('dashboard.roles.partials._single-role', $roles, 'role')
-			</table>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<tr>
+						<th>Name</th>
+						<th>Details</th>
+						<th>Total Permissions</th>
+						<th>Total Admins</th>
+						<th class="text-right">Actions</th>
+					</tr>
+					@each('dashboard.roles.partials._single-role', $roles, 'role')
+				</table>
+			</div>
 		</div>
 		<!-- /.box-body -->
 		@if ($roles->total() > 15)

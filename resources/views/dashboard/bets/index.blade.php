@@ -13,26 +13,28 @@
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
-			<table class="table table-bordered">
-				<tr>
-					<th>#ID</th>
-					<th>Event</th>
-					<th>Athlete/Team</th>
-					<th>User</th>
-					<th>Amount</th>
-					<th>Status</th>
-				</tr>
-				@foreach ($bets as $bet)
+			<div class="table-responsive">
+				<table class="table table-bordered">
 					<tr>
-						<td>{{ $bet->id }}</td>
-						<td><a href="{{ route('dashboard.events.show', $bet->event->id) }}">{{ $bet->event->title }}</a></td>
-						<td>{{ $bet->player->name }}</td>
-						<td><a href="{{ route('dashboard.members.show', $bet->user->id) }}">{{ $bet->user->firstname }} {{ $bet->user->lastname }}</a></td>
-						<td>{{ $bet->amount }} <small>USD</small></td>
-						<td>{{ getBetStatus($bet) }}</td>
+						<th>#ID</th>
+						<th>Event</th>
+						<th>Athlete/Team</th>
+						<th>User</th>
+						<th>Amount</th>
+						<th>Status</th>
 					</tr>
-				@endforeach
-			</table>
+					@foreach ($bets as $bet)
+						<tr>
+							<td>{{ $bet->id }}</td>
+							<td><a href="{{ route('dashboard.events.show', $bet->event->id) }}">{{ $bet->event->title }}</a></td>
+							<td>{{ $bet->player->name }}</td>
+							<td><a href="{{ route('dashboard.members.show', $bet->user->id) }}">{{ $bet->user->firstname }} {{ $bet->user->lastname }}</a></td>
+							<td>{{ $bet->amount }} <small>USD</small></td>
+							<td>{{ getBetStatus($bet) }}</td>
+						</tr>
+					@endforeach
+				</table>
+			</div>
 		</div>
 		<!-- /.box-body -->
 		@if ($bets->total() > 15)
