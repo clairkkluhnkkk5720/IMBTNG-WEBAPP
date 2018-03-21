@@ -24,13 +24,18 @@ class Event extends Model
     	return $this->hasMany(Bet::class);
     }
 
-    public function players ()
+    public function category ()
     {
-    	return $this->belongsToMany(Player::class);
+        return $this->belongsTo(EventCategory::class, 'event_category_id');
     }
 
-    public function winner ()
+    public function teams ()
     {
-        return $this->belongsTo(Player::class, 'winner_id');
+        return $this->belongsToMany(Team::class);
+    }
+
+    public function athletes ()
+    {
+        return $this->belongsToMany(Athlete::class);
     }
 }

@@ -28,10 +28,6 @@ class CreateBetsTable extends Migration
             $table->foreign('event_id')
                 ->references('id')->on('events')
                 ->onDelete('cascade');
-
-            $table->foreign('player_id')
-                ->references('id')->on('players')
-                ->onDelete('cascade');
         });
     }
 

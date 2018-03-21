@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 	protected $fillable = [
-		'name', 'details', 'banner',
+		'name', 'details', 'banner', 'thumb', 'icon',
 	];
 
     public function events ()
@@ -15,8 +15,13 @@ class Game extends Model
     	return $this->hasMany(Event::class);
     }
 
-    public function players ()
+    public function teams ()
     {
-    	return $this->hasMany(Player::class);
+        return $this->hasMany(Team::class);
+    }
+
+    public function athletes ()
+    {
+        return $this->hasMany(Athlete::class);
     }
 }

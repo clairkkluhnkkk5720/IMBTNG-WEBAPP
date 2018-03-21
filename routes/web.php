@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -48,23 +48,48 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::post('admins/trash/{admin}', 'AdminsTrashController@restore')->name('admins.trash.restore');
 		Route::resource('admins', 'AdminsController');
 
-		Route::get('members', 'MembersController@index')->name('members.index');
-		Route::get('members/banned', 'MembersController@banned')->name('members.banned');
-		Route::get('members/{user}', 'MembersController@show')->name('members.show');
-		Route::delete('members/{user}', 'MembersController@ban')->name('members.ban');
-		Route::post('members/{user}/unban', 'MembersController@unban')->name('members.unban');
-		Route::get('members/{user}/transactions', 'MembersController@transactions')->name('members.transactions');
-		Route::get('members/{user}/bets', 'MembersController@bets')->name('members.bets.index');
-		Route::get('members/{user}/bets/winning', 'MembersController@winningBets')->name('members.bets.winning');
-		Route::get('members/{user}/bets/losing', 'MembersController@losingBets')->name('members.bets.losing');
-		Route::get('members/{user}/bets/pending', 'MembersController@pendingBets')->name('members.bets.pending');
+		// Route::get('members', 'MembersController@index')->name('members.index');
+		// Route::get('members/banned', 'MembersController@banned')->name('members.banned');
+		// Route::get('members/{user}', 'MembersController@show')->name('members.show');
+		// Route::delete('members/{user}', 'MembersController@ban')->name('members.ban');
+		// Route::post('members/{user}/unban', 'MembersController@unban')->name('members.unban');
+		// Route::get('members/{user}/transactions', 'MembersController@transactions')->name('members.transactions');
+		// Route::get('members/{user}/bets', 'MembersController@bets')->name('members.bets.index');
+		// Route::get('members/{user}/bets/winning', 'MembersController@winningBets')->name('members.bets.winning');
+		// Route::get('members/{user}/bets/losing', 'MembersController@losingBets')->name('members.bets.losing');
+		// Route::get('members/{user}/bets/pending', 'MembersController@pendingBets')->name('members.bets.pending');
 
-		Route::resource('events', 'EventsController');
-		Route::resource('bets', 'BetsController');
+		// Route::resource('events', 'EventsController');
+		// Route::resource('bets', 'BetsController');
 
 		// DEMO
 		// Route::get('events', 'EventsController@index')->name('events.index');
 		// Route::get('bets', 'BetsController@index')->name('bets.index');
+		
+		Route::resource('games', 'GamesController');
+		// Route::resource('teams', 'TeamsController');
+		// Route::resource('events', 'EventsController');
+		Route::resource('athletes', 'AthletesController');
+
+		Route::get('teams', 'TeamsController@index')->name('teams.index');
+		Route::get('teams/create', 'TeamsController@create')->name('teams.create');
+		Route::post('teams/create/choose-athletes', 'TeamsController@finishCreate')->name('teams.create.finish');
+		Route::post('teams', 'TeamsController@store')->name('teams.store');
+		Route::get('teams/{team}', 'TeamsController@show')->name('teams.show');
+		Route::get('teams/{team}/edit', 'TeamsController@edit')->name('teams.edit');
+		Route::post('teams/{team}/edit/choose-athletes', 'TeamsController@finishEdit')->name('teams.edit.finish');
+		Route::put('teams/{team}', 'TeamsController@update')->name('teams.update');
+		Route::delete('teams/{team}', 'TeamsController@destroy')->name('teams.destroy');
+
+		Route::get('events', 'EventsController@index')->name('events.index');
+		Route::get('events/create', 'EventsController@create')->name('events.create');
+		Route::post('events/create/choose-athletes', 'EventsController@finishCreate')->name('events.create.finish');
+		Route::post('events', 'EventsController@store')->name('events.store');
+		Route::get('events/{event}', 'EventsController@show')->name('events.show');
+		Route::get('events/{event}/edit', 'EventsController@edit')->name('events.edit');
+		Route::post('events/{event}/edit/choose-athletes', 'EventsController@finishEdit')->name('events.edit.finish');
+		Route::put('events/{event}', 'EventsController@update')->name('events.update');
+		Route::delete('events/{event}', 'EventsController@destroy')->name('events.destroy');
 	});
 
 

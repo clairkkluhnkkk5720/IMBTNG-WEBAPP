@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(AdminsTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
-        $this->call(GamesTableSeeder::class);
-        $this->call(PlayersTableSeeder::class);
-        $this->call(EventsTableSeeder::class);
-        $this->call(BetsTableSeeder::class);
+        $this->call(EventCategoriesTableSeeder::class);
+        // $this->call(UsersTableSeeder::class);
+        // $this->call(GamesTableSeeder::class);
+        // $this->call(PlayersTableSeeder::class);
+        // $this->call(EventsTableSeeder::class);
+        // $this->call(BetsTableSeeder::class);
     }
 }

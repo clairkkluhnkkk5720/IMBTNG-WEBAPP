@@ -16,11 +16,14 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('details')->nullable();
-            $table->timestamp('live_at');
+            $table->timestamp('live_at')->nullable();
+            $table->string('live_link')->nullable();
             $table->string('banner')->nullable();
             $table->string('thumb')->nullable();
             $table->integer('game_id')->unsigned();
+            $table->integer('event_category_id')->unsigned();
             $table->integer('winner_id')->unsigned()->nullable();
             $table->timestamps();
 
@@ -28,9 +31,9 @@ class CreateEventsTable extends Migration
                 ->references('id')->on('games')
                 ->onDelete('cascade');
 
-            $table->foreign('winner_id')
-                ->references('id')->on('players')
-                ->onDelete('SET NULL');
+            $table->foreign('event_category_id')
+                ->references('id')->on('event_categories')
+                ->onDelete('cascade');
         });
     }
 
