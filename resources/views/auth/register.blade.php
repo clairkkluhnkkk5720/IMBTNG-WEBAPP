@@ -9,8 +9,8 @@
             <input type="text" class="form-control" placeholder="Full Name"></input>
             <input type="email" class="form-control" placeholder="Email"></input>
             <input type="text" class="form-control" placeholder="Username">
+            <input type="text" class="form-control" placeholder="Phone">
             <input type="password" class="form-control" placeholder="Password">
-            <input type="password" class="form-control" placeholder="Confirm Password">
             <input type="text" class="form-control" placeholder="BTC Wallet Address">
         </div>
         <div class="form-group submit-group">
