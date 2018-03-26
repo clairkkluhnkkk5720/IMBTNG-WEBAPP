@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->string('wallet');
-            // $table->string('avatar')->nullable();
+            $table->tinyInteger('active')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
