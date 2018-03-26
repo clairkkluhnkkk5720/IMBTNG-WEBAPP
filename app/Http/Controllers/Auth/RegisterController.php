@@ -43,22 +43,18 @@ class RegisterController extends Controller
 
     public function register (Request $request)
     {
-        // echo '<pre>';
-        // var_dump($request->all());
-        // echo '</pre>';
-
-        // die();
-
         $this->validateRequest($request);
 
         $user = $this->createUser($request);
 
         $user->sendEmailVerifyNotification($user->e_c);
 
-        return redirect($this->redirectPath())->with(
-            'global.success',
-            'A confirmation mail is sent to your email <strong>'. $user->email .'</strong>. Please confirm your email to Sign in to your profile.'
-        );
+        // return redirect($this->redirectPath())->with(
+        //     'global.success',
+        //     'A confirmation mail is sent to your email <strong>'. $user->email .'</strong>. Please confirm your email to Sign in to your profile.'
+        // );
+
+        return redirect()->route('register.thank-you', $user->email);
     }
 
     protected function validateRequest (Request $request)
@@ -97,6 +93,18 @@ class RegisterController extends Controller
         }
 
         return $ec;
+    }
+
+    public function showThankYou ($email)
+    {
+        // $user = User::where([
+        //     ['email', '=', $email],
+        //     ['e_c' '!=', null],
+        // ])->firstOrFail();
+
+        $user = User::unverified()->where('email', $email)->firstOrFail();
+
+        return view('auth.thank-you', compact('user'));
     }
 
     /**

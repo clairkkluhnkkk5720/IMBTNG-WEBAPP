@@ -18,7 +18,7 @@ class EmailVerifyController extends Controller
         $this->middleware('guest');
     }
 
-    public function __invoke ($ec)
+    public function verify ($ec)
     {
     	$user = User::where('e_c', $ec)->firstOrFail();
 
@@ -32,5 +32,17 @@ class EmailVerifyController extends Controller
     				'global.error',
     				'Couldn\'t verify email. Please try again.'
     			);
+    }
+
+    public function resend ($email)
+    {
+        $user = User::unverified()->where('email', $email)->firstOrFail();
+
+        $user->sendEmailVerifyNotification($user->e_c);
+
+        return back()->with(
+            'global.success',
+            'Verification mail is sent again.'
+        );
     }
 }

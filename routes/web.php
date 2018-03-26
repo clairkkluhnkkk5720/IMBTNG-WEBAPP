@@ -24,8 +24,10 @@ Route::namespace('Auth')->group(function () {
 
 	Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
 	Route::post('register', 'RegisterController@register')->name('register.post');
+	Route::get('thank-you/{email}', 'RegisterController@showThankYou')->name('register.thank-you');
 
-	Route::get('/verify-email/{ec}', 'EmailVerifyController')->name('verify.email');
+	Route::get('/verify-email/{ec}', 'EmailVerifyController@verify')->name('verify.email');
+	Route::post('/verify-email-resend/{email}', 'EmailVerifyController@resend')->name('verify.resend');
 
 	Route::get('login', 'LoginController@showLoginForm')->name('login');
 	Route::post('login', 'LoginController@login')->name('login.post');

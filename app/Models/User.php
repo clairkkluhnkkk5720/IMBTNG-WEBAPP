@@ -43,4 +43,14 @@ class User extends Authenticatable
     {
         $this->notify(new VerifyEmail($e_c));
     }
+
+    public function scopeVerified ($query)
+    {
+        return $query->where('e_c', null);
+    }
+
+    public function scopeUnverified ($query)
+    {
+        return $query->where('e_c', '!=', null);
+    }
 }
