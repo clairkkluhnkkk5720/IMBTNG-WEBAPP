@@ -15,10 +15,19 @@
 //     return view('welcome');
 // });
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::namespace('Auth')->group(function () {
+
+	Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+	Route::post('register', 'RegisterController@register')->name('register.post');
+	Route::get('login', 'LoginController@showLoginForm')->name('login');
+	Route::post('login', 'LoginController@login')->name('login.post');
+
+});
 
 
 Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(function () {
