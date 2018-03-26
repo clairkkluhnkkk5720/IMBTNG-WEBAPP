@@ -11,4 +11,4 @@ mix.options({
 mix
    .js('src/js/app.js', 'dist/js')
    .sass('src/scss/app.scss', 'dist/css')
-   .sourceMaps();
+   // .sourceMaps();

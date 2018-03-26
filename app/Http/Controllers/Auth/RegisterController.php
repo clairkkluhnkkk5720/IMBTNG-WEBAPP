@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use Hash;
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -37,6 +39,62 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function register (Request $request)
+    {
+        // echo '<pre>';
+        // var_dump($request->all());
+        // echo '</pre>';
+
+        // die();
+
+        $this->validateRequest($request);
+
+        $user = $this->createUser($request);
+
+        return redirect($this->redirectPath())->with(
+            'global.success',
+            'A confirmation mail is sent to your email <strong>'. $user->email .'</strong>. Please confirm your email to Sign in to your profile.'
+        );
+    }
+
+    protected function validateRequest (Request $request)
+    {
+        $rules = [
+            'name'     => 'required|string|min:3',
+            'email'    => 'required|email|unique:users,email',
+            'username' => 'required|string|min:5|max:16|unique:users,username',
+            'phone'    => 'required|string|min:6|unique:users,phone',
+            'password' => 'required|string|min:6|max:16',
+            'wallet'   => 'required|url|unique:users,wallet',
+        ];
+
+        $this->validate($request, $rules);
+    }
+
+    protected function createUser (Request $request)
+    {
+        return User::create([
+            'name'     => $request->input('name'),
+            'email'    => $request->email,
+            'username' => $request->username,
+            'phone'    => $request->phone,
+            'password' => Hash::make($request->password),
+            'wallet'   => $request->wallet,
+            'e_c'      => $this->getUniqueEC(),
+        ]);
+    }
+
+    protected function getUniqueEC ()
+    {
+        $ec = str_random(20);
+
+        while (User::where('e_c', $ec)->first()) {
+            $ec = str_random(20);
+        }
+
+        return $ec;
     }
 
     /**

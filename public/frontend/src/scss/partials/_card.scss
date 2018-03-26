@@ -1,0 +1,188 @@
+.card-wrapper {
+    margin-top: 30px;
+}
+.single-card {
+    img {
+        width: 100%;
+        height: 240px;
+    }
+    margin-bottom: 20px;
+    .contents {
+        background: #d21d25;
+        display: flex;
+        padding: 10px;
+        border-radius: 0px 0px 4px 4px;
+        .icon {
+            margin-right: 10px;
+            i {
+                font-size: 20px;
+            }
+        }
+        .titles h2 {
+            margin-top:  0;
+            font-size: 16px;
+            line-height: 1.6;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+        span {
+            color: #ffa5a9;
+            font-size: 14px;
+            font-weight: 300;
+        }
+    }
+
+}
+
+// Single Card 2
+.single-card-2 {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    img {
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    // overlay
+    .overlay {
+        position: absolute;
+        background-color: rgba(0 , 0, 0, 0.7);
+        top: 0;
+        left: -700px;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 90%;
+        height: 90%;
+        text-align: center;
+        padding: 80px 20px;
+        transition-property: left;
+        transition-duration: 0.3s, 0.2s;
+        p {
+            font-weight: 300;
+            font-size: 16px;
+            color: #bebebe;
+        }
+
+    }
+    &:hover .overlay {
+        left: 0;
+        cursor: pointer;
+    }
+
+}
+
+// Big card
+.single-big-card {
+    img {
+        width: 100%;
+    }
+    margin-bottom: 30px;
+    position: relative;
+
+    // overlay
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        height: 100px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #ffffff;
+        padding: 20px 10px;
+        text-align: center;
+        h2 {
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 12px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+    }
+}
+
+/**
+    RESPONSIVE STYLES GOES HERE
+    ===========================
+**/
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .card-wrapper {
+        margin-top: 50px;
+    }
+    // Single Card
+    .single-card {
+        margin-bottom: 0px;
+        .contents {
+
+            .titles h2 {
+                margin-top:  0;
+                font-size: 14px;
+                text-transform: uppercase;
+                font-weight: 600;
+                margin-bottom: 5px;
+                color: #ffffff;
+            }
+            span {
+                color: #ffffff;
+                font-size: 14px;
+                font-weight: 300;
+            }
+        }
+
+    }
+
+    // Single Card 2
+    .single-card-2 {
+        margin-bottom: 0;
+        // overlay
+        .overlay {
+            padding: 60px 20px;
+            p {
+                font-size: 14px;
+            }
+        }
+
+    }
+
+    // Big card
+    .card-wrapper {
+        .col-md-6.card-left {
+            padding-right: 0;
+        }
+        .col-md-6.card-right {
+            padding-left: 0;
+        }
+    }
+    .single-big-card {
+        margin-bottom: 0px;
+        img {
+            height: 350px;
+        }
+        // overlay
+        .overlay {
+            height: 120px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 10px;
+            h2 {
+                color: #fff;
+                font-size: 26px;
+                text-transform: uppercase;
+            }
+            p {
+                font-size: 16px;
+                font-weight: 300;
+                text-transform: uppercase;
+                margin: 0;
+            }
+        }
+    }
+
+}

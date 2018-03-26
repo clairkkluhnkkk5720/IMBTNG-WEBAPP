@@ -13,11 +13,64 @@
         .log-in-section .log-in-inputs {
             padding-bottom: 15px;
         }
+        .log-in-section .log-in-inputs .form-control.has-error {
+            border-color: #dc3545;
+            margin-bottom: 0;
+        }
+        .log-in-section .log-in-inputs .form-control + .help-block {
+            display: none;
+        }
+        .log-in-section .log-in-inputs .form-control.has-error + .help-block {
+            display: block;
+            margin-bottom: 20px;
+            margin-top: 5px;
+        }
+        .log-in-section .log-in-inputs .form-control.has-error::-webkit-input-placeholder {
+            color: #dc3545;
+            opacity: 1;
+        }
+
+        .log-in-section .log-in-inputs .form-control.has-error:-ms-input-placeholder {
+            color: #dc3545;
+            opacity: 1;
+        }
+
+        .log-in-section .log-in-inputs .form-control.has-error::-ms-input-placeholder {
+            color: #dc3545;
+            opacity: 1;
+        }
+
+        .log-in-section .log-in-inputs .form-control.has-error::placeholder {
+            color: #dc3545;
+            opacity: 1;
+        }
+        .global-alert {
+            border-radius: 0;
+            margin: 0;
+        }
     </style>
     @yield('styles')
 </head>
 
 <body>
+
+    @if (session()->has('global.success'))
+        <div class="alert global-alert alert-success alert-dismissible fade show" role="alert">
+            {!! session('global.success') !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    @if (session()->has('global.error'))
+        <div class="alert global-alert alert-danger alert-dismissible fade show" role="alert">
+            {!! session('global.error') !!}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
 
     <section class="log-in-section d-flex align-items-center" style="background-image: url(/frontend/dist/images/login-page-bg.png)">
         <div class="container">

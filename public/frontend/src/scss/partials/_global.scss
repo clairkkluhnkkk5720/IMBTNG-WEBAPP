@@ -1,0 +1,79 @@
+a {
+    &:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+}
+.section-padding {
+    padding: 60px 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.section-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #26375a;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        width: 240px;
+        content: "";
+        background-color: #4165af;
+        border-radius: 4px 0 0 4px;
+    }
+
+    h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 0;
+        position: relative;
+    }
+    i {
+        margin: 0 5px;
+        font-size: 18px;
+    }
+}
+
+/**
+    RESPONSIVE STYLES GOES HERE
+    ===========================
+**/
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .section-padding {
+        padding: 120px 0;
+    }
+    // Section title wrapper
+    .section-title-wrapper {
+        padding: 15px 30px;
+        &::before {
+            width: 350px;
+        }
+
+        h2 {
+            font-size: 22px;
+            letter-spacing: 0.5px;
+        }
+        i {
+            margin: 0 5px;
+            font-size: 22px;
+        }
+    }
+    .popular-games {
+        .section-title-wrapper {
+            &::before {
+                width: 400px;
+            }
+        }
+    }
+}
