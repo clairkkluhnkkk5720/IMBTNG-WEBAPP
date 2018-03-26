@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\User\VerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,5 +37,10 @@ class User extends Authenticatable
     public function transactions ()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function sendEmailVerifyNotification ($e_c)
+    {
+        $this->notify(new VerifyEmail($e_c));
     }
 }

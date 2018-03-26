@@ -53,6 +53,8 @@ class RegisterController extends Controller
 
         $user = $this->createUser($request);
 
+        $user->sendEmailVerifyNotification($user->e_c);
+
         return redirect($this->redirectPath())->with(
             'global.success',
             'A confirmation mail is sent to your email <strong>'. $user->email .'</strong>. Please confirm your email to Sign in to your profile.'
