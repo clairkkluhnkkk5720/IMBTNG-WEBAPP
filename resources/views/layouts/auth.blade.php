@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/frontend/dist/css/app.css">
-    <title>IMBTING | @yield('page-title')</title>
+    <title>@yield('page-title') - IMBTING</title>
     <style type="text/css">
         .log-in-section .log-in-inputs {
             padding-bottom: 15px;
@@ -78,7 +78,7 @@
                 <!-- Log In section Logo -->
                 <div class="col-md-4">
                     <div class="log-in-logo">
-                        <a href="#">
+                        <a href="{{ route('index') }}">
                             <img src="/frontend/dist/images/logo-login.png" alt="IMBTING">
                         </a>
                     </div>

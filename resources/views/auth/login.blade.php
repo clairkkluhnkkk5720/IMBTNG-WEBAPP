@@ -14,7 +14,7 @@
             @if ($errors->has('password'))
                 <small class="text-danger help-block">{{ $errors->first('password') }}</small>
             @endif
-            <a href="#" class="forgot-pass">Forget Password</a>
+            <a href="{{ route('password.request') }}" class="forgot-pass">Forget Password</a>
         </div>
         <div class="form-group submit-group">
             {{ csrf_field() }}

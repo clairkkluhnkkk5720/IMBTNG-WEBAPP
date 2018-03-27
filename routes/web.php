@@ -19,6 +19,10 @@
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', function () {
+	return 'Index Page';
+})->name('index');
+
 
 Route::namespace('Auth')->group(function () {
 
@@ -33,6 +37,12 @@ Route::namespace('Auth')->group(function () {
 	Route::post('login', 'LoginController@login')->name('login.post');
 
 	Route::get('logout', 'LoginController@logout')->name('logout');
+
+	Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+	Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+	Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+	Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset.post');
 
 });
 
@@ -52,7 +62,7 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::post('login', 'LoginController@login')->name('login.post');
 
 		Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-		Route::post('password/email', 'ForgotPasswordController@SendResetLinkEmail')->name('password.email');
+		Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 
 		Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
 		Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset.post');
