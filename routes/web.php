@@ -32,6 +32,16 @@ Route::namespace('Auth')->group(function () {
 	Route::get('login', 'LoginController@showLoginForm')->name('login');
 	Route::post('login', 'LoginController@login')->name('login.post');
 
+	Route::get('logout', 'LoginController@logout')->name('logout');
+
+});
+
+Route::middleware('auth')->group(function () {
+
+	Route::get('home', function () {
+		return 'User: ' . auth()->user()->name . ' is currently logged in';
+	})->name('home');
+
 });
 
 

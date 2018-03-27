@@ -54,8 +54,8 @@ class User extends Authenticatable
         return $query->where('e_c', '!=', null);
     }
 
-    public function isVarified()
+    public function isVerified()
     {
-        return !!$this->e_c;
+        return !$this->e_c;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Hash;
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -85,33 +86,63 @@ class LoginController extends Controller
         return 'username';
     }
 
-    protected function column (string $string)
+    protected function column ($string)
     {
-        return $string and filter_var($string, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        // return $string and filter_var($string, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        if ($string and filter_var($string, FILTER_VALIDATE_EMAIL)) {
+            return 'email';
+        }
+
+        return 'username';
     }
 
     protected function attemptLogin (Request $request)
     {
         $username = $request->username;
         $column   = $this->column($username);
-        $user     = User::where($column, $username);
+        $user     = User::where($column, $username)->first();
+
+        if (!$user or !($user instanceof User)) {
+            return back()->with(
+                'global.error',
+                'User not found.'
+            )->withInput();
+        }
 
         if (!$user->isVerified()) {
             return back()->with(
                 'global.error',
                 'User email is not verified.'
-            );
+            )->withInput();
         }
 
         if (!Hash::check($request->password, $user->password)) {
             return back()->with(
                 'global.error',
                 'Password didn\'t match. Please try again.'
-            );
+            )->withInput();
         }
 
-        auth()->login($user);
+        $this->guard()->login($user);
 
         return redirect()->route('home');
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('login')->with(
+            'global.success',
+            'You are successfully logged out'
+        );
     }
 }
