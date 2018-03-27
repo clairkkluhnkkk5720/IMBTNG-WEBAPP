@@ -2,6 +2,7 @@
 	<td><a href="{{ route('dashboard.games.show', $game->slug) }}">{{ $game->id }}</a></td>
 	<td><a href="{{ route('dashboard.games.show', $game->slug) }}">{{ $game->name }}</a></td>
 	<td>{{ $game->slug }}</td>
+	<td><i class="{{ $game->icon }}"></i></td>
 	<td class="text-right">
 		<a href="{{ route('dashboard.games.show', $game->slug) }}" class="btn btn-xs btn-success btn-flat" title="View Game">
 			<i class="fa fa-eye"></i>

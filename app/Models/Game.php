@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
 	protected $fillable = [
-		'name', 'details', 'banner', 'thumb', 'icon',
+		'name', 'slug', 'details', 'banner', 'thumb', 'icon',
 	];
 
     public function events ()

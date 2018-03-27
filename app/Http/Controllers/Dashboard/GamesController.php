@@ -51,6 +51,7 @@ class GamesController extends Controller
         $game->name    = $request->name;
         $game->slug    = $request->slug;
         $game->details = $request->details;
+        $game->icon    = $request->icon;
 
         if ($game->save()) {
             return redirect()->route('dashboard.games.index')->with(
@@ -71,6 +72,7 @@ class GamesController extends Controller
             'name'    => 'required|string|min:3',
             'slug'    => 'required|string|min:3|unique:games,slug',
             'details' => 'nullable|string|min:10',
+            'icon'    => 'required|string|min:4',
         ];
 
         if ($game and $game instanceof Game) {
@@ -122,9 +124,10 @@ class GamesController extends Controller
 
         $this->validateGame($request, $game);
 
-        $game->name = $request->name;
-        $game->slug = $request->slug;
+        $game->name    = $request->name;
+        $game->slug    = $request->slug;
         $game->details = $request->details;
+        $game->icon    = $request->icon;
 
         if ($game->save()) {
             return redirect()->route('dashboard.games.show', $game->slug)->with(

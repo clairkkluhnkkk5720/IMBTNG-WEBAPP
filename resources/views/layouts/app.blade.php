@@ -1,70 +1,119 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<!doctype html>
+<html lang="en">
+
 <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/frontend/dist/css/app.css">
+    <title>@yield('page-title') - IMBTING</title>
+    <style type="text/css">
+        
+        a[disabled] {
+            cursor: not-allowed;
+            opacity: .85 !important;
+        }
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    </style>
+    @yield('styles')
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+
+    <!-- header section -->
+    <header class="header-section">
+        <!-- top header -->
+        <div class="top-header">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="row justify-content-between align-items-center">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="{{ route('home') }}">
+                            <img src="/frontend/dist/images/logo.png" alt="Imbeting logo">
+                        </a>
+                    </div>
+                    <!-- logo ends -->
 
-                    </ul>
+                    <!-- user info -->
+                    <div class="header-user-info">
+                        <ul>
+                            {{-- <li><a href="{{ route('pages.acs') }}"><i class="fas fa-shield-alt"></i> Open bets</a></li> --}}
+                            <li><a href="{{ route('pages.history') }}"><i class="far fa-clock"></i> History</a></li>
+                            <li><a href="{{ route('pages.deposit') }}"><i class="fas fa-briefcase"></i> Deposit</a></li>
+                            <li class="user-id"><a href="{{ route('logout') }}"><i class="far fa-user-circle"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- user info ends -->
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+        <!-- top header ends -->
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    </header>
+    <!-- header section ends -->
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- status bar -->
+    <section class="status-bar-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- bar -->
+                    <div class="status-bar">
+                        <ul>
+                            <li>
+                                <a>Current Balance: <span>0MXN</span></a>
+                                <a>Amount at Risk: <span>0MXN</span></a>
+                                <a>Available Balance: <span>0MXN</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- status bar ends -->
+
+    @yield('contents')
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <!-- copyright text -->
+                <div class="copyright-text">
+                    <p>Copyright &copy; 2018 <a href="{{ route('home') }}">Imbting</a> All rights reserved. </p>
+                </div>
+
+
+
+                <!-- social icons -->
+                <div class="footer-icons">
+                    <a href="{{ route('pages.acs') }}"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{ route('pages.acs') }}"><i class="fab fa-twitter"></i></a>
+                    <a href="{{ route('pages.acs') }}"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ route('pages.acs') }}"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+
+            </div>
+        </div>
+    </footer>
+    <!-- footer section ends -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/frontend/dist/js/app.js"></script>
+    <script type="text/javascript">
+        $('a[disabled]').click(function (e) {
+            e.preventDefault();
+            alert('This feature will be done after getting vimeo');
+        });
+    </script>
+    @yield('scripts')
 </body>
+
 </html>

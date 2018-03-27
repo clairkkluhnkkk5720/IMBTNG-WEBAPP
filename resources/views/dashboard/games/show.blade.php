@@ -17,6 +17,7 @@
 					<p>ID: <strong>{{ $game->id }}</strong></p>
 					<p>Name: <strong>{{ $game->name }}</strong></p>
 					<p>Slug: <strong>{{ $game->slug }}</strong></p>
+					<p>Icon: <i class="{{ $game->icon }}"></i></p>
 					<p>Details: <strong>{{ $game->details }}</strong></p>
 					<p>Created at: <strong>{{ $game->created_at->toFormattedDateString() }}</strong></p>
 				</div>

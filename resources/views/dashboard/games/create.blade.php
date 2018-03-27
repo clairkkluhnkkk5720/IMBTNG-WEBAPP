@@ -36,6 +36,16 @@
 							</div>
 						</div>
 
+						<div class="form-group @if ($errors->has('slug')) has-error @endif">
+							<label for="icon" class="col-sm-3 control-label">Game Icon *</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="icon" name="icon" value="{{ old('icon') }}" placeholder="Fa-Icon" required>
+								@if ($errors->has('icon'))
+									<span class="help-block">{{ $errors->first('icon') }}</span>
+								@endif
+							</div>
+						</div>
+
 						<div class="form-group @if ($errors->has('details')) has-error @endif">
 							<label for="details" class="col-sm-3 control-label">Game Details</label>
 							<div class="col-sm-9">

@@ -19,9 +19,11 @@
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-	return 'Index Page';
-})->name('index');
+Route::get('/', 'IndexController')->name('index');
+Route::get('home', 'HomeController')->name('home');
+Route::get('about', 'PagesController@about')->name('pages.about');
+Route::get('contact', 'PagesController@about')->name('pages.contact');
+Route::get('coming-soon', 'PagesController@cs')->name('pages.cs');
 
 
 Route::namespace('Auth')->group(function () {
@@ -44,13 +46,9 @@ Route::namespace('Auth')->group(function () {
 	Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
 	Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset.post');
 
-});
-
-Route::middleware('auth')->group(function () {
-
-	Route::get('home', function () {
-		return 'User: ' . auth()->user()->name . ' is currently logged in';
-	})->name('home');
+	Route::get('history', 'PagesController@history')->name('pages.history');
+	Route::get('deposit', 'PagesController@deposit')->name('pages.deposit');
+	Route::get('/auth/coming-soon', 'PagesController@cs')->name('pages.acs');
 
 });
 

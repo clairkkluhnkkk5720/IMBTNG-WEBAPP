@@ -19,6 +19,7 @@
 						<th>ID</th>
 						<th>Name</th>
 						<th>Slug</th>
+						<th>Icon</th>
 						<th class="text-right">Actions</th>
 					</tr>
 					@each('dashboard.games.partials._single-game', $games, 'game')
