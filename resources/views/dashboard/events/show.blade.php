@@ -6,11 +6,32 @@
 
 	<div class="row">
 
-		<div class="col-md-7 col-lg-6">
+		<div class="col-md-6">
+			<div class="box box-success">
+				<div class="box-header with-border">
+					<h3 class="box-title">
+						Event Images: {{ $event->title }}
+					</h3>
+				</div>
+
+				<div class="box-body">
+					<p>Thumb: @if (!$event->thumb) NULL @endif</p>
+					@if ($event->thumb)
+						<img class="img-responsive" src="/uploads/events/thumbs/{{ $event->thumb }}" alt="{{ $event->title }}">
+					@endif
+					<p>Banner: @if (!$event->banner) NULL @endif</p>
+					@if ($event->banner)
+						<img class="img-responsive" src="/uploads/events/banners/{{ $event->banner }}" alt="{{ $event->title }}">
+					@endif
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
 			
 			<div class="box box-success">
 				<div class="box-header with-border">
-					<h3 class="box-title">Event Information: {{ $event->name }}</h3>
+					<h3 class="box-title">Event Information: {{ $event->title }}</h3>
 				</div>
 
 				<div class="box-body">
@@ -21,7 +42,7 @@
 					<p>Game: <a href="{{ route('dashboard.games.show', $game->slug) }}"><strong>{{ $game->name }}</strong></a></p>
 					<p>Details: <strong>{{ $event->details }}</strong></p>
 					<p>Created at: <strong>{{ $event->created_at->toFormattedDateString() }}</strong></p>
-					<p>Live Date: <strong>{{ $event->live_at->toFormattedDateString() }}</strong></p>
+					<p>Live Date: <strong>{{ $event->live_at->toDayDateTimeString() }}</strong></p>
 					<br>
 					<?php
 						$str = $category->id == 1 ? 'Athletes' : 'Teams';

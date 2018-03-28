@@ -26,12 +26,35 @@
 		</div>
 
 		<div class="col-md-7">
-			<div class="box box-info">
-				<div class="box-header with-border">
-					<h3 class="box-title">Choose {{ $category->id == 1 ? 'Athletes' : 'Teams' }}: </h3>
-				</div>
+			<form action="{{ route('dashboard.events.store') }}" enctype="multipart/form-data" method="POST">
 
-				<form action="{{ route('dashboard.events.store') }}" method="POST">
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title">Choose Images: (optional)</h3>
+					</div>
+
+					<div class="box-body">
+						<div class="form-group @if ($errors->has('thumb')) has-error @endif">
+							<label for="thumb">Choose Thumb: (250px * 250px)</label>
+							<input type="file" name="thumb" id="thumb" accept="image/*">
+							@if ($errors->has('thumb'))
+								<span class="help-block">{{ $errors->first('thumb') }}</span>
+							@endif
+						</div>
+						<div class="form-group @if ($errors->has('banner')) has-error @endif"">
+							<label for="banner">Choose Banner: (800px * 400px)</label>
+							<input type="file" name="banner" id="banner" accept="image/*">
+							@if ($errors->has('banner'))
+								<span class="help-block">{{ $errors->first('banner') }}</span>
+							@endif
+						</div>
+					</div>
+				</div>
+				<div class="box box-info">
+					<div class="box-header with-border">
+						<h3 class="box-title">Choose {{ $category->id == 1 ? 'Athletes' : 'Teams' }}: </h3>
+					</div>
+
 					<div class="box-body">
 						@foreach ($data as $item)
 							<div class="col-xs-6 col-sm-4 col-md-3">
@@ -58,8 +81,8 @@
 						{{ csrf_field() }}
 						<button class="btn btn-info btn-flat" type="submit">CREATE EVENT</button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 
 	</div>

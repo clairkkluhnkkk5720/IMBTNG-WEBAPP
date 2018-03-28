@@ -13,7 +13,7 @@
 					<h3 class="box-title">Create New Event</h3>
 				</div>
 
-				<form action="{{ route('dashboard.events.create.finish') }}" method="POST" class="form-horizontal">
+				<form action="{{ route('dashboard.events.create.finish') }}" class="form-horizontal">
 					<div class="box-body">
 
 						<div class="form-group @if ($errors->has('title')) has-error @endif">
@@ -73,7 +73,7 @@
 						<div class="form-group @if ($errors->has('live_at')) has-error @endif">
 							<label for="live_at" class="col-sm-3 control-label">Date *</label>
 							<div class="col-sm-9">
-								<input type="date" class="form-control" name="live_at" id="live_at" value="{{ old('live_at') }}" min="{{ explode(' ', Carbon\Carbon::tomorrow())[0] }}" required>
+								<input type="datetime-local" class="form-control" name="live_at" id="live_at" value="{{ old('live_at') }}" {{-- TODO: min --}} required>
 								@if ($errors->has('live_at'))
 									<span class="help-block">{{ $errors->first('live_at') }}</span>
 								@endif

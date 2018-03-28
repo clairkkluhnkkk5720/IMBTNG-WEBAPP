@@ -13,7 +13,7 @@
 					<h3 class="box-title">Create New Athlete</h3>
 				</div>
 
-				<form action="{{ route('dashboard.athletes.store') }}" method="POST" class="form-horizontal">
+				<form action="{{ route('dashboard.athletes.store') }}" method="POST" class="form-horizontal" {{-- enctype="multipart/form-data" --}}>
 					<div class="box-body">
 
 						<div class="form-group @if ($errors->has('name')) has-error @endif">
@@ -60,6 +60,16 @@
 								@endif
 							</div>
 						</div>
+
+						{{-- <div class="form-group @if ($errors->has('image')) has-error @endif">
+							<label for="image" class="col-sm-3 control-label">Image: (250 * 250)</label>
+							<div class="col-sm-9">
+								<input type="file" name="image" accept="image/*" id="image">
+								@if ($errors->has('image'))
+									<span class="help-block">{{ $errors->first('image') }}</span>
+								@endif
+							</div>
+						</div> --}}
 
 					</div>
 

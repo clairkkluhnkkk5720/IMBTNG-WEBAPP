@@ -4,7 +4,7 @@
 	<td>{{ $event->slug }}</td>
 	<td><a href="{{ route('dashboard.games.show', $event->game->slug) }}">{{ $event->game->name }}</a></td>
 	<td>{{ $event->category->name }}</td>
-	<td>{{ $event->live_at->toFormattedDateString() }}</td>
+	<td>{{ $event->live_at->toDayDateTimeString() }}</td>
 	<td class="text-right">
 		<a href="{{ route('dashboard.events.show', $event->slug) }}" class="btn btn-xs btn-success btn-flat" title="View event">
 			<i class="fa fa-eye"></i>

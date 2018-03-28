@@ -115,7 +115,7 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 
 		Route::get('events', 'EventsController@index')->name('events.index');
 		Route::get('events/create', 'EventsController@create')->name('events.create');
-		Route::post('events/create/choose-athletes', 'EventsController@finishCreate')->name('events.create.finish');
+		Route::get('events/create/choose-athletes', 'EventsController@finishCreate')->name('events.create.finish');
 		Route::post('events', 'EventsController@store')->name('events.store');
 		Route::get('events/{event}', 'EventsController@show')->name('events.show');
 		Route::get('events/{event}/edit', 'EventsController@edit')->name('events.edit');

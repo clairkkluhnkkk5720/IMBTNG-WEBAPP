@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Image;
 use App\Models\Game;
 use App\Models\Athlete;
 use Illuminate\Http\Request;
@@ -60,6 +61,8 @@ class AthletesController extends Controller
         $athlete->details = $request->details;
         $athlete->game_id = $request->game_id;
 
+        // $athlete->image = $this->upload($request->file('image'));
+
         if ($athlete->save()) {
             return redirect()->route('dashboard.athletes.index')->with(
                 'global.success',
@@ -73,6 +76,21 @@ class AthletesController extends Controller
         )->withInput();
     }
 
+    // protected function upload ($file)
+    // {
+    //     $filename = time() . $file->getClientOriginalExtension();
+
+    //     Image::make($file)->resize(250, 250)->save(
+    //         public_path("uploads\\athletes\\{$filename}")
+    //     );
+
+    //     Image::make($file)->resize(100, 100)->save(
+    //         public_path("uploads\\athletes\\thumbs\\{$filename}")
+    //     );
+
+    //     return $filename;
+    // }
+
     protected function validateAthlete (Request $request, $athlete = null)
     {
         $rules = [
@@ -80,6 +98,10 @@ class AthletesController extends Controller
             'slug'    => 'required|string|min:3|unique:athletes,slug',
             'details' => 'nullable|string|min:10',
             'game_id' => 'required|numeric|exists:games,id',
+            // 'image'   => [
+            //     'nullable', 'file', 'image',
+            //     Rule::dimensions()->minHeight(250)->minWidth(250)->ratio(1 / 1),
+            // ];
         ];
 
         if ($athlete and $athlete instanceof Athlete) {

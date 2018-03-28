@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use Image;
 use App\Models\Game;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -86,7 +87,17 @@ class EventsController extends Controller
     protected function validateStep2 (Request $request)
     {
         $this->validate($request, [
-            'data' => 'required|array|min:2',
+            'data'   => 'required|array|min:2',
+
+            'thumb' => [
+                'nullable', 'file', 'image',
+                Rule::dimensions()->minWidth(200)->minWidth(200)->ratio(1 / 1),
+            ],
+
+            'banner' => [
+                'nullable', 'file', 'image',
+                Rule::dimensions()->minWidth(600)->minWidth(200)->ratio(2 / 1),
+            ],
         ]);
     }
 
@@ -107,7 +118,21 @@ class EventsController extends Controller
         $event->details           = $request->details;
         $event->game_id           = $request->game_id;
         $event->event_category_id = $request->event_category_id;
-        $event->live_at           = $request->live_at;
+        $event->live_at           = $this->formatDate($request->live_at);
+
+        if ($request->hasFile('thumb')) {
+            $event->thumb = $this->upload($request->file('thumb'), 'thumbs', [
+                    'width'  => 250,
+                    'height' => 250,
+            ]);
+        }
+
+        if ($request->hasFile('banner')) {
+            $event->banner = $this->upload($request->file('banner'), 'banners', [
+                'width'  => 800,
+                'height' => 400,
+            ]);
+        }
 
         if (!$event->save()) {
             return redirect()->route('dashboard.events.create')->with(
@@ -122,7 +147,36 @@ class EventsController extends Controller
             $event->teams()->attach($request->data);
         }
 
-        return 'Event created successfully.';
+        return redirect()->route('dashboard.events.index')->with(
+            'global.success',
+            'Event created successfully.'
+        );
+    }
+
+    protected function formatDate ($string)
+    {
+        return str_replace('T', ' ', $string) . ':00';
+    }
+
+    protected function upload ($file, $path, $dimensions = null)
+    {
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+
+        $image = Image::make($file);
+
+        if ($dimensions and is_array($dimensions)) {
+            $image->resize(
+                $dimensions['width'], $dimensions['height']
+            );
+        }
+
+        // echo public_path("uploads\\events\\{$path}\\{$filename}"); die();
+
+        $image->save(
+            public_path("uploads\\events\\{$path}\\{$filename}")
+        );
+
+        return $filename;
     }
 
     /**

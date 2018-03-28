@@ -38,4 +38,25 @@ class Event extends Model
     {
         return $this->belongsToMany(Athlete::class);
     }
+
+    public function scopePrevious ($query)
+    {
+        return $query->where('winner_id', '!=', null);
+    }
+
+    public function scopeUpcoming ($query)
+    {
+        return $query->where([
+            ['winner_id', '=', null],
+            ['live_link', '=', null],
+        ]);
+    }
+
+    public function scopeLive ($query)
+    {
+        return $query->where([
+            ['winner_id', '=', null],
+            ['live_link', '!=', null],
+        ]);
+    }
 }
