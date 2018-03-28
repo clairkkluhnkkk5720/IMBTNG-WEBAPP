@@ -122,6 +122,15 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::post('events/{event}/edit/choose-athletes', 'EventsController@finishEdit')->name('events.edit.finish');
 		Route::put('events/{event}', 'EventsController@update')->name('events.update');
 		Route::delete('events/{event}', 'EventsController@destroy')->name('events.destroy');
+
+		Route::get('members', 'MembersController@index')->name('members.index');
+		Route::get('members/banned', 'MembersController@banned')->name('members.banned');
+		Route::get('members/{id}', 'MembersController@show')->name('members.show');
+		Route::get('members/{id}/edit', 'MembersController@edit')->name('members.edit');
+		Route::get('members/{id}/transactions', 'MembersController@transactions')->name('members.transactions');
+		Route::delete('members/{id}/ban', 'MembersController@ban')->name('members.ban');
+		Route::put('members/{id}/unban', 'MembersController@unban')->name('members.unban');
+
 	});
 
 

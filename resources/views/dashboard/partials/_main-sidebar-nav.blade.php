@@ -96,7 +96,7 @@
 				<a href="{{ route('dashboard.members.index') }}"><i class="fa fa-users"></i> <span>Members</span></a>
 			</li> --}}
 
-			{{-- <li class="treeview @if (strpos(currentRouteName(), 'dashboard.members.') !== false) active menu-open @endif">
+			<li class="treeview @if (strpos(currentRouteName(), 'dashboard.members.') !== false) active menu-open @endif">
 				<a href="#">
 					<i class="fa fa-users"></i>
 					<span>Members</span>
@@ -112,7 +112,7 @@
 						<a href="{{ route('dashboard.members.banned') }}"><i class="fa fa-circle-o"></i> Banned Members</a>
 					</li>
 				</ul>
-			</li> --}}
+			</li>
 
 			{{-- <li @if (currentRouteName() === 'dashboard.events.index') class="active" @endif>
 				<a href="{{ route('dashboard.events.index') }}"><i class="fa fa-clone"></i> <span>Events</span></a>
