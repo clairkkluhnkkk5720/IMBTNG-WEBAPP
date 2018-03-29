@@ -13,7 +13,13 @@
     </div>
     <!-- event status -->
     <div class="event-status">
-        <p>Status: <span>{{ $bet->player_id == $bet->event->winner_id ? 'Won' : 'Lost' }}</span></p>
+        <p>Status: 
+            @if ($bet->event->winner_id)
+                <span>{{ $bet->player_id == $bet->event->winner_id ? 'Won' : 'Lost' }}</span>
+            @else
+                <span>Pending</span>
+            @endif
+        </p>
     </div>
 </div>
 <!-- single event widget ends -->
