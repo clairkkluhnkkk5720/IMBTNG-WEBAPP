@@ -50,6 +50,9 @@ Route::namespace('Auth')->group(function () {
 	Route::get('deposit', 'PagesController@deposit')->name('pages.deposit');
 	Route::get('/auth/coming-soon', 'PagesController@cs')->name('pages.acs');
 
+	Route::get('/place-bet/{slug}', 'BetsController@showForm')->name('bets.place');
+	Route::post('/place-bet/{slug}', 'BetsController@place')->name('bets.place.post');
+
 });
 
 
@@ -118,18 +121,24 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::get('events/create/choose-athletes', 'EventsController@finishCreate')->name('events.create.finish');
 		Route::post('events', 'EventsController@store')->name('events.store');
 		Route::get('events/{event}', 'EventsController@show')->name('events.show');
-		Route::get('events/{event}/edit', 'EventsController@edit')->name('events.edit');
-		Route::post('events/{event}/edit/choose-athletes', 'EventsController@finishEdit')->name('events.edit.finish');
-		Route::put('events/{event}', 'EventsController@update')->name('events.update');
+		// Route::get('events/{event}/edit', 'EventsController@edit')->name('events.edit');
+		// Route::post('events/{event}/edit/choose-athletes', 'EventsController@finishEdit')->name('events.edit.finish');
+		// Route::put('events/{event}', 'EventsController@update')->name('events.update');
+		Route::get('events/{event}/end', 'EventsController@showEnd')->name('events.show.end');
+		Route::post('events/{event}/end', 'EventsController@end')->name('events.end');
 		Route::delete('events/{event}', 'EventsController@destroy')->name('events.destroy');
 
 		Route::get('members', 'MembersController@index')->name('members.index');
 		Route::get('members/banned', 'MembersController@banned')->name('members.banned');
-		Route::get('members/{id}', 'MembersController@show')->name('members.show');
-		Route::get('members/{id}/edit', 'MembersController@edit')->name('members.edit');
+		// Route::get('members/{id}/edit', 'MembersController@edit')->name('members.edit');
 		Route::get('members/{id}/transactions', 'MembersController@transactions')->name('members.transactions');
 		Route::delete('members/{id}/ban', 'MembersController@ban')->name('members.ban');
 		Route::put('members/{id}/unban', 'MembersController@unban')->name('members.unban');
+		Route::get('members/{id}/bets', 'MembersController@bets')->name('members.bets.index');
+		Route::get('members/{id}/bets/winning', 'MembersController@winningBets')->name('members.bets.winning');
+		Route::get('members/{id}/bets/losing', 'MembersController@losingBets')->name('members.bets.losing');
+		Route::get('members/{id}/bets/pending', 'MembersController@pendingBets')->name('members.bets.pending');
+		Route::get('members/{id}', 'MembersController@show')->name('members.show');
 
 	});
 

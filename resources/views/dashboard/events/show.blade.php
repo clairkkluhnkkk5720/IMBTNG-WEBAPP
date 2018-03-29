@@ -59,6 +59,9 @@
 				<div class="box-footer">
 					<div class="pull-right">
 						{{-- <a href="{{ route('dashboard.events.edit', $event->slug) }}" class="btn btn-primary btn-flat">Edit</a> --}}
+						@if (!$event->winner_id)
+							<a href="{{ route('dashboard.events.show.end', $event->slug) }}" class="btn btn-primary btn-flat" title="End this event">End Event</a>
+						@endif
 						<a href="#" data-toggle="modal" data-target="#event-{{ $event->slug }}-delete-modal" class="btn btn-danger btn-flat">Delete</a>
 						@include('dashboard.events.partials._modal-delete-event', compact('event'))
 					</div>

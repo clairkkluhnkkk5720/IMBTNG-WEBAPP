@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -18,6 +19,8 @@ class HomeController extends Controller
 
     public function __invoke ()
     {
-        return view('pages.home');
+        $events = Event::todays()->with('game')->get();
+
+        return view('pages.home', compact('events'));
     }
 }

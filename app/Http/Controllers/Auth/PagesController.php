@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Bet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,9 @@ class PagesController extends Controller
 
     public function history ()
     {
-    	return view('pages.history');
+        $bets = auth()->user()->bets()->latest()->with(['event.game'])->paginate(10);
+
+    	return view('pages.history', compact('bets'));
     }
 
     public function deposit ()

@@ -20,13 +20,18 @@ class Bet extends Model
     	return $this->belongsTo(Event::class);
     }
 
-    public function player ()
-    {
-    	return $this->belongsTo(Player::class);
-    }
-
     public function transaction ()
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function team ()
+    {
+        return $this->belongsTo(Team::class, 'player_id');
+    }
+
+    public function athlete ()
+    {
+        return $this->belongsTo(Athlete::class, 'player_id');
     }
 }

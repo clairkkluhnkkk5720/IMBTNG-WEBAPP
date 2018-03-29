@@ -18,7 +18,7 @@
 					<tr>
 						<th>Event</th>
 						<th>Amount</th>
-						<th>Player</th>
+						<th>Team / Athlete</th>
 						<th>Bet Placed at</th>
 						<th>Status</th>
 					</tr>
@@ -26,7 +26,7 @@
 						<tr>
 							<td>{{ $bet->event->title }}</td>
 							<td>{{ $bet->amount }}</td>
-							<td>{{ $bet->player->name }}</td>
+							<td>{{ $bet->event->event_category_id == 1 ? $bet->athlete->name : $bet->team->name }}</td>
 							<td>{{ $bet->created_at }}</td>
 							<td>{{ getBetStatus($bet) }}</td>
 						</tr>

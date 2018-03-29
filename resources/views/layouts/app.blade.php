@@ -65,9 +65,9 @@
                     <div class="status-bar">
                         <ul>
                             <li>
-                                <a>Current Balance: <span>0MXN</span></a>
-                                <a>Amount at Risk: <span>0MXN</span></a>
-                                <a>Available Balance: <span>0MXN</span></a>
+                                <a>Current Balance: <span>{{ auth()->user()->balance() }} MXN</span></a>
+                                <a>Amount at Risk: <span>{{ auth()->user()->risked() }} MXN</span></a>
+                                <a>Available Balance: <span>{{ auth()->user()->available() }} MXN</span></a>
                             </li>
                         </ul>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -58,5 +59,21 @@ class Event extends Model
             ['winner_id', '=', null],
             ['live_link', '!=', null],
         ]);
+    }
+
+    public function scopeTodays ($query)
+    {
+        return $query->whereDate(
+            'live_at', Carbon::today()
+        );
+    }
+
+    public function winner ()
+    {
+        if ($this->event_category_id == 1) {
+            return $this->belongsTo(Athlete::class, 'winner_id');
+        }
+
+        return $this->belongsTo(Team::class, 'winner_id');
     }
 }

@@ -58,4 +58,29 @@ class User extends Authenticatable
     {
         return !$this->e_c;
     }
+
+    public function debit ()
+    {
+        return $this->transactions()->where('type', 0)->sum('amount');
+    }
+
+    public function credit ()
+    {
+        return $this->transactions()->where('type', 1)->sum('amount');
+    }
+
+    public function balance ()
+    {
+        return $this->credit() - $this->debit();
+    }
+
+    public function risked ()
+    {
+        return pendingBets($this->bets)->sum('amount');
+    }
+
+    public function available ()
+    {
+        return $this->balance() - $this->risked();
+    }
 }

@@ -12,7 +12,7 @@
             <div class="row">
 
                 <!-- main contents wrapper -->
-                <div class="col-md-8 clearfix">
+                <div class="col-md-12 clearfix">
                     <div class="main-content-wrapper bet-wrapper">
                         <!-- title -->
                         <div class="inner-section-title">
@@ -53,122 +53,7 @@
 
                         <!-- event widgets wrapper -->
                         <div class="event-widget-wrapper clearfix">
-                            <!-- single bet widget -->
-                            <div class="single-bet-widget">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="{{ route('pages.acs') }}">
-                                            <img src="/frontend/dist/images/bet/bet1.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <!-- bet details -->
-                                        <div class="bet-details">
-                                            <a href="{{ route('pages.acs') }}"><h2>Event Title</h2></a>
-                                            <div class="date">
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-clock"></i> 12:30 PM</a>
-                                            </div>
-                                            <a href="{{ route('pages.acs') }}" class="team-name">Game Name</a>
-                                            <p>Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                        </div>
-
-                                        <!-- bet buttons -->
-                                        <div class="bet-buttons">
-                                            <a disabled title="Will be done after getting Vimeo" href="{{ route('pages.acs') }}" class="btn-common btn-primary"><i class="fas fa-dollar-sign"></i> Place bet</a>
-                                            {{-- <a href="{{ route('pages.acs') }}" class="btn-common btn-tertiary"><i class="far fa-play-circle"></i> Watch live</a> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- single bet widget ends -->
-                            <!-- single bet widget -->
-                            <div class="single-bet-widget">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="{{ route('pages.acs') }}">
-                                            <img src="/frontend/dist/images/bet/bet2.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <!-- bet details -->
-                                        <div class="bet-details">
-                                            <a href="{{ route('pages.acs') }}"><h2>Event Title</h2></a>
-                                            <div class="date">
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-clock"></i> 12:30 PM</a>
-                                            </div>
-                                            <a href="{{ route('pages.acs') }}" class="team-name">Game Name</a>
-                                            <p>Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                        </div>
-
-                                        <!-- bet buttons -->
-                                        <div class="bet-buttons">
-                                            <a disabled title="Will be done after getting Vimeo" href="{{ route('pages.acs') }}" class="btn-common btn-primary"><i class="fas fa-dollar-sign"></i> Place bet</a>
-                                            {{-- <a href="{{ route('pages.acs') }}" class="btn-common btn-tertiary"><i class="far fa-play-circle"></i> Watch live</a> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- single bet widget ends -->
-                            <!-- single bet widget -->
-                            <div class="single-bet-widget">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="{{ route('pages.acs') }}">
-                                            <img src="/frontend/dist/images/bet/bet3.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <!-- bet details -->
-                                        <div class="bet-details">
-                                            <a href="{{ route('pages.acs') }}"><h2>Event Title</h2></a>
-                                            <div class="date">
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-clock"></i> 12:30 PM</a>
-                                            </div>
-                                            <a href="{{ route('pages.acs') }}" class="team-name">Game Name</a>
-                                            <p>Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                        </div>
-
-                                        <!-- bet buttons -->
-                                        <div class="bet-buttons">
-                                            <a disabled title="Will be done after getting Vimeo" href="{{ route('pages.acs') }}" class="btn-common btn-primary"><i class="fas fa-dollar-sign"></i> Place bet</a>
-                                            {{-- <a href="{{ route('pages.acs') }}" class="btn-common btn-tertiary"><i class="far fa-play-circle"></i> Watch live</a> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- single bet widget ends -->
-                            <!-- single bet widget -->
-                            <div class="single-bet-widget">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="{{ route('pages.acs') }}">
-                                            <img src="/frontend/dist/images/bet/bet4.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <!-- bet details -->
-                                        <div class="bet-details">
-                                            <a href="{{ route('pages.acs') }}"><h2>Event Title</h2></a>
-                                            <div class="date">
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                                                <a href="{{ route('pages.acs') }}"><i class="fas fa-clock"></i> 12:30 PM</a>
-                                            </div>
-                                            <a href="{{ route('pages.acs') }}" class="team-name">Game Name</a>
-                                            <p>Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                        </div>
-
-                                        <!-- bet buttons -->
-                                        <div class="bet-buttons">
-                                            <a disabled title="Will be done after getting Vimeo" href="{{ route('pages.acs') }}" class="btn-common btn-primary"><i class="fas fa-dollar-sign"></i> Place bet</a>
-                                            {{-- <a href="{{ route('pages.acs') }}" class="btn-common btn-tertiary"><i class="far fa-play-circle"></i> Watch live</a> --}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- single bet widget ends -->
+                            @each('partials._single-event', $events, 'event', 'partials._empty-events')
                         </div>
                         <!-- event widgets wrapper ends -->
                         <!-- pagination -->
@@ -181,7 +66,7 @@
                 <!-- main contents wrapper ends -->
 
                 <!-- sidebar wrapper -->
-                <div class="col-md-4 clearfix">
+                <div class="col-md-4 clearfix" hidden>
                     <aside class="sidebar-wrapper clearfix">
                         <!-- Single Sidebar -->
                         <div class="single-sidebar">

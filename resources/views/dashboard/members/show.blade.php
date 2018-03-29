@@ -37,7 +37,7 @@
 
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="info-box">
-				<a {{-- href="{{ route('dashboard.members.bets.winning', $user->id) }}" --}} class="info-box-icon bg-green"><i class="fa fa-usd"></i></a>
+				<a href="{{ route('dashboard.members.bets.winning', $user->id) }}" class="info-box-icon bg-green"><i class="fa fa-usd"></i></a>
 
 				<div class="info-box-content">
 					<span class="info-box-text">Winning Bets</span>
@@ -54,7 +54,7 @@
 
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="info-box">
-				<a {{-- href="{{ route('dashboard.members.bets.losing', $user->id) }}" --}} class="info-box-icon bg-yellow"><i class="fa fa-usd"></i></a>
+				<a href="{{ route('dashboard.members.bets.losing', $user->id) }}" class="info-box-icon bg-yellow"><i class="fa fa-usd"></i></a>
 
 				<div class="info-box-content">
 					<span class="info-box-text">Losing Bets</span>
@@ -72,12 +72,12 @@
 
 		<div class="col-md-3 col-sm-6 col-xs-12">
 			<div class="info-box">
-				<a {{-- href="{{ route('dashboard.members.bets.index', $user->id) }}" --}} class="info-box-icon bg-red"><i class="fa fa-usd"></i></a>
+				<a href="{{ route('dashboard.members.bets.index', $user->id) }}" class="info-box-icon bg-red"><i class="fa fa-usd"></i></a>
 
 				<div class="info-box-content">
 					<span class="info-box-text">Total Bets</span>
 					<span class="info-box-number">{{ $bets->count() }}</span>
-					<a href="{{-- {{ route('dashboard.members.bets.pending', $user->id) }} --}}">
+					<a href="{{ route('dashboard.members.bets.pending', $user->id) }}">
 						<?php $pendingBets = pendingBets($bets); ?>
 						{{ $pendingBets->count() }} Pending, <small>({{ $pendingBets->sum('amount') }} USD at Risk)</small>
 					</a>

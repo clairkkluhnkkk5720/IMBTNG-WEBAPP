@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Image;
 use App\Models\Game;
 use App\Models\Event;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
@@ -242,5 +243,66 @@ class EventsController extends Controller
             'global.error',
             'Something went wrong while deleting the event. Please try again later.'
         );
+    }
+
+    public function showEnd ($slug)
+    {
+        $event = $this->event($slug);
+
+        if ($event->event_category_id == 1) {
+            $data = $event->athletes;
+        } else {
+            $data = $event->teams;
+        }
+
+        return view('dashboard.events.end', compact('event', 'data'));
+    }
+
+    public function end (Request $request, $slug)
+    {
+        $event = $this->event($slug);
+
+        $this->validate($request, [
+            'winner_id' => 'required|numeric',
+        ]);
+
+        $event->winner_id = $request->winner_id;
+
+        if (!$event->save()) {
+            return back()->with(
+                'global.error',
+                'Something went wrong. Please try again later.'
+            );
+        }
+
+        $this->makeTransactions($event);
+
+        return back()->with(
+            'global.success',
+            'Event ended successfully'
+        );
+    }
+
+    protected function makeTransactions (Event $event)
+    {
+        $data = [];
+
+        $bets = $event->bets()->get();
+
+        if (!$bets or !$bets->count()) {
+            return;
+        }
+
+        foreach ($bets as $bet) {
+            $data[ ] = [
+                'user_id' => $bet->user_id,
+                'bet_id'  => $bet->id,
+                'amount'  => $bet->amount,
+                'type'    => $bet->player_id == $event->winner_id ? 1 : 0,
+                'details' => $bet->player_id == $event->winner_id ? 'Bet won' : 'Bet lost',
+            ];
+        }
+
+        Transaction::insert($data);
     }
 }

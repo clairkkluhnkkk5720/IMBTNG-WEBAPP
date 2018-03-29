@@ -16,8 +16,7 @@
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<tr>
-						<th>Firstname</th>
-						<th>Lastname</th>
+						<th>Name</th>
 						<th>Username</th>
 						<th>Email</th>
 						<th>Member from</th>
@@ -30,8 +29,7 @@
 					</tr>
 					@foreach ($users as $user)
 						<tr>
-							<td>{{ $user->firstname }}</td>
-							<td>{{ $user->lastname }}</td>
+							<td>{{ $user->name }}</td>
 							<td>{{ $user->username }}</td>
 							<td>{{ $user->email }}</td>
 							<td>{{ $user->created_at->toFormattedDateString() }}</td>

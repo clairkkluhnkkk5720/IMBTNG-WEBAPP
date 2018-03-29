@@ -14,6 +14,8 @@ class IndexController extends Controller
 
     public function __invoke ()
     {
+    	return redirect()->route('login');
+
     	$games = Game::orderBy('name')->limit(4)->get();
 
     	return view('pages.index', compact('games'));
