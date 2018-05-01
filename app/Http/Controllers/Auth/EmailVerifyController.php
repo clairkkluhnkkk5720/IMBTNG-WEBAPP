@@ -24,11 +24,11 @@ class EmailVerifyController extends Controller
 
     	$user->e_c = null;
 
-        $user->transactions()->create([
-            'type'   => 1,
-            'amount' => 2000,
-            'details' => 'Deposit',
-        ]);
+        // $user->transactions()->create([
+        //     'type'   => 1,
+        //     'amount' => 2000,
+        //     'details' => 'Deposit',
+        // ]);
 
     	return $user->save()
     			? redirect()->route('login')->with(

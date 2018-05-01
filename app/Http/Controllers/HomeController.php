@@ -19,8 +19,12 @@ class HomeController extends Controller
 
     public function __invoke ()
     {
-        $events = Event::todays()->with('game')->get();
+        $events = [];
 
-        return view('pages.home', compact('events'));
+        $events['todays'] = Event::todays()->orderBy('live_at', 'desc')->with('game')->get();
+
+        $events['upcoming'] = Event::upcoming()->orderBy('live_at', 'desc')->with('game')->get();
+
+        return view('front.index', compact('events'));
     }
 }

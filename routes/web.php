@@ -19,41 +19,16 @@
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'IndexController')->name('index');
-Route::get('home', 'HomeController')->name('home');
-Route::get('about', 'PagesController@about')->name('pages.about');
-Route::get('contact', 'PagesController@about')->name('pages.contact');
-Route::get('coming-soon', 'PagesController@cs')->name('pages.cs');
+// Route::get('/', 'IndexController')->name('index');
+Route::get('/', 'HomeController')->name('index');
+// Route::get('about', 'PagesController@about')->name('pages.about');
+// Route::get('contact', 'PagesController@about')->name('pages.contact');
+// Route::get('coming-soon', 'PagesController@cs')->name('pages.cs');
 
+Route::get('events/{slug}', 'EventsController@show')->middleware('auth')->name('events.show');
+Route::get('events/{event}/players', 'EventsController@getPlayers')->name('events.players');
+Route::post('bets/{event}', 'BetsController@placeBet')->name('bets.place');
 
-Route::namespace('Auth')->group(function () {
-
-	Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
-	Route::post('register', 'RegisterController@register')->name('register.post');
-	Route::get('thank-you/{email}', 'RegisterController@showThankYou')->name('register.thank-you');
-
-	Route::get('/verify-email/{ec}', 'EmailVerifyController@verify')->name('verify.email');
-	Route::post('/verify-email-resend/{email}', 'EmailVerifyController@resend')->name('verify.resend');
-
-	Route::get('login', 'LoginController@showLoginForm')->name('login');
-	Route::post('login', 'LoginController@login')->name('login.post');
-
-	Route::get('logout', 'LoginController@logout')->name('logout');
-
-	Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
-	Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-
-	Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
-	Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset.post');
-
-	Route::get('history', 'PagesController@history')->name('pages.history');
-	Route::get('deposit', 'PagesController@deposit')->name('pages.deposit');
-	Route::get('/auth/coming-soon', 'PagesController@cs')->name('pages.acs');
-
-	Route::get('/place-bet/{slug}', 'BetsController@showForm')->name('bets.place');
-	Route::post('/place-bet/{slug}', 'BetsController@place')->name('bets.place.post');
-
-});
 
 
 Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(function () {
@@ -139,8 +114,40 @@ Route::prefix('dashboard')->name('dashboard.')->namespace('Dashboard')->group(fu
 		Route::get('members/{id}/bets/losing', 'MembersController@losingBets')->name('members.bets.losing');
 		Route::get('members/{id}/bets/pending', 'MembersController@pendingBets')->name('members.bets.pending');
 		Route::get('members/{id}', 'MembersController@show')->name('members.show');
+		Route::post('members/{id}/deposit', 'MembersController@deposit')->name('members.deposit');
 
 	});
 
+
+});
+
+Route::namespace('Auth')->group(function () {
+
+	Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+	Route::post('register', 'RegisterController@register')->name('register.post');
+	Route::get('thank-you/{email}', 'RegisterController@showThankYou')->name('register.thank-you');
+
+	Route::get('/verify-email/{ec}', 'EmailVerifyController@verify')->name('verify.email');
+	Route::post('/verify-email-resend/{email}', 'EmailVerifyController@resend')->name('verify.resend');
+
+	Route::get('login', 'LoginController@showLoginForm')->name('login');
+	Route::post('login', 'LoginController@login')->name('login.post');
+
+	Route::get('logout', 'LoginController@logout')->name('logout');
+
+	Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+	Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+
+	Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+	Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset.post');
+
+	// Route::get('history', 'PagesController@history')->name('pages.history');
+	// Route::get('deposit', 'PagesController@deposit')->name('pages.deposit');
+	// Route::get('/auth/coming-soon', 'PagesController@cs')->name('pages.acs');
+
+	// Route::get('/place-bet/{slug}', 'BetsController@showForm')->name('bets.place');
+	// Route::post('/place-bet/{slug}', 'BetsController@place')->name('bets.place.post');
+	
+	Route::get('/{gameSlug}', 'GameHomeController')->name('game.index');
 
 });

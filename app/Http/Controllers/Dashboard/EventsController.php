@@ -91,13 +91,13 @@ class EventsController extends Controller
             'data'   => 'required|array|min:2',
 
             'thumb' => [
-                'nullable', 'file', 'image',
-                Rule::dimensions()->minWidth(200)->minWidth(200)->ratio(1 / 1),
+                'file', 'image',
+                Rule::dimensions()->minWidth(200)->minHeight(125)->ratio(8 / 5),
             ],
 
             'banner' => [
-                'nullable', 'file', 'image',
-                Rule::dimensions()->minWidth(600)->minWidth(200)->ratio(2 / 1),
+                'file', 'image',
+                Rule::dimensions()->minWidth(640)->minHeight(320)->ratio(2 / 1),
             ],
         ]);
     }
@@ -123,15 +123,15 @@ class EventsController extends Controller
 
         if ($request->hasFile('thumb')) {
             $event->thumb = $this->upload($request->file('thumb'), 'thumbs', [
-                    'width'  => 250,
-                    'height' => 250,
+                    'width'  => 200,
+                    'height' => 125,
             ]);
         }
 
         if ($request->hasFile('banner')) {
             $event->banner = $this->upload($request->file('banner'), 'banners', [
-                'width'  => 800,
-                'height' => 400,
+                'width'  => 640,
+                'height' => 320,
             ]);
         }
 
@@ -285,7 +285,9 @@ class EventsController extends Controller
 
     protected function makeTransactions (Event $event)
     {
-        $data = [];
+        $data        = [];
+        $winningBets = [];
+        $losingBets  = [];
 
         $bets = $event->bets()->get();
 
@@ -294,15 +296,23 @@ class EventsController extends Controller
         }
 
         foreach ($bets as $bet) {
+            if ($bet->player_id == $event->winner_id) {
+                $winningBets[] = $bet->id;
+            } else {
+                $losingBets[] = $bet->id;
+            }
+
             $data[ ] = [
                 'user_id' => $bet->user_id,
                 'bet_id'  => $bet->id,
-                'amount'  => $bet->amount,
+                'amount'  => $bet->player_id == $event->winner_id ? $bet->amount * .8 : $bet->amount,
                 'type'    => $bet->player_id == $event->winner_id ? 1 : 0,
                 'details' => $bet->player_id == $event->winner_id ? 'Bet won' : 'Bet lost',
             ];
         }
 
         Transaction::insert($data);
+        Bet::whereIn('id', $winningBets)->update(['status' => 'won']);
+        Bet::whereIn('id', $losingBets)->update(['status' => 'lost']);
     }
 }

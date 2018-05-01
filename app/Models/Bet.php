@@ -34,4 +34,28 @@ class Bet extends Model
     {
         return $this->belongsTo(Athlete::class, 'player_id');
     }
+
+    public function scopeWinning ($query)
+    {
+        return $query->where('status', 'won');
+    }
+
+    public function scopeLost ($query)
+    {
+        return $query->where('status', 'lost');
+    }
+
+    public function scopeRisked ($query)
+    {
+        return $query->where('status', 'risked');
+    }
+
+    public function player ()
+    {
+        if ($this->event->event_category_id == 1) {
+            return $this->belongsTo(Athlete::class, 'player_id');
+        }
+
+        return $this->belongsTo(Team::class, 'player_id');
+    }
 }

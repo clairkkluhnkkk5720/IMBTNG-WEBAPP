@@ -47,10 +47,11 @@ class Event extends Model
 
     public function scopeUpcoming ($query)
     {
-        return $query->where([
-            ['winner_id', '=', null],
-            ['live_link', '=', null],
-        ]);
+        return $query->where(
+            'winner_id', '=', null
+        )->whereDate(
+            'live_at', '>', Carbon::today()
+        );
     }
 
     public function scopeLive ($query)
@@ -65,7 +66,7 @@ class Event extends Model
     {
         return $query->whereDate(
             'live_at', Carbon::today()
-        );
+        )->where('winner_id', null);
     }
 
     public function winner ()
@@ -75,5 +76,14 @@ class Event extends Model
         }
 
         return $this->belongsTo(Team::class, 'winner_id');
+    }
+
+    public function players ()
+    {
+        if ($this->event_category_id == 1) {
+            return $this->belongsToMany(Athlete::class);
+        }
+
+        return $this->belongsToMany(Team::class);
     }
 }

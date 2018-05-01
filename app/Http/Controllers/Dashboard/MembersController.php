@@ -93,6 +93,26 @@ class MembersController extends Controller
             'p_title' => 'Pending Bets',
         ]);
     }
+
+    public function deposit (Request $request, $id)
+    {
+        $this->validate($request, [
+            'amount' => 'required|numeric',
+        ]);
+
+        $user = User::withTrashed()->findOrFail($id);
+
+        $user->transactions()->create([
+            'type' => 1,
+            'amount' => $request->amount,
+            'details' => 'Deposit',
+        ]);
+
+        return back()->with(
+            'global.success',
+            'User Balance is successfully loaded.'
+        );
+    }
     
     public function destroy($id)
     {

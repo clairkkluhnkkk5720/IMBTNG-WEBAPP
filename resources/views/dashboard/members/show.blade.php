@@ -91,7 +91,7 @@
 	<!-- /.row -->
 
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-md-8">
 			<div class="box box-info">
 				<div class="box-header with-border">
 					<h3 class="box-title">Member Info:</h3>
@@ -112,6 +112,25 @@
 						<a href="#" data-toggle="modal" data-target="#member-{{ $user->id }}-ban-modal" class="btn btn-danger btn-block btn-flat"><b>BAN THIS MEMBER</b></a>
 					@endif
 				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="box box-success">
+				<div class="box-header with-border">
+					<h3 class="box-title">Deposit:</h3>
+				</div>
+				<form method="POST" action="{{ route('dashboard.members.deposit', $user->id) }}">
+					<div class="box-body">
+						<div class="form-group">
+							<label>Deposit Amount:</label>
+							<input type="number" name="amount" class="form-control" placeholder="Amount" required>
+						</div>
+					</div>
+					<div class="box-footer">
+						{{ csrf_field() }}
+						<button type="submit" class="btn btn-success btn-flat">SUBMIT</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -35,14 +35,14 @@
 
 					<div class="box-body">
 						<div class="form-group @if ($errors->has('thumb')) has-error @endif">
-							<label for="thumb">Choose Thumb: (250px * 250px)</label>
+							<label for="thumb">Choose Thumb: (200px * 125px)</label>
 							<input type="file" name="thumb" id="thumb" accept="image/*">
 							@if ($errors->has('thumb'))
 								<span class="help-block">{{ $errors->first('thumb') }}</span>
 							@endif
 						</div>
 						<div class="form-group @if ($errors->has('banner')) has-error @endif"">
-							<label for="banner">Choose Banner: (800px * 400px)</label>
+							<label for="banner">Choose Banner: (640px * 320px)</label>
 							<input type="file" name="banner" id="banner" accept="image/*">
 							@if ($errors->has('banner'))
 								<span class="help-block">{{ $errors->first('banner') }}</span>
