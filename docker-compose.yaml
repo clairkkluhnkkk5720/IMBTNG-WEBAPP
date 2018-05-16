@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:9.6'
+    environment:
+      POSTGRES_USER: 'test_user'
+      POSTGRES_PASSWORD: 'pass'
+      POSTGRES_DB: 'homestead'
+  web:
+    build: ./
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: on-failure
+    links:
+      - db
+    environment:
+      DB_DATABASE: 'homestead'
+      DB_USERNAME: 'test_user'
+      DB_PASSWORD: 'pass'
+      DB_HOST: 'db'
+    volumes:
+      - ./src/:/app
+    command: bash -c 'cd /app && python manage.py migrate && python manage.py runserver 0:8000'

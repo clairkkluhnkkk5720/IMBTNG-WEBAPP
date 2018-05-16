@@ -1,0 +1,541 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- header section -->
+  <header class="header-section">
+    <!-- top header -->
+    <div class="top-header">
+      <div class="container">
+        <div class="row justify-content-between align-items-center">
+
+          <!-- logo -->
+          <div class="logo">
+            <a href="#">
+              <img src="{% static "assets/images/logo.png" %}"
+                   alt="Imbeting logo">
+            </a>
+          </div>
+          <!-- logo ends -->
+
+          {% if not user.is_authenticated %}
+            <!-- call to actions -->
+            <div class="header-cta">
+              <!-- social icons -->
+              <div class="social-icons">
+                <a href="#"><i class="far fa-question-circle"></i></a>
+                <a href="#"><i class="far fa-envelope"></i></a>
+                <a href="#"><i class="far fa-comment-alt"></i></a>
+              </div>
+
+              <!-- cta buttons -->
+              <div class="cta-buttons">
+                <a href="{% url 'users:login' %}"
+                   class="btn-common btn-primary">Login</a>
+                <a href="{% url 'users:signup' %}"
+                   class="btn-common btn-secondary">Join now</a>
+              </div>
+              <!-- cta buttons ends -->
+            </div>
+
+          {% else %}
+            <div class="header-user-info">
+              <ul>
+                <li><a href="{% url 'core:open-bets' %}"><i class="fas fa-shield-alt"></i> Open bets</a>
+                </li>
+                <li><a href="{% url 'core:history' %}"><i
+                        class="far fa-clock"></i> History</a></li>
+                <li><a href="#"><i class="fas fa-briefcase"></i>
+                  Deposit</a></li>
+                <li class="user-id"><a href="{% url 'accounts:detail' %}"><i
+                        class="far fa-user-circle"></i> 23-03-2018</a></li>
+              </ul>
+            </div>
+          {% endif %}
+          <!-- call to actions ends -->
+
+
+        </div>
+      </div>
+    </div>
+    <!-- top header ends -->
+
+    <!-- main navigaiton -->
+    <div class="main-navigation">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav clearfix">
+              <ul class="nav-fill">
+                <li><a href="#"><i class="fas fa-trophy"></i> Football
+                  Leaderboards</a></li>
+                <li><a href="#"><i class="fas fa-power-off"></i> Getting
+                  Started</a></li>
+                <li><a href="#"><i class="fas fa-certificate"></i> Bovada
+                  Rewards</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Refer A Friend</a>
+                </li>
+                <li><a href="#"><i class="fas fa-bullhorn"></i> Promotions</a>
+                </li>
+                <li><a href="#"><i class="fas fa-key"></i> Red Room</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Match Previews</a>
+                </li>
+                <li><a href="#"><i class="far fa-file-alt"></i> Articles</a>
+                </li>
+                <li><a href="#"><i class="far fa-user"></i> About</a></li>
+              </ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- main navigaiton ends -->
+  </header>
+  <!-- header section ends -->
+
+  <!-- slider section -->
+  <section class="slider-section">
+    <div class="container">
+      <div class="row">
+        <!-- slider images -->
+        <div class="col-md-8">
+          <div class="slider-images clearfix">
+            <a href="#">
+              <img src="{% static "assets/images/slider1.png" %}" alt="">
+            </a>
+            <!-- hover -->
+            <div class="overlay">
+              <div class="heading">
+                <a href="#">
+                  <h2>Experience Vegas 20/7</h2>
+                </a>
+              </div>
+
+              <div class="navigation-arrow">
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- slider tabs -->
+        <div class="col-md-4">
+          <div class="slider-tabs clearfix">
+            <!-- tabs -->
+            <div class="tabs">
+              <a class="active" href="#"><i class="far fa-futbol"></i> Football</a>
+              <a href="#"><i class="fas fa-baseball-ball"></i> Baseball</a>
+              <a href="#"><i class="fas fa-golf-ball"></i> Golf</a>
+              <a href="#"><i class="fas fa-flag-checkered"></i> Horse</a>
+            </div>
+
+            <!-- ads -->
+            <div class="promo-section"
+                 style="background-image: url({% static "assets/images/ad-bg-1.png" %})">
+              {% if not user.is_authenticated %}
+                <a href="#" class="btn-promo">Register now</a>
+              {% endif %}
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- slider section ends -->
+
+  <!-- upcoming games -->
+  <section class="ucoming-games section-padding"
+           style="background-image: url({% static "assets/images/upcoming-bg.png" %})">
+    <div class="container">
+      <div class="row">
+        <!-- section title -->
+        <div class="col-md-12 clearfix">
+          <div class="section-title-wrapper">
+            <div class="title">
+              <h2>Upcoming Game Lines</h2>
+            </div>
+
+            <div class="navigation-btn">
+              <a href="#"><i class="fas fa-chevron-left"></i></a>
+              <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row card-wrapper">
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming1.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming2.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming3.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming4.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+      </div>
+    </div>
+  </section>
+  <!-- upcoming games ends -->
+
+  <!-- popular games -->
+  <section class="popular-games section-padding"
+           style="background-image: url({% static "assets/images/popular-bg.png" %})">
+    <div class="container">
+      <div class="row">
+        <!-- section title -->
+        <div class="col-md-12 clearfix">
+          <div class="section-title-wrapper">
+            <div class="title">
+              <h2>Popular Football Games</h2>
+            </div>
+
+            <div class="navigation-btn">
+              <a href="#"><i class="fas fa-chevron-left"></i></a>
+              <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row card-wrapper">
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming1.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming2.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming3.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+        <!-- single-card -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card">
+            <a href="#">
+              <img src="{% static "assets/images/upcoming/upcoming4.png" %}"
+                   alt="">
+            </a>
+
+            <!-- content -->
+            <div class="contents">
+              <div class="icon">
+                <i class="far fa-futbol"></i>
+              </div>
+              <!-- titles -->
+              <div class="titles">
+                <a href="#"><h2>England Premier League</h2></a>
+                <a href="#"><span>Moneyline</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- single-card ends -->
+      </div>
+    </div>
+  </section>
+  <!-- popular games ends -->
+
+  <!-- most popular sports games -->
+  <section class="most-popular-sports section-padding"
+           style="background-image: url({% static "assets/images/popular-bg2.png" %})">
+    <div class="container">
+      <div class="row">
+        <!-- section title -->
+        <div class="col-md-12 clearfix">
+          <div class="section-title-wrapper">
+            <div class="title">
+              <h2>Most popular sports</h2>
+            </div>
+
+            <div class="navigation-btn">
+              <a href="#"><i class="fas fa-chevron-left"></i></a>
+              <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row card-wrapper">
+        <!-- single card 2 -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card-2">
+            <img src="{% static "assets/images/popular/popular1.png" %}"
+                 alt="">
+            <!-- overlay -->
+            <div class="overlay">
+              <div class="clearfix">
+                <p>Find the best lines, props and live betting for every NBA
+                  game this season.</p>
+                <a href="#" class="btn-common btn-tertiary">Bet in NBA</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- single card 2 ends -->
+        <!-- single card 2 -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card-2">
+            <img src="{% static "assets/images/popular/popular2.png" %}"
+                 alt="">
+            <!-- overlay -->
+            <div class="overlay">
+              <div class="clearfix">
+                <p>Find the best lines, props and live betting for every NBA
+                  game this season.</p>
+                <a href="#" class="btn-common btn-tertiary">Bet in NBA</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- single card 2 ends -->
+        <!-- single card 2 -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card-2">
+            <img src="{% static "assets/images/popular/popular3.png" %}"
+                 alt="">
+            <!-- overlay -->
+            <div class="overlay">
+              <div class="clearfix">
+                <p>Find the best lines, props and live betting for every NBA
+                  game this season.</p>
+                <a href="#" class="btn-common btn-tertiary">Bet in NBA</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- single card 2 ends -->
+        <!-- single card 2 -->
+        <div class="col-md-3 col-sm-6 clearfix">
+          <div class="single-card-2">
+            <img src="{% static "assets/images/popular/popular4.png" %}"
+                 alt="">
+            <!-- overlay -->
+            <div class="overlay">
+              <div class="clearfix">
+                <p>Find the best lines, props and live betting for every NBA
+                  game this season.</p>
+                <a href="#" class="btn-common btn-tertiary">Bet in NBA</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- single card 2 ends -->
+      </div>
+    </div>
+  </section>
+  <!-- most popular sports games ends -->
+
+  <!-- hotest tournament section -->
+  <section class="hotest-tournament-section section-padding"
+           style="background-image: url({% static "assets/images/tournament-bg.png" %})">
+    <div class="container">
+      <div class="row">
+        <!-- section title -->
+        <div class="col-md-12 clearfix">
+          <div class="section-title-wrapper">
+            <div class="title">
+              <h2>Hottest Tournaments</h2>
+            </div>
+
+            <div class="navigation-btn">
+              <a href="#"><i class="fas fa-chevron-left"></i></a>
+              <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card-wrapper -->
+      <div class="row card-wrapper">
+        <!-- single big card -->
+        <div class="col-md-6 card-left">
+          <div class="single-big-card">
+            <img src="{% static "assets/images/tournament/tournament-bg1.png" %}"
+                 alt="">
+            <!-- overlay -->
+            <div class="overlay">
+              <a href="#">
+                <h2>Jackpot Sit & Go Tournaments</h2>
+              </a>
+              <p>Baseball Tournaments</p>
+            </div>
+          </div>
+        </div>
+        <!-- single big card ends -->
+        <!-- single big card -->
+        <div class="col-md-6 card-right">
+          <div class="single-big-card">
+            <img src="{% static "assets/images/tournament/tournament-bg2.png" %}"
+                 alt="">
+            <!-- overlay -->
+            <div class="overlay">
+              <a href="#">
+                <h2>New Player exclusive</h2>
+              </a>
+              <p>Basketball Tournaments</p>
+            </div>
+          </div>
+        </div>
+        <!-- single big card ends -->
+      </div>
+    </div>
+  </section>
+  <!-- hotest tournament section ends -->
+{% endblock %}

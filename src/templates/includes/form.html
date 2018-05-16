@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+
+{% for field in form %}
+
+  <div class="form-group" style="position: relative;">
+
+    <div class="error-list">{{ field.errors }}</div>
+    {% if field.name != 'avatar' %}
+      {% render_field field class='form-control' placeholder=field.label %}
+  {% else %}
+      {{ field }}
+  {% endif %}
+
+  </div>
+{% endfor %}

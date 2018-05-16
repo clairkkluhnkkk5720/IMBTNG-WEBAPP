@@ -1,0 +1,268 @@
+// Main Card Section
+.main-content-section {
+    background-color: $main-section-bg;
+}
+
+// Inner section title
+.inner-section-title {
+    margin-bottom: 30px;
+    h2 {
+        font-size: 22px;
+        font-weight: 600;
+        text-transform: capitalize;
+        i {
+            margin-right: 5px;
+        }
+    }
+}
+
+// Event wrapper
+.event-widget-wrapper {
+    margin-bottom: 40px;
+
+    // Date
+    .event-date {
+        h3 {
+            color: #497dd0;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        padding-bottom: 5px;
+        border-bottom: 1px solid #497dd0;
+    }
+}
+
+.event-widgets {
+    margin-top: 20px;
+}
+// Single widget
+.single-event-widget {
+    margin-bottom: 30px;
+    padding: 20px 25px;
+    background-color: $section-card-bg;
+    border-radius: 5px;
+
+    p {
+        margin-bottom: 5px;
+        color: #93afe5;
+        font-weight: 600;
+
+        span {
+            color: $primary-text-color;
+            font-weight: 300;
+            margin-left: 10px;
+        }
+    }
+    .event-status {
+        margin-top: 20px;
+    }
+}
+
+
+// Sidebar Styles
+
+.single-sidebar {
+    margin-bottom: 40px;
+
+    // Single Sidebar
+    .single-widget-card {
+        background-color: $section-card-bg;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        .media-left {
+            margin-right: 5px;
+            img {
+                width: 100px;
+                height: 100%;
+            }
+        }
+        .media-body {
+            padding:10px;
+            .date , .time {
+                margin-right: 5px;
+                color: #697ea7;
+                margin-bottom: 0;
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+        p {
+            color: #9ca9c2;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+// Bet wrapper
+.bet-wrapper {
+    .filter-option {
+        margin-top: 30px;
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .form-control {
+            background-color: transparent;
+            color: #e4ebf9;
+            border: 1px solid #3a5894;
+            border-radius: 4px 0px 0px 4px;
+
+            &:focus {
+                box-shadow: 0 0 0 0;
+            }
+        }
+        .input-group-text {
+            background: transparent;
+            border: 1px solid #3a5894;
+            border-left: 0;
+            border-radius: 0px 4px 4px 0px;
+            a {color: #e4ebf9;}
+        }
+    }
+}
+
+// bet widget
+.single-bet-widget {
+    background-color: $section-card-bg;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    .media {
+        flex-direction: column;
+        .media-left {
+            width: 100%;
+            img {
+                width: 100%;
+                display: block;
+                height: 230px;
+            }
+        }
+
+
+        .media-body {
+            padding: 15px;
+            h2 {
+                color: #ffffff;
+                font-size: 22px;
+            }
+            .date {
+                a {
+                    color: #697ea7;
+                    font-size: 14px;
+                }
+            }
+            .team-name {
+                color: #697ea7;
+                margin: 10px 0;
+                display: block;
+            }
+            p {
+                color: #9ca9c2;
+                font-size: 14px;
+            }
+            .btn-common {
+                margin-right: 10px;
+            }
+
+        }
+    }
+}
+
+.pagination-wrapper {
+    margin: 30px 0;
+    i {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid #3a5894;
+        border-radius: 5px;
+        color: #3a5894;
+        font-size: 24px;
+    }
+}
+
+/**
+    RESPONSIVE STYLES GOES HERE
+    ===========================
+**/
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    // Inner section title
+    .inner-section-title {
+        h2 {
+            font-size: 24px;
+        }
+    }
+    // Single widget
+    .single-event-widget {
+        display: flex;
+        justify-content: space-between;
+        .event-status {
+            margin-top: 0px;
+        }
+    }
+
+
+
+    // Sidebar Styles
+
+    .single-sidebar {
+        margin-bottom: 60px;
+
+        // Single Sidebar
+        .single-widget-card {
+
+            .media-left {
+                margin-right: 5px;
+            }
+            .media-body {
+                padding:10px 15px;
+                .date {
+                    color: #697ea7;
+                    margin-bottom: 0;
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+            }
+            p {
+                color: #9ca9c2;
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    // Bet wrapper
+    .bet-wrapper {
+        .inner-section-title {
+            display: flex;
+            justify-content: space-between;
+        }
+        .filter-option {
+            margin-top: 0px;
+        }
+    }
+
+    // bet widget
+    .single-bet-widget {
+
+        .media {
+            flex-direction: row;
+            .media-left {
+                width:auto;
+                margin-right: 10px;
+                img {
+                    width: 250px;
+                    height: 250px;
+                    display: block;
+                }
+            }
+
+
+        }
+    }
+
+}

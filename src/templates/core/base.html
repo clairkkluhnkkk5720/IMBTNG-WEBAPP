@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/app.css' %}">
+  <title>{% block head-title %}{% endblock %}</title>
+  {% block head-js %}{% endblock %}
+  {% block head-css %}{% endblock %}
+</head>
+
+<body>
+{% block content %}{% endblock %}
+
+<!-- footer section -->
+<footer class="footer-section">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+
+      <!-- copyright text -->
+      <div class="copyright-text">
+        <p>Copyright &copy; 2018 Imbting All rights reserved. </p>
+      </div>
+
+
+      <!-- social icons -->
+      <div class="footer-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+
+
+    </div>
+  </div>
+</footer>
+<!-- footer section ends -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+
+</html>
