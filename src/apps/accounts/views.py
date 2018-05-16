@@ -3,9 +3,11 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from apps.accounts.forms import UpdateAccountForm
+from apps.common.views import UserProfileRequiredMixin
 
 
-class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
+class ProfileUpdateView(UserProfileRequiredMixin, LoginRequiredMixin,
+                        generic.UpdateView):
     template_name = 'core/profile-edit.html'
     form_class = UpdateAccountForm
     success_url = reverse_lazy('accounts:detail')
@@ -21,7 +23,8 @@ class ProfileUpdateView(LoginRequiredMixin, generic.UpdateView):
         return self.request.user
 
 
-class ProfileView(LoginRequiredMixin, generic.DetailView):
+class ProfileView(UserProfileRequiredMixin, LoginRequiredMixin,
+                  generic.DetailView):
     template_name = 'core/profile.html'
 
     def get_object(self, queryset=None):
