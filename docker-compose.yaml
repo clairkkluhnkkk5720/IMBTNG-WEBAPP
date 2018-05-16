@@ -1,0 +1,43 @@
+version: '3'
+services:
+  web:
+    build: ./
+    volumes:
+     - ./:/app/
+    networks:
+     - appnet
+    ports:
+      - 8080:8080
+    command: bash -c "composer install && php artisan migrate && php artisan serve --port=8080 --host=0"
+    links:
+      - db
+    environment:
+      APP_DEBUG: 'true'
+      APP_ENV: 'local'
+      APP_KEY: 'base64:xd9bd/uYcNYcR9UmA4zwNKQ79pJX9MEaDiqDVdToazg='
+      DB_DATABASE: 'homestead'
+      DB_USERNAME: 'test_user'
+      DB_PASSWORD: 'pass'
+      DB_HOST: 'db'
+    depends_on:
+      - db
+      - redis
+  redis:
+    image: redis:alpine
+    networks:
+     - appnet
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pass'
+      MYSQL_DATABASE: 'homestead'
+      MYSQL_USER: 'test_user'
+      MYSQL_PASSWORD: 'pass'
+    volumes:
+      - ./dumps/:/dumps/
+    networks:
+     - appnet
+
+networks:
+  appnet:
+    driver: "bridge"
