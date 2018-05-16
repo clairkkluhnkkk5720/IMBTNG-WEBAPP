@@ -165,7 +165,7 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = reverse_lazy('core:recently')
 LOGIN_URL = reverse_lazy('login')
-LOGOUT_URL = reverse_lazy('users:login')
+LOGOUT_URL = reverse_lazy('login')
 
 STATICFILES_DIRS = (
     local('static'),
