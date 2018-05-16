@@ -171,12 +171,6 @@ STATICFILES_DIRS = (
     local('static'),
 )
 
-DEFAULT_FROM_EMAIL = 'eugene.hatsko@yandex.ru'
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = DEFAULT_FROM_EMAIL
-EMAIL_HOST_PASSWORD = 'JekaROSS0911'
-EMAIL_USE_SSL = True
 
 try:
     from local_settings import *
