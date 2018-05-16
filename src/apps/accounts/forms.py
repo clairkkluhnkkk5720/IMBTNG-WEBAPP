@@ -40,14 +40,14 @@ class RegistrationForm(UserCreationForm):
     def save(self, commit=True):
         obj = super().save(commit=False)
         obj.set_password(self.cleaned_data['password1'])
-        obj.is_active = True
+        obj.is_active = False
         obj.save()
         return obj
 
     class Meta:
         model = UserModel
         fields = (
-            'email', 'first_name', 'last_name', 'username', 'wallet',
+            'email', 'phone', 'first_name', 'last_name', 'username', 'wallet',
             'password1', 'password2'
         )
 
