@@ -6,15 +6,19 @@ services:
       POSTGRES_USER: 'test_user'
       POSTGRES_PASSWORD: 'pass'
       POSTGRES_DB: 'homestead'
+  redis:
+    image: 'redis:alpine'
   web:
     build: ./
     ports:
       - 8000:8000
     depends_on:
       - db
+      - redis
     restart: on-failure
     links:
       - db
+      - redis
     environment:
       DB_DATABASE: 'homestead'
       DB_USERNAME: 'test_user'

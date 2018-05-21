@@ -46,7 +46,6 @@ class FootballDataFeed(BaseParser):
 
     def parse_response(self, response):
         data = response.json()
-        print(data['fixtures'])
         return data['fixtures']
 
     def process_item(self, category: dict, data: dict):
