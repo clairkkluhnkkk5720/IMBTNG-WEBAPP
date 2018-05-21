@@ -1,0 +1,97 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n list_converter %}
+
+{% block extra-content %}
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+
+        <!-- main contents wrapper -->
+        <div class="col-md-8 clearfix">
+          <div class="main-content-wrapper">
+            <!-- title -->
+            <div class="inner-section-title">
+              <h2><i class="far fa-folder-open"></i> {{ page_title }}</h2>
+            </div>
+
+            <!-- event widgets wrapper -->
+            <div class="event-widget-wrapper clearfix">
+
+              <!-- event widgets -->
+              <div class="event-widgets">
+                <!-- single event widget -->
+                {% for bet_group in object_list|convert_list_by_range:'created_at' %}
+                  <div class="event-date">
+                    <h3>{{ bet_group.date|date:'d / m / Y' }}</h3>
+                  </div>
+                  {% for bet in bet_group.items %}
+                    <div class="single-event-widget">
+                      <!-- event details -->
+                      <div class="event-details">
+                        <p>Event ID: <span>{{ bet.get_event_id }}</span></p>
+                        <p>Event Name:
+                          <span>{{ bet.event.category.name }} Event</span></p>
+                        <p>Bet Placed: <span>${{ bet.amount }}</span></p>
+                        <p>Bet Place on: <span>{{ bet.team.name }}</span></p>
+                      </div>
+                      <!-- event status -->
+                      <div class="event-status">
+                        <p>Status: <span>{{ bet.get_status_display }}</span>
+                        </p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% empty %}
+                  <span>{% trans 'Empty' %}</span>
+                {% endfor %}
+                <!-- single event widget ends -->
+              </div>
+            </div>
+
+            <!-- pagination -->
+            <div class="pagination-wrapper text-right">
+              {% if page_obj.has_previous %}
+                <a href="{% url 'core:recently' %}?page={{ page_obj.previous_page_number }}"
+                   class="pagination pagi-next"><i
+                        class="fas fa-angle-left"></i></a>
+              {% endif %}
+
+              {% if page_obj.has_next %}
+                <a href="{% url 'core:recently' %}?page={{ page_obj.next_page_number }}"
+                   class="pagination pagi-prev"><i
+                        class="fas fa-angle-right"></i></a>
+              {% endif %}
+            </div>
+
+          </div>
+        </div>
+        <!-- main contents wrapper ends -->
+
+        <!-- sidebar wrapper -->
+        <div class="col-md-4 clearfix">
+          <aside class="sidebar-wrapper clearfix">
+            <!-- Single Sidebar -->
+            <div class="single-sidebar">
+              <!-- title -->
+              <div class="inner-section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+              </div>
+
+              <!-- sidebar widget -->
+              <div class="sidebar-widget clearfix">
+                <!-- single widget card -->
+                {% for event in upcoming_events %}
+                  {% include 'includes/single-event.html' with event=event %}
+                {% endfor %}
+              </div>
+            </div>
+            <!-- Single Sidebar Ends -->
+          </aside>
+        </div>
+        <!-- sidebar wrapper ends -->
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 {% extends 'core/dashboard-base.html' %}
-{% load static %}
+{% load static i18n widget_tweaks %}
 
 {% block extra-content %}
   <section class="main-content-section section-padding">
@@ -23,10 +23,9 @@
                       <label class="sr-only"
                              for="inlineFormInputGroup">search</label>
                       <div class="input-group">
-                        <input type="text" class="form-control"
-                               id="inlineFormInputGroup" placeholder="search">
+                        {% render_field filter.form.query class="form-control" id="inlineFormInputGroup" placeholder="search" autofocus="" %}
                         <div class="input-group-prepend">
-                          <div class="input-group-text"><a href="#"><i
+                          <div class="input-group-text"><a href="javascript:$('form').submit()"><i
                                   class="fas fa-search"></i></a></div>
                         </div>
                       </div>
@@ -36,12 +35,7 @@
                       <label class="sr-only"
                              for="inlineFormInputGroup">select</label>
                       <div class="input-group">
-                        <select class="form-control">
-                          <option>Rooster</option>
-                          <option>Horse</option>
-                          <option>Football</option>
-                          <option>Baseball</option>
-                        </select>
+                        {% render_field filter.form.category class="form-control" placeholder="1231" %}
                       </div>
                     </div>
 
@@ -52,154 +46,70 @@
 
             <!-- event widgets wrapper -->
             <div class="event-widget-wrapper clearfix">
-              <!-- single bet widget -->
-              <div class="single-bet-widget">
-                <div class="media">
-                  <div class="media-left">
-                    <a href="#">
-                      <img src="{% static "assets/images/bet/bet1.png" %}"
-                           alt="">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <!-- bet details -->
-                    <div class="bet-details">
-                      <a href="#"><h2>Rooster Competition</h2></a>
-                      <div class="date">
-                        <a href="#"><i class="fas fa-calendar-alt"></i>
-                          12/15/2016</a>
-                        <a href="#"><i class="fas fa-clock"></i> 12:30 PM</a>
-                      </div>
-                      <a href="#" class="team-name">Team Name</a>
-                      <p>Lorem Ipsum is simply dummy text of the printing
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since.</p>
-                    </div>
+              <!-- single bet widget ends -->
 
-                    <!-- bet buttons -->
-                    <div class="bet-buttons">
-                      <a href="#" class="btn-common btn-primary"><i
-                              class="fas fa-dollar-sign"></i> Place bet</a>
-                      <a href="#" class="btn-common btn-tertiary"><i
-                              class="far fa-play-circle"></i> Watch live</a>
+              {% for event in object_list %}
+                <div class="single-bet-widget">
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="javascript:void(0);">
+                        <img src="{% static "assets/images/bet/bet1.png" %}"
+                             alt="">
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <!-- bet details -->
+                      <div class="bet-details">
+                        <h2>{{ event.name }}</h2>
+                        <div class="date">
+                          <a href="javascript:void(0);">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ event.starts_at|date:'d/m/Y' }}
+                          </a>
+                          <a href="javascript:void(0);">
+                            <i class="fas fa-clock"></i>
+                            {{ event.starts_at|date:'f A' }}
+                          </a>
+                        </div>
+                        <a href="javascript:void(0);" class="team-name">
+                          {{ event.teams.all|join:', ' }}
+                        </a>
+                        <p>{{ event.notes|default:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since" }}.</p>
+                      </div>
+
+                      <!-- bet buttons -->
+                      <div class="bet-buttons">
+                        <a href="#" class="btn-common btn-primary"><i
+                                class="fas fa-dollar-sign"></i> Place bet</a>
+                        <!--a href="#" class="btn-common btn-tertiary"><i
+                                class="far fa-play-circle"></i> Watch live</a-->
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <!-- single bet widget ends -->
-              <!-- single bet widget -->
-              <div class="single-bet-widget">
-                <div class="media">
-                  <div class="media-left">
-                    <a href="#">
-                      <img src="{% static "assets/images/bet/bet2.png" %}"
-                           alt="">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <!-- bet details -->
-                    <div class="bet-details">
-                      <a href="#"><h2>Rooster Competition</h2></a>
-                      <div class="date">
-                        <a href="#"><i class="fas fa-calendar-alt"></i>
-                          12/15/2016</a>
-                        <a href="#"><i class="fas fa-clock"></i> 12:30 PM</a>
-                      </div>
-                      <a href="#" class="team-name">Team Name</a>
-                      <p>Lorem Ipsum is simply dummy text of the printing
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since.</p>
-                    </div>
-
-                    <!-- bet buttons -->
-                    <div class="bet-buttons">
-                      <a href="#" class="btn-common btn-primary"><i
-                              class="fas fa-dollar-sign"></i> Place bet</a>
-                      <a href="#" class="btn-common btn-tertiary"><i
-                              class="far fa-play-circle"></i> Watch live</a>
-                    </div>
+              {% empty %}
+                <div class="single-bet-widget">
+                  <div class="media">
+                    <div class="media-body">{% trans 'Empty' %}</div>
                   </div>
                 </div>
-              </div>
-              <!-- single bet widget ends -->
-              <!-- single bet widget -->
-              <div class="single-bet-widget">
-                <div class="media">
-                  <div class="media-left">
-                    <a href="#">
-                      <img src="{% static "assets/images/bet/bet3.png" %}"
-                           alt="">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <!-- bet details -->
-                    <div class="bet-details">
-                      <a href="#"><h2>Rooster Competition</h2></a>
-                      <div class="date">
-                        <a href="#"><i class="fas fa-calendar-alt"></i>
-                          12/15/2016</a>
-                        <a href="#"><i class="fas fa-clock"></i> 12:30 PM</a>
-                      </div>
-                      <a href="#" class="team-name">Team Name</a>
-                      <p>Lorem Ipsum is simply dummy text of the printing
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since.</p>
-                    </div>
-
-                    <!-- bet buttons -->
-                    <div class="bet-buttons">
-                      <a href="#" class="btn-common btn-primary"><i
-                              class="fas fa-dollar-sign"></i> Place bet</a>
-                      <a href="#" class="btn-common btn-tertiary"><i
-                              class="far fa-play-circle"></i> Watch live</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- single bet widget ends -->
-              <!-- single bet widget -->
-              <div class="single-bet-widget">
-                <div class="media">
-                  <div class="media-left">
-                    <a href="#">
-                      <img src="{% static "assets/images/bet/bet4.png" %}"
-                           alt="">
-                    </a>
-                  </div>
-                  <div class="media-body">
-                    <!-- bet details -->
-                    <div class="bet-details">
-                      <a href="#"><h2>Rooster Competition</h2></a>
-                      <div class="date">
-                        <a href="#"><i class="fas fa-calendar-alt"></i>
-                          12/15/2016</a>
-                        <a href="#"><i class="fas fa-clock"></i> 12:30 PM</a>
-                      </div>
-                      <a href="#" class="team-name">Team Name</a>
-                      <p>Lorem Ipsum is simply dummy text of the printing
-                        typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since.</p>
-                    </div>
-
-                    <!-- bet buttons -->
-                    <div class="bet-buttons">
-                      <a href="#" class="btn-common btn-primary"><i
-                              class="fas fa-dollar-sign"></i> Place bet</a>
-                      <a href="#" class="btn-common btn-tertiary"><i
-                              class="far fa-play-circle"></i> Watch live</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- single bet widget ends -->
+              {% endfor %}
             </div>
             <!-- event widgets wrapper ends -->
             <!-- pagination -->
             <div class="pagination-wrapper text-right">
-              <a href="#" class="pagination pagi-next"><i
-                      class="fas fa-angle-left"></i></a>
-              <a href="#" class="pagination pagi-prev"><i
-                      class="fas fa-angle-right"></i></a>
+
+              {% if page_obj.has_previous %}
+                <a href="{% url 'core:recently' %}?page={{ page_obj.previous_page_number }}"
+                   class="pagination pagi-next"><i
+                        class="fas fa-angle-left"></i></a>
+              {% endif %}
+
+              {% if page_obj.has_next %}
+                <a href="{% url 'core:recently' %}?page={{ page_obj.next_page_number }}"
+                   class="pagination pagi-prev"><i
+                        class="fas fa-angle-right"></i></a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -218,182 +128,13 @@
               <!-- sidebar widget -->
               <div class="sidebar-widget clearfix">
                 <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget1.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- single widget card ends -->
-                <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget2.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- single widget card ends -->
-                <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget3.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- single widget card ends -->
-                <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget4.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                {% for event in upcoming_events %}
+                  {% include 'includes/single-event.html' with event=event %}
+                {% endfor %}
                 <!-- single widget card ends -->
               </div>
             </div>
-            <!-- Single Sidebar Ends -->
-            <!-- Single Sidebar -->
-            <div class="single-sidebar">
-              <!-- title -->
-              <div class="inner-section-title">
-                <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
-              </div>
 
-              <!-- sidebar widget -->
-              <div class="sidebar-widget clearfix">
-                <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget1.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- single widget card ends -->
-                <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget2.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- single widget card ends -->
-                <!-- single widget card -->
-                <div class="single-widget-card">
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#"><img
-                              src="{% static "assets/images/sidebar-widget/widget3.png" %}"
-                              alt=""></a>
-                    </div>
-                    <div class="media-body">
-                      <a href="#">
-                        <p>Lorem Ipsum is simply dummy text of the printing
-                          typesetting industry.</p>
-                      </a>
-                      <p>
-                        <a href="#" class="date"><i
-                                class="fas fa-calendar-alt"></i> 12/15/2016</a>
-                        <a href="#" class="time"><i class="fas fa-clock"></i>
-                          12:30 PM</a>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <!-- single widget card ends -->
-
-
-              </div>
-            </div>
             <!-- Single Sidebar Ends -->
           </aside>
         </div>

@@ -10,7 +10,7 @@
 
           <!-- logo -->
           <div class="logo">
-            <a href="#">
+            <a href="{% url 'core:recently' %}">
               <img src="{% static "assets/images/logo.png" %}" alt="Imbeting logo">
             </a>
           </div>
@@ -24,7 +24,7 @@
               <li><a href="{% url 'core:history' %}"><i class="far fa-clock"></i> History</a></li>
               <li><a href="#"><i class="fas fa-briefcase"></i> Deposit</a></li>
               <li class="user-id"><a href="{% url 'accounts:detail' %}"><i
-                      class="far fa-user-circle"></i> 23-03-2018</a></li>
+                      class="far fa-user-circle"></i> {% now "d / m / Y" %}</a></li>
             </ul>
           </div>
           <!-- user info ends -->

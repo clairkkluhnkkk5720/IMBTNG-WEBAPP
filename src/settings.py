@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     'easy_thumbnails',
     'widget_tweaks',
+    'django_filters',
 
     'apps.common',
     'apps.core',

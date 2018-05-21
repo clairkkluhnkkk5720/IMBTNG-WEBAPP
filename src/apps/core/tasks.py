@@ -1,7 +1,9 @@
+from django.utils.text import slugify
+
 from celery_app import app
 
 from apps.core.parser import FootballDataFeed
-from apps.core.models import Game
+from apps.core.models import EventCategory, Event, Team
 
 
 @app.task()
@@ -11,11 +13,24 @@ def data_feeds_loader():
     ]
     for parser in data_feeds_parsers:
         for item in parser.fetch_page():
-            obj, _ = Game.objects.get_or_create(
-                service_id=item['service_id'],
+            event_name = slugify(''.join(
+                [item['name'], str(item['starts_at'])]
+            ))
+            category, _ = EventCategory.objects.get_or_create(
+                name=item['category'])
+            obj, _ = Event.objects.get_or_create(
+                name=item['name'],
+                starts_at=item['starts_at'],
                 defaults={
-                    'starts_at': item['starts_at'],
-                    'name': item['name']
+                    'category_id': category.id,
+                    'name': item['name'],
+                    'slug': event_name,
                 })
             for team_data in item['teams']:
-                pass
+                team, _ = Team.objects.get_or_create(
+                    name=team_data['name'],
+                    slug=slugify('-'.join(
+                        [team_data['name'], str(obj.category_id)]
+                    ))
+                )
+                obj.teams.add(team)
