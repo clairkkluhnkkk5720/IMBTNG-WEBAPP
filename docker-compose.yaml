@@ -27,3 +27,20 @@ services:
     volumes:
       - ./src/:/app
     command: bash -c 'cd /app && python manage.py migrate && python manage.py runserver 0:8000'
+  celery_beat:
+    build: ./
+    depends_on:
+      - db
+      - redis
+    restart: on-failure
+    links:
+      - db
+      - redis
+    environment:
+      DB_DATABASE: 'homestead'
+      DB_USERNAME: 'test_user'
+      DB_PASSWORD: 'pass'
+      DB_HOST: 'db'
+    volumes:
+      - ./src/:/app
+    command: bash -c 'cd /app && celery -A celery_app worker -l INFO --beat'
