@@ -3,12 +3,12 @@
 <div class="single-widget-card">
   <div class="media">
     <div class="media-left">
-      <a href="#"><img
+      <a href="{% url 'core:event-details' pk=event.pk %}"><img
               src="{% static "assets/images/sidebar-widget/widget1.png" %}"
               alt=""></a>
     </div>
     <div class="media-body">
-      <a href="#">
+      <a href="{% url 'core:event-details' pk=event.pk %}">
         <p>{{ event.name|default:"Lorem Ipsum is simply dummy text of the printing typesetting industry" }}.</p>
       </a>
       <p>
@@ -17,7 +17,7 @@
           {{ event.starts_at|date:'d/m/Y' }}
         </a>
         <a href="#" class="time">
-          {{ event.starts_at|date:'f A' }}</a>
+          {{ event.starts_at|date:'h:i A' }}</a>
       </p>
     </div>
   </div>

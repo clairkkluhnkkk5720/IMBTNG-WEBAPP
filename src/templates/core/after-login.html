@@ -52,7 +52,7 @@
                 <div class="single-bet-widget">
                   <div class="media">
                     <div class="media-left">
-                      <a href="javascript:void(0);">
+                      <a href="{% url 'core:event-details' pk=event.pk %}">
                         <img src="{% static "assets/images/bet/bet1.png" %}"
                              alt="">
                       </a>
@@ -71,7 +71,7 @@
                             {{ event.starts_at|date:'f A' }}
                           </a>
                         </div>
-                        <a href="javascript:void(0);" class="team-name">
+                        <a href="{% url 'core:event-details' pk=event.pk %}" class="team-name">
                           {{ event.teams.all|join:', ' }}
                         </a>
                         <p>{{ event.notes|default:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since" }}.</p>

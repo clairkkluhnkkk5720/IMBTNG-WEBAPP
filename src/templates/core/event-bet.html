@@ -1,0 +1,99 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block extra-content %}
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="padding-top: 10px;">
+          {% for message in messages %}
+            <div class="alert alert-primary">{{ message }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+
+        <!-- main contents wrapper -->
+        <div class="col-md-8 clearfix">
+          <div class="main-content-wrapper bet-wrapper">
+            <div class="event-widget-wrapper">
+              <!-- single bet widget ends -->
+              <div class="single-bet-widget">
+                <div class="media">
+
+                  <div class="media-body">
+                    <h3>Place Bet on Event</h3>
+                    <hr>
+                    <div class="bet-details">
+                      <h2>{{ event.name }}</h2>
+                      <div class="date">
+                        <a href="javascript:void(0);">
+                          <i class="fas fa-calendar-alt"></i>
+                          {{ event.starts_at|date:'d/m/Y' }}
+                        </a>
+                        <a href="javascript:void(0);">
+                          <i class="fas fa-clock"></i>
+                          {{ event.starts_at|date:'h:i A' }}
+                        </a>
+                      </div>
+                      <a href="javascript:void(0);" class="team-name">
+                        {{ event.teams.all|join:', ' }}
+                      </a>
+                      <p>{{ event.notes|default:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since" }}.</p>
+                    </div>
+
+                    <hr/>
+                    <form method="post">
+                      {% if not registered_bet %}
+                        {% csrf_token %}
+                        {% for field in form %}
+                          {{ field.label_tag }}
+                          {% render_field field class="form-control" %}
+                        {% endfor %}
+                        <br/>
+                        <div class="text-right">
+                          <input type="submit" class="btn-common btn-primary">
+                        </div>
+                      {% else %}
+                        <div class="alert alert-success">
+                          Your Bet amount: ${{ registered_bet.amount }}
+                        </div>
+                      {% endif %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main contents wrapper ends -->
+
+        <!-- sidebar wrapper -->
+        <div class="col-md-4 clearfix">
+          <aside class="sidebar-wrapper clearfix">
+            <!-- Single Sidebar -->
+            <div class="single-sidebar">
+              <!-- title -->
+              <div class="inner-section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+              </div>
+
+              <!-- sidebar widget -->
+              <div class="sidebar-widget clearfix">
+                <!-- single widget card -->
+                {% for event in upcoming_events %}
+                  {% include 'includes/single-event.html' with event=event %}
+                {% endfor %}
+                <!-- single widget card ends -->
+              </div>
+            </div>
+
+            <!-- Single Sidebar Ends -->
+          </aside>
+        </div>
+        <!-- sidebar wrapper ends -->
+
+      </div>
+    </div>
+  </section>
+{% endblock %}

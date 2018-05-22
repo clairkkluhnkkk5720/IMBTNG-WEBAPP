@@ -34,6 +34,9 @@ class Bet(TimeStampedModel):
                                      choices=STATUS_CHOICES)
 
     class Meta:
+        unique_together = (
+            ('user', 'event')
+        )
         verbose_name = _('bet')
         verbose_name_plural = _('bets')
 

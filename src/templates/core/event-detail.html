@@ -1,0 +1,110 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block extra-content %}
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+
+        <!-- main contents wrapper -->
+        <div class="col-md-8 clearfix">
+          <div class="main-content-wrapper bet-wrapper">
+            <!-- title -->
+            <div class="inner-section-title">
+              <div class="col-md-4">
+                <h2><i class="far fa-info-square"></i> Event Detail</h2>
+              </div>
+
+            </div>
+
+            <!-- event widgets wrapper -->
+            <div class="event-widget-wrapper clearfix">
+              <!-- single bet widget ends -->
+              <div class="single-bet-widget">
+                <div class="media">
+                  <div class="media-left">
+                    <a href="javascript:void(0);">
+                      <img src="{% static "assets/images/bet/bet1.png" %}"
+                           alt="">
+                    </a>
+                  </div>
+                  <div class="media-body">
+                    <!-- bet details -->
+                    <div class="bet-details">
+                      <h2>{{ object.name }}</h2>
+                      <div class="date">
+                        <a href="javascript:void(0);">
+                          <i class="fas fa-calendar-alt"></i>
+                          {{ object.starts_at|date:'d/m/Y' }}
+                        </a>
+                        <a href="javascript:void(0);">
+                          <i class="fas fa-clock"></i>
+                          {{ object.starts_at|date:'h:i A' }}
+                        </a>
+                      </div>
+                      <a href="javascript:void(0);" class="team-name">
+                        {{ object.teams.all|join:', ' }}
+                      </a>
+                      <p>{{ object.notes|default:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since" }}.</p>
+                    </div>
+
+                    <!-- bet buttons -->
+                    <div class="bet-buttons">
+                      <a href="{% url 'core:place-bet' pk=object.pk %}" class="btn-common btn-primary"><i
+                              class="fas fa-dollar-sign"></i> Place bet</a>
+                      <!--a href="#" class="btn-common btn-tertiary"><i
+                              class="far fa-play-circle"></i> Watch live</a-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- event widgets wrapper ends -->
+            <!-- pagination -->
+            <div class="pagination-wrapper text-right">
+
+              {% if page_obj.has_previous %}
+                <a href="{% url 'core:recently' %}?page={{ page_obj.previous_page_number }}"
+                   class="pagination pagi-next"><i
+                        class="fas fa-angle-left"></i></a>
+              {% endif %}
+
+              {% if page_obj.has_next %}
+                <a href="{% url 'core:recently' %}?page={{ page_obj.next_page_number }}"
+                   class="pagination pagi-prev"><i
+                        class="fas fa-angle-right"></i></a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <!-- main contents wrapper ends -->
+
+        <!-- sidebar wrapper -->
+        <div class="col-md-4 clearfix">
+          <aside class="sidebar-wrapper clearfix">
+            <!-- Single Sidebar -->
+            <div class="single-sidebar">
+              <!-- title -->
+              <div class="inner-section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+              </div>
+
+              <!-- sidebar widget -->
+              <div class="sidebar-widget clearfix">
+                <!-- single widget card -->
+                {% for event in upcoming_events %}
+                  {% include 'includes/single-event.html' with event=event %}
+                {% endfor %}
+                <!-- single widget card ends -->
+              </div>
+            </div>
+
+            <!-- Single Sidebar Ends -->
+          </aside>
+        </div>
+        <!-- sidebar wrapper ends -->
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
