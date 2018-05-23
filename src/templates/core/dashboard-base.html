@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
   <header class="header-section">
@@ -21,11 +21,11 @@
           <div class="header-user-info">
             <ul>
               <li><a href="{% url 'core:open-bets' %}"><i
-                      class="fas fa-shield-alt"></i> Open bets</a>
+                      class="fas fa-shield-alt"></i> {% trans 'Open bets' %}</a>
               </li>
               <li><a href="{% url 'core:history' %}"><i
-                      class="far fa-clock"></i> History</a></li>
-              <li><a href="{% url 'accounts:deposit' %}"><i class="fas fa-briefcase"></i> Deposit</a></li>
+                      class="far fa-clock"></i> {% trans 'History' %}</a></li>
+              <li><a href="{% url 'accounts:deposit' %}"><i class="fas fa-briefcase"></i> {% trans 'Deposit' %}</a></li>
               <li class="user-id"><a href="{% url 'accounts:detail' %}"><i
                       class="far fa-user-circle"></i> {% now "d / m / Y" %}</a>
               </li>
@@ -48,9 +48,9 @@
           <div class="status-bar">
             <ul>
               <li>
-                <a href="#">Current Balance: <span>{{ user.account.get_deposit_value }}&nbsp;MXN</span></a>
-                <a href="#">Amount at Risk: <span>{{ user.account.get_risk_value }}&nbsp;MXN</span></a>
-                <a href="#">Available Balance: <span>{{ user.account.get_available_value }}&nbsp;MXN</span></a>
+                <a href="#">{% trans 'Current Balance' %}: <span>{{ user.account.get_deposit_value }}&nbsp;MXN</span></a>
+                <a href="#">{% trans 'Amount at Risk' %}: <span>{{ user.account.get_risk_value }}&nbsp;MXN</span></a>
+                <a href="#">{% trans 'Available Balance' %}: <span>{{ user.account.get_available_value }}&nbsp;MXN</span></a>
               </li>
             </ul>
           </div>
