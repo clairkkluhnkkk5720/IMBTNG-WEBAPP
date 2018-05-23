@@ -48,9 +48,9 @@
           <div class="status-bar">
             <ul>
               <li>
-                <a href="#">Current Balance: <span>{{ user.account.get_deposit_value }}MXN</span></a>
-                <a href="#">Amount at Risk: <span>0MXN</span></a>
-                <a href="#">Available Balance: <span>0MXN</span></a>
+                <a href="#">Current Balance: <span>{{ user.account.get_deposit_value }}&nbsp;MXN</span></a>
+                <a href="#">Amount at Risk: <span>{{ user.account.get_risk_value }}&nbsp;MXN</span></a>
+                <a href="#">Available Balance: <span>{{ user.account.get_available_value }}&nbsp;MXN</span></a>
               </li>
             </ul>
           </div>

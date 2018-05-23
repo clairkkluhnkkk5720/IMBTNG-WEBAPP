@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -116,8 +117,18 @@ class EventBetView(generic.CreateView):
         if self.already_exists:
             messages.info(self.request, _('Bet for this event already exists'))
             return HttpResponseRedirect(self.get_success_url())
+        current_account = self.request.user.account
+        account = type(current_account).objects.select_for_update().get(
+            pk=current_account.pk
+        )
+        if account.deposit < form.cleaned_data['amount']:
+            messages.info(self.request,
+                          _('You have to replenish your deposit'))
+            return HttpResponseRedirect(self.get_success_url())
         self.object = form.save(commit=False)
         self.object.event_id = self.event.id
         self.object.user_id = self.request.user.id
         self.object.save()
+        account.deposit = F('deposit') - self.object.amount
+        account.save(update_fields=['deposit'])
         return HttpResponseRedirect(self.get_success_url())

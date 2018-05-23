@@ -40,7 +40,10 @@ class Charge(TimeStampedModel):
         self.status = self.STATUS_CHOICES.SUCCESS
         self.stripe_id = stripe_id
         # account deposit binding
-        account = self.user.account  # type: Account
+        old_account = self.user.account
+        account = type(old_account).objects.select_for_update().get(
+            id=old_account.pk
+        )
         account.deposit = models.F('deposit') + self.amount
         account.save(update_fields=['deposit'])
         self.save()

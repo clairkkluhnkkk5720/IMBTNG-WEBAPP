@@ -15,7 +15,15 @@ class Account(models.Model):
                                   max_digits=15)
 
     def get_deposit_value(self):
-        return self.deposit * settings.DEPOSIT_COEFFICIENT
+        value = self.get_risk_value() + self.get_available_value()
+        return value
+
+    def get_risk_value(self):
+        return float(self.user.bets.filter(status=None).aggregate(
+            total_amount=models.Sum('amount'))['total_amount'] or 0)
+
+    def get_available_value(self):
+        return float(self.deposit)  # settings.DEPOSIT_COEFFICIENT
 
     def __str__(self):
         return self.username

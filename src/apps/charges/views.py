@@ -90,7 +90,7 @@ class ChargeCreateView(generic.CreateView):
         try:
             charge = stripe.Charge.create(
                 api_key=settings.STRIPE_SECRET_KEY,
-                amount=charge_instance.amount,
+                amount=charge_instance.amount * 100,
                 currency=settings.STRIPE_CURRENCY,
                 customer=customer.stripe_id
             )
