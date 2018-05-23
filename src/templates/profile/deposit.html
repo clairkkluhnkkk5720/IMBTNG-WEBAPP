@@ -1,0 +1,51 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block extra-content %}
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="padding-top: 10px;">
+          {% for message in messages %}
+            <div class="alert alert-primary">{{ message }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+
+        <!-- main contents wrapper -->
+        <div class="col-md-8 clearfix">
+          <div class="main-content-wrapper bet-wrapper">
+            <div class="event-widget-wrapper">
+              <!-- single bet widget ends -->
+              <div class="single-bet-widget">
+                <div class="media">
+
+                  <div class="media-body">
+                    <h3>{% trans 'Your Deposit' %}</h3>
+                    <hr>
+                    <div class="bet-details">
+                      <h4>{% trans 'Deposit' %}:&nbsp;${{ user.account.get_deposit_value }}</h4>
+                      <p>{{ event.notes|default:"Lorem Ipsum is simply dummy text of the printing typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since" }}.</p>
+                    </div>
+
+                    <hr/>
+                    <form method="post">
+                      <div class="text-right">
+                        <a href="{% url 'charges:charge' %}"
+                           class="btn-common btn-primary">
+                          {% trans 'Refill Deposit' %}
+                        </a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main contents wrapper ends -->
+      </div>
+    </div>
+  </section>
+{% endblock %}

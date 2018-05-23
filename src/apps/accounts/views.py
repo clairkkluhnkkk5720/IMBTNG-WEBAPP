@@ -8,7 +8,7 @@ from apps.common.views import UserProfileRequiredMixin
 
 class ProfileUpdateView(UserProfileRequiredMixin, LoginRequiredMixin,
                         generic.UpdateView):
-    template_name = 'core/profile-edit.html'
+    template_name = 'profile/profile-edit.html'
     form_class = UpdateAccountForm
     success_url = reverse_lazy('accounts:detail')
 
@@ -25,7 +25,11 @@ class ProfileUpdateView(UserProfileRequiredMixin, LoginRequiredMixin,
 
 class ProfileView(UserProfileRequiredMixin, LoginRequiredMixin,
                   generic.DetailView):
-    template_name = 'core/profile.html'
+    template_name = 'profile/profile.html'
 
     def get_object(self, queryset=None):
         return self.request.user
+
+
+class ProfileDepositView(generic.TemplateView):
+    template_name = 'profile/deposit.html'

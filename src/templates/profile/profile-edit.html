@@ -1,0 +1,94 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block extra-content %}
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+
+        <!-- main contents wrapper -->
+        <div class="col-md-8 clearfix">
+          <div class="main-content-wrapper bet-wrapper">
+            <div class="event-widget-wrapper">
+              <!-- single bet widget ends -->
+              <div class="single-bet-widget">
+                <div class="media">
+
+                  <div class="media-body">
+                    <h3>Edit Profile</h3>
+                    <hr>
+                    <div class="bet-details">
+
+                      <div class="date">
+                        <p>{% trans "Joined at" %}:&nbsp;<a
+                                href="javascript:void(0);">
+                          <i class="fas fa-calendar-alt"></i>
+                          {{ object.date_joined|date:'d/m/Y' }}
+                        </a>
+                          <a href="javascript:void(0);">
+                            <i class="fas fa-clock"></i>
+                            {{ object.date_joined|date:'h:i A' }}
+                          </a></p>
+                      </div>
+                      <a href="javascript:void(0);" class="team-name">
+                        {{ event.teams.all|join:', ' }}
+                      </a>
+                      <p>{% trans "You can change your profile here" %}.</p>
+                    </div>
+
+                    <hr/>
+                    <form method="post" class="form-horisontal" enctype="multipart/form-data">
+                      {% if not registered_bet %}
+                        {% csrf_token %}
+                        {% for field in form %}
+                          <div class="form-group">
+                            {{ field.label_tag }}
+                            {% render_field field class="form-control" %}
+                          </div>
+                        {% endfor %}
+                        <br/>
+                        <div class="text-right">
+                          <input type="submit" class="btn-common btn-primary">
+                        </div>
+                      {% else %}
+                        <div class="alert alert-success">
+                          Your Bet amount: ${{ registered_bet.amount }}
+                        </div>
+                      {% endif %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main contents wrapper ends -->
+
+        <!-- sidebar wrapper -->
+        <div class="col-md-4 clearfix">
+          <aside class="sidebar-wrapper clearfix">
+            <!-- Single Sidebar -->
+            <div class="single-sidebar">
+              <!-- title -->
+              <div class="inner-section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Total Bets</h2>
+              </div>
+
+              <!-- sidebar widget -->
+              <div class="sidebar-widget clearfix">
+                <!-- single widget card -->
+                {% trans 'Your total bets' %}:&nbsp;{{ user.bets.count }}
+                <!-- single widget card ends -->
+              </div>
+            </div>
+
+            <!-- Single Sidebar Ends -->
+          </aside>
+        </div>
+        <!-- sidebar wrapper ends -->
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

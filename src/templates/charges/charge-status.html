@@ -1,0 +1,19 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block extra-content %}
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="padding-top: 10px;">
+          {% for message in messages %}
+            <div class="alert alert-primary">{{ message }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

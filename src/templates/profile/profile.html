@@ -1,5 +1,5 @@
 {% extends 'core/dashboard-base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block head-css %}
   {{ block.super }}
@@ -30,9 +30,9 @@
               <!-- event date -->
               <div class="event-date">
                 <a href="{% url 'users:logout' %}" class="logout-btn">
-                  <i class="fas fa-sign-out-alt"></i> Logout
+                  <i class="fas fa-sign-out-alt"></i> {% trans 'Logout' %}
                 </a>
-                <h2>Your Profile</h2>
+                <h2>{% trans 'Your Profile' %}</h2>
               </div>
               {% with account=object.account %}
                 <!-- event widgets -->
@@ -56,19 +56,19 @@
 
                             <a href="{% url 'accounts:update' %}"
                                style="color: white; float: right;"><i
-                                    class="far fa-edit"></i> Change</a>
-                            <p>User ID: <span>#{{ object.id }}</span></p>
-                            <p>Full Name:
+                                    class="far fa-edit"></i> {% trans 'Change' %}</a>
+                            <p>ID: <span>#{{ object.id }}</span></p>
+                            <p>{% trans 'Full Name' %}:
                               <span>{{ object.get_full_name }}</span>
                             </p>
-                            <p>Email: <span>{{ object.email }}</span></p>
-                            <p>Phone:
-                              <span>{{ account.phone|default:'-' }}</span>
+                            <p>{% trans 'Email' %}: <span>{{ object.email }}</span></p>
+                            <p>{% trans 'Phone' %}:
+                              <span>{{ object.phone|default:'-' }}</span>
                             </p>
-                            <p>Date Joined:
+                            <p>{% trans 'Joined At' %}:
                               <span>{{ object.date_joined }}</span>
                             </p>
-                            <p>Last Login: <span>{{ object.last_login }}</span>
+                            <p>{% trans 'Last Login' %}: <span>{{ object.last_login }}</span>
                             </p>
 
                           </div>

@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.users',
     'apps.accounts',
+    'apps.charges',
 ]
 
 MIDDLEWARE = [
@@ -172,7 +173,15 @@ STATICFILES_DIRS = (
     local('static'),
 )
 
+STRIPE_PUBLIC_KEY = ''
+STRIPE_SECRET_KEY = ''
+STRIPE_CURRENCY = 'usd'
+DEPOSIT_COEFFICIENT = 2
 
+THOUSAND_SEPARATOR = '-'
+USE_THOUSAND_SEPARATOR = True
+
+from django.conf import global_settings
 try:
     from local_settings import *
 except ImportError:

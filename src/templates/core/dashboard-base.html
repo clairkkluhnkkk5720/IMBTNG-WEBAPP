@@ -25,7 +25,7 @@
               </li>
               <li><a href="{% url 'core:history' %}"><i
                       class="far fa-clock"></i> History</a></li>
-              <li><a href="#"><i class="fas fa-briefcase"></i> Deposit</a></li>
+              <li><a href="{% url 'accounts:deposit' %}"><i class="fas fa-briefcase"></i> Deposit</a></li>
               <li class="user-id"><a href="{% url 'accounts:detail' %}"><i
                       class="far fa-user-circle"></i> {% now "d / m / Y" %}</a>
               </li>
@@ -48,7 +48,7 @@
           <div class="status-bar">
             <ul>
               <li>
-                <a href="#">Current Balance: <span>0MXN</span></a>
+                <a href="#">Current Balance: <span>{{ user.account.get_deposit_value }}MXN</span></a>
                 <a href="#">Amount at Risk: <span>0MXN</span></a>
                 <a href="#">Available Balance: <span>0MXN</span></a>
               </li>

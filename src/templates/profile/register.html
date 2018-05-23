@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block head-css %}
+  <style>
+
+    .error-list {
+      color: #ff8c76;
+    }
+
+    .help-list {
+      color: #ff8c76;
+      position: absolute;
+      right: -200px;
+    }
+
+    button {
+      width: 100%;
+    }
+
+  </style>
+{% endblock %}
+
+{% block content %}
+  <section class="log-in-section d-flex align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Log In section Logo -->
+        <div class="col-md-4">
+          <div class="log-in-logo">
+            <a href="{% url 'core:index' %}">
+              <img src="{% static "assets/images/logo-login.png" %}" alt="">
+            </a>
+          </div>
+        </div>
+        <!-- Log In section Logo  ends-->
+      </div>
+
+      <div class="row justify-content-center">
+        <!-- Log in inouts -->
+        <div class="col-md-4">
+          <div class="log-in-inputs clearfix">
+            <form action="" method="post">
+              {% csrf_token %}
+              {% include 'includes/form.html' with form=form %}
+              <a href="{% url 'password_reset' %}" class="forgot-pass">Forget Password</a>
+              <div class="form-group submit-group text-center">
+                  <button type="submit" class="btn-common btn-red">
+                    REGISTER
+                  </button>
+                <!-- separator -->
+                <div class="separator text-center">
+                  <p>or</p>
+                </div>
+                <p>Don't have an account yet? <a href="{% url 'login' %}">Sign In</a></p>
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <!-- Log in inouts ends -->
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends 'core/dashboard-base.html' %}
+{% load static i18n widget_tweaks %}
+
+{% block head-css %}
+  <style>
+    .hide {
+      display: none;
+    }
+
+    /**
+   * The CSS shown here will not be introduced in the Quickstart guide, but shows
+   * how you can use CSS to style your Element's container.
+   */
+    .StripeElement {
+      background-color: white;
+      height: 40px;
+      padding: 10px 12px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      box-shadow: 0 1px 3px 0 #e6ebf1;
+      -webkit-transition: box-shadow 150ms ease;
+      transition: box-shadow 150ms ease;
+    }
+
+    .StripeElement--focus {
+      box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+
+    .StripeElement--invalid {
+      border-color: #fa755a;
+    }
+
+    .StripeElement--webkit-autofill {
+      background-color: #fefde5 !important;
+    }
+  </style>
+{% endblock %}
+
+{% block extra-content %}
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <section class="main-content-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12" style="padding-top: 10px;">
+          {% for message in messages %}
+            <div class="alert alert-primary">{{ message }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row">
+
+        <!-- main contents wrapper -->
+        <div class="col-md-8 clearfix">
+          <div class="main-content-wrapper bet-wrapper">
+            <div class="event-widget-wrapper">
+              <!-- single bet widget ends -->
+              <div class="single-bet-widget">
+                <div class="media">
+
+                  <div class="media-body">
+
+                    <form method="post" id="payment-form">
+                      {% csrf_token %}
+                      {% include 'includes/form.html' with form=form %}
+                      <div class="form-group">
+                        <label for="card-element">
+                          Credit or debit card
+                        </label>
+                        <div id="card-element">
+                          <p>{% trans 'Loading payment form' %}...</p>
+                        </div>
+
+                        <!-- Used to display form errors -->
+                        <div id="card-errors" role="alert"></div>
+                      </div>
+                      <br/>
+                      <p class="pull-right">
+                        <input type="submit" class="btn-common btn-primary"
+                               id="submit-button"
+                               value="{% trans 'Submit' %}">
+                        <img class='hide loading-image'
+                             src="{% static 'assets/images/loading-gif.webp' %}"
+                             width="20"/>
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+      // Create a Stripe client
+      var stripe = Stripe('{{ stripe_api_key }}');
+
+      // Create an instance of Elements
+      var elements = stripe.elements();
+
+      // Custom styling can be passed to options when creating an Element.
+      // (Note that this demo uses a wider set of styles than the guide below.)
+      var style = {
+          base: {
+              color: '#32325d',
+              lineHeight: '18px',
+              fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+              fontSmoothing: 'antialiased',
+              fontSize: '16px',
+              '::placeholder': {
+                  color: '#aab7c4'
+              }
+          },
+          invalid: {
+              color: '#fa755a',
+              iconColor: '#fa755a'
+          }
+      };
+
+      // Create an instance of the card Element
+      var card = elements.create('card', {style: style});
+
+      // Add an instance of the card Element into the `card-element` <div>
+      card.mount('#card-element');
+
+      card.addEventListener('change', function (event) {
+          document.getElementById('submit-button').disabled = !!event.error;
+      });
+
+      function stripeTokenHandler(token) {
+          var token_elem = document.getElementById('id_stripe_token');
+          token_elem.setAttribute('value', token.id);
+          form.submit();
+      }
+
+      // Create a token or display an error when the form is submitted.
+      var form = document.getElementById('payment-form');
+      form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          document.getElementById('submit-button').disabled = true;
+          stripe.createToken(card).then(function (result) {
+              if (result.error) {
+                  // Inform the customer that there was an error
+                  var errorElement = document.getElementById('card-errors');
+                  errorElement.textContent = result.error.message;
+              } else {
+                  $('.loading-image').toggleClass('hide');
+                  stripeTokenHandler(result.token);
+              }
+          });
+      });
+
+  </script>
+{% endblock %}

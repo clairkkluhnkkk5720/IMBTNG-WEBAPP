@@ -54,9 +54,9 @@ class RegistrationForm(UserCreationForm):
 
 class UpdateAccountForm(forms.ModelForm):
     wallet = forms.URLField(label=_('BTC Wallet Address'))
-    username = UsernameField(label=_('username'))
-    first_name = forms.CharField(label=_('first name'))
-    last_name = forms.CharField(label=_('last name'))
+    username = UsernameField(label=_('Username'))
+    first_name = forms.CharField(label=_('First name'))
+    last_name = forms.CharField(label=_('Last name'))
 
     def clean(self):
         attrs = self.cleaned_data
