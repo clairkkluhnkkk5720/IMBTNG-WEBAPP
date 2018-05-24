@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def local(*dirs):
-    return os.path.join(*dirs)
+    return os.path.abspath(os.path.join(*dirs))
 
 
 # Quick-start development settings - unsuitable for production

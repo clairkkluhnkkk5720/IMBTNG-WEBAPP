@@ -26,6 +26,7 @@ services:
       DB_HOST: 'db'
     volumes:
       - ./src/:/app
+      - ./public:/public
     command: bash -c 'cd /app && python manage.py migrate && python manage.py runserver 0:8000'
   celery_beat:
     build: ./
@@ -43,4 +44,5 @@ services:
       DB_HOST: 'db'
     volumes:
       - ./src/:/app
+      - ./public:/public
     command: bash -c 'cd /app && celery -A celery_app worker -l INFO --beat'

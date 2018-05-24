@@ -5,3 +5,5 @@ venv
 *.sql
 /public/
 local_settings.py
+celerybeat-schedule
+old_models.py

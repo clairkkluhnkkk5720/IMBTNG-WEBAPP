@@ -46,6 +46,7 @@ class Bet(TimeStampedModel):
         return '{letter}{event_id}'.format(letter=first_letter,
                                            event_id=event_id)
 
+
 class EventCategory(TimeStampedModel):
     name = models.CharField(_('name'), max_length=256)
 
@@ -67,6 +68,9 @@ class Event(TimeStampedModel):
     category = models.ForeignKey(EventCategory, models.PROTECT,
                                  related_name='+',
                                  verbose_name=_('category'))
+    logo = models.FileField(_('logo'), default='', blank=True)
+    logo_url = models.CharField(_('logo url'), default='', blank=True,
+                                max_length=1024)
     teams = models.ManyToManyField('Team', blank=True,
                                    verbose_name=_('teams'))
 

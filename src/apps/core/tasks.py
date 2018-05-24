@@ -1,3 +1,6 @@
+import uuid
+
+import requests
 from django.utils.text import slugify
 
 from celery_app import app
@@ -34,3 +37,15 @@ def data_feeds_loader():
                     ))
                 )
                 obj.teams.add(team)
+
+
+@app.task()
+def upload_event_file_from_server(event_id):
+    event = Event.objects.get(pk=event_id)
+    remote_image_url = event.logo_url
+    r = requests.get(remote_image_url, stream=True)
+    if r.status_code == 200:
+        file_name = 'uploads/{uuid}.{ext}'.format(
+            ext=remote_image_url.rpartition('.')[2], uuid=str(uuid.uuid4()))
+        r.raw.decode_content = True
+        event.logo.save(file_name, r.raw)
