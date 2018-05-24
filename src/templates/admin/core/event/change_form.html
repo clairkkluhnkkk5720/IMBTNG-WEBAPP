@@ -1,0 +1,30 @@
+{% extends 'admin/change_form.html' %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+{% endblock %}
+{% block extrastyle %}
+{{ block.super }}
+<!--<link rel="stylesheet" href="{% static 'assets/css/app.css' %}">-->
+<link as=style href="{% static 'assets/css/image-widget/app.2b628540.css' %}" rel=preload>
+<link as=script href="{% static 'assets/js/image-widget/app.07b6578b.js' %}" rel=preload>
+<link as=script href="{% static 'assets/js/image-widget/vendors~app.0d67488b.js' %}" rel=preload>
+<link href="{% static 'assets/css/image-widget/app.2b628540.css' %}" rel=stylesheet>
+<link href="{% static 'assets/css/extended_admin.css' %}" rel=stylesheet>
+{% endblock %}
+
+{% block field_sets %}
+<div id="image-popup" class="image-popup">
+    <div class="image-container">
+        <noscript>
+            <strong>We're sorry but image-view doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+        </noscript>
+        <div id=app></div>
+    </div>
+</div>
+<script type=text/javascript src="{% static 'assets/js/image-widget/vendors~app.0d67488b.js' %}"></script>
+<script type=text/javascript src="{% static 'assets/js/image-widget/app.07b6578b.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/extended_admin.js' %}"></script>
+{{ block.super }}
+{% endblock %}
