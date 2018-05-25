@@ -150,7 +150,6 @@ JET_SIDE_MENU_ITEMS = [
         {'name': 'accounts.account'},
     ]},
     {'label': _('Core'), 'items': [
-        {'name': 'core.game'},
         {'name': 'core.event'},
         {'name': 'core.eventcategory'},
         {'name': 'core.athlete'},

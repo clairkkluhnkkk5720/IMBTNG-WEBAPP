@@ -1,6 +1,6 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from easy_thumbnails.fields import ThumbnailerImageField
 from model_utils import Choices
 
 import settings
@@ -80,6 +80,15 @@ class Event(TimeStampedModel):
     class Meta:
         verbose_name = _('event')
         verbose_name_plural = _('events')
+
+    def clean(self):
+        if self.published and not self.logo and not self.logo_url:
+            raise ValidationError({
+                'logo': _('Logo or Logo Url field is required on '
+                          'publishing step'),
+                'logo_url': _('Logo or Logo Url field is required on '
+                              'publishing step'),
+            })
 
 
 class Team(TimeStampedModel):
