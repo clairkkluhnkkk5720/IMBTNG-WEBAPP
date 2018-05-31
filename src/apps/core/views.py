@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
@@ -13,6 +15,7 @@ from django_filters.views import FilterView
 from apps.common.views import UserProfileRequiredMixin
 from apps.core import models
 from apps.core.filters import EventFilter
+from apps.core.models import SiteConfig
 
 
 class IndexView(generic.TemplateView):
@@ -126,9 +129,13 @@ class EventBetView(generic.CreateView):
                           _('You have to replenish your deposit'))
             return HttpResponseRedirect(self.get_success_url())
         self.object = form.save(commit=False)
+        site_config = SiteConfig.get_solo()
+        self.object.system_fee = self.object.amount * \
+                                 site_config.bet_percent / Decimal(100.0)
+        account.deposit = F('deposit') - self.object.amount
+        self.object.amount -= self.object.system_fee
         self.object.event_id = self.event.id
         self.object.user_id = self.request.user.id
         self.object.save()
-        account.deposit = F('deposit') - self.object.amount
         account.save(update_fields=['deposit'])
         return HttpResponseRedirect(self.get_success_url())

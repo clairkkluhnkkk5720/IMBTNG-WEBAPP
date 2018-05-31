@@ -30,7 +30,10 @@ class Bet(TimeStampedModel):
     event = models.ForeignKey('Event', models.PROTECT, related_name='+')
     team = models.ForeignKey('Team', on_delete=models.CASCADE, null=True)
 
-    amount = models.IntegerField()
+    amount = models.DecimalField(max_digits=20, decimal_places=2,
+                                 editable=False)
+    system_fee = models.DecimalField(max_digits=20, decimal_places=2,
+                                     default=0, editable=False)
     status = models.NullBooleanField(verbose_name=_('status'), default=None,
                                      choices=STATUS_CHOICES)
 

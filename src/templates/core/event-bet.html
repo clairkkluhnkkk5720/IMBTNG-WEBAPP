@@ -1,7 +1,10 @@
 {% extends 'core/dashboard-base.html' %}
-{% load static i18n widget_tweaks %}
+{% load static i18n widget_tweaks solo_tags %}
 
 {% block extra-content %}
+
+  {% get_solo 'core.SiteConfig' as site_config %}
+
   <section class="main-content-section section-padding">
     <div class="container">
       <div class="row">
@@ -51,6 +54,12 @@
                           {% render_field field class="form-control" %}
                         {% endfor %}
                         <br/>
+                        <div class="form-group text-right">
+                          <span>
+                            {% trans 'Bet percent' %}: {{ site_config.bet_percent }} %
+                          </span>
+                          <div id="bet-value">Amount: 0</div>
+                        </div>
                         <div class="text-right">
                           <input type="submit" class="btn-common btn-primary">
                         </div>
@@ -96,4 +105,24 @@
       </div>
     </div>
   </section>
+  <script type="text/javascript">
+      var betPercent = parseFloat('{{ site_config.bet_percent }}');
+
+      function recalcBetPayment(elem) {
+          let value = parseFloat(elem.target.value),
+              resultValue;
+          console.log(value);
+          let selector = document.getElementById('bet-value');
+          if (!elem.target.value) {
+              selector.textContent = 'Amount: 0';
+              return
+          }
+          if (typeof betPercent !== 'number')
+              return;
+          resultValue = value - betPercent / 100.0 * value;
+          selector.textContent = '{% trans 'Amount' %}: ' + resultValue.toString();
+      }
+
+      document.getElementById('id_amount').addEventListener('keyup', recalcBetPayment);
+  </script>
 {% endblock %}
