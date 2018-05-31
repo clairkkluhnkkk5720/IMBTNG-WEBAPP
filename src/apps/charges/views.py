@@ -2,6 +2,7 @@ import stripe
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -10,9 +11,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from apps.charges import models
 from apps.charges.forms import ChargeForm
+from apps.common.views import UserProfileRequiredMixin
 
 
-class ChargeCreateView(generic.CreateView):
+class ChargeCreateView(UserProfileRequiredMixin, LoginRequiredMixin,
+                       generic.CreateView):
     template_name = 'charges/charge-form.html'
     model = models.Charge
     form_class = ChargeForm
@@ -107,5 +110,6 @@ class ChargeCreateView(generic.CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class ChargeStatusView(generic.TemplateView):
+class ChargeStatusView(UserProfileRequiredMixin, LoginRequiredMixin,
+                       generic.TemplateView):
     template_name = 'charges/charge-status.html'
