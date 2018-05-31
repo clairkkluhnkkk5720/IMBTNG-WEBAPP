@@ -10,6 +10,10 @@ from apps.core.models import EventCategory, Event, Team
 
 @shared_task()
 def data_feeds_loader():
+    """
+    Fetch data from data feeds.
+    """
+
     data_feeds_parsers = [
         FootballDataFeed()
     ]
@@ -40,6 +44,12 @@ def data_feeds_loader():
 
 @shared_task()
 def upload_event_file_from_server(event_id):
+    """
+    Upload event image from entered URL.
+
+    :param event_id: int Event id
+    :return: str
+    """
     event = Event.objects.get(pk=event_id)
     remote_image_url = event.logo_url
     r = requests.get(remote_image_url, stream=True)
@@ -48,3 +58,4 @@ def upload_event_file_from_server(event_id):
             ext=remote_image_url.rpartition('.')[2], uuid=str(uuid.uuid4()))
         r.raw.decode_content = True
         event.logo.save(file_name, r.raw)
+        return file_name
