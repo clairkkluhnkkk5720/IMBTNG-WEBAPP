@@ -7,11 +7,6 @@ broker_url = 'redis://{host}:{port}/{db}'.format(
     port=6379,
     db=1,
 )
-redbeat_redis_url = 'redis://{host}:{port}/{db}'.format(
-    host=os.getenv('REDIS_HOST', 'redis'),
-    port=6379,
-    db=1,
-)
 
 timezone = 'UTC'
 accept_content = ['json', 'application/text']

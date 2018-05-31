@@ -28,7 +28,7 @@ services:
       - ./src/:/app
       - ./public:/public
     command: bash -c 'cd /app && python manage.py migrate && python manage.py runserver 0:8000'
-  celery_beat:
+  celery:
     build: ./
     depends_on:
       - db
