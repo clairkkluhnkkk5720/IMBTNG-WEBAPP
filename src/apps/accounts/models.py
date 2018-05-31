@@ -12,7 +12,8 @@ class Account(models.Model):
     username = models.SlugField(_('username'), unique=True)
     wallet = models.CharField(_('wallet'), unique=True, max_length=255)
     deposit = models.DecimalField(_('deposit'), decimal_places=2,
-                                  max_digits=15)
+                                  default=0,
+                                  editable=False, max_digits=15)
 
     def get_deposit_value(self):
         value = self.get_risk_value() + self.get_available_value()
