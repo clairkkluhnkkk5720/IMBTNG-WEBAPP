@@ -1,15 +1,14 @@
 import uuid
 
 import requests
+from celery import shared_task
 from django.utils.text import slugify
-
-from celery_app import app
 
 from apps.core.parser import FootballDataFeed
 from apps.core.models import EventCategory, Event, Team
 
 
-@app.task()
+@shared_task()
 def data_feeds_loader():
     data_feeds_parsers = [
         FootballDataFeed()
@@ -39,7 +38,7 @@ def data_feeds_loader():
                 obj.teams.add(team)
 
 
-@app.task()
+@shared_task()
 def upload_event_file_from_server(event_id):
     event = Event.objects.get(pk=event_id)
     remote_image_url = event.logo_url

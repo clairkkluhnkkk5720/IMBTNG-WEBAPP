@@ -1,4 +1,5 @@
 from django.contrib import admin
+from solo.admin import SingletonModelAdmin
 
 from apps.core import models
 
@@ -18,6 +19,7 @@ class EventAdmin(SluggedModelAdmin):
 
 
 admin.site.register(models.Athlete)
+admin.site.register(models.SiteConfig, SingletonModelAdmin)
 admin.site.register(models.Bet)
 admin.site.register(models.Event, EventAdmin)
 admin.site.register(models.EventCategory)

@@ -2,6 +2,7 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from model_utils import Choices
+from solo.models import SingletonModel
 
 import settings
 from apps.common.models import TimeStampedModel
@@ -119,3 +120,13 @@ class Transaction(TimeStampedModel):
     class Meta:
         verbose_name = _('transaction')
         verbose_name_plural = _('transactions')
+
+
+class SiteConfig(SingletonModel):
+
+    bet_percent = models.DecimalField(verbose_name=_('bet percent'), max_digits=10,
+                                      decimal_places=2, default=0)
+
+    class Meta:
+        verbose_name = _('site config')
+        verbose_name_plural = _('site config')

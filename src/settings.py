@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'widget_tweaks',
     'django_filters',
+    'solo',
 
     'apps.common',
     'apps.core',
@@ -150,6 +151,7 @@ JET_SIDE_MENU_ITEMS = [
         {'name': 'accounts.account'},
     ]},
     {'label': _('Core'), 'items': [
+        {'name': 'core.siteconfig'},
         {'name': 'core.event'},
         {'name': 'core.eventcategory'},
         {'name': 'core.athlete'},
@@ -175,12 +177,11 @@ STATICFILES_DIRS = (
 STRIPE_PUBLIC_KEY = ''
 STRIPE_SECRET_KEY = ''
 STRIPE_CURRENCY = 'usd'
-DEPOSIT_COEFFICIENT = 2
+DEPOSIT_COEFFICIENT = 1
 
 THOUSAND_SEPARATOR = '-'
 USE_THOUSAND_SEPARATOR = True
 
-from django.conf import global_settings
 try:
     from local_settings import *
 except ImportError:
