@@ -31,5 +31,6 @@ class ProfileView(UserProfileRequiredMixin, LoginRequiredMixin,
         return self.request.user
 
 
-class ProfileDepositView(generic.TemplateView):
+class ProfileDepositView(UserProfileRequiredMixin, LoginRequiredMixin,
+                         generic.TemplateView):
     template_name = 'profile/deposit.html'
