@@ -1,0 +1,23 @@
+#content-main {
+    position: relative;
+}
+
+#add-logo {
+    display: inline-block;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.image-popup {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: .5em;
+    display: none;
+    padding: 1em;
+    position: absolute;
+    z-index: 1;
+}
+.image-container {
+    max-height: 329px;
+    overflow: auto;
+}
