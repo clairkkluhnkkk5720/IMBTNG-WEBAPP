@@ -1,0 +1,520 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-01 06:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/accounts/apps.py:7 apps/accounts/models.py:34
+msgid "accounts"
+msgstr ""
+
+#: apps/accounts/forms.py:28 apps/accounts/forms.py:56
+msgid "BTC Wallet Address"
+msgstr ""
+
+#: apps/accounts/forms.py:29 apps/accounts/models.py:12
+msgid "username"
+msgstr ""
+
+#: apps/accounts/forms.py:30 apps/users/models.py:50
+msgid "first name"
+msgstr ""
+
+#: apps/accounts/forms.py:31 apps/users/models.py:52
+msgid "last name"
+msgstr ""
+
+#: apps/accounts/forms.py:57
+msgid "Username"
+msgstr ""
+
+#: apps/accounts/forms.py:58
+msgid "First name"
+msgstr ""
+
+#: apps/accounts/forms.py:59
+msgid "Last name"
+msgstr ""
+
+#: apps/accounts/models.py:13
+msgid "wallet"
+msgstr ""
+
+#: apps/accounts/models.py:14
+msgid "deposit"
+msgstr ""
+
+#: apps/accounts/models.py:33
+msgid "account"
+msgstr ""
+
+#: apps/charges/apps.py:7
+msgid "charges"
+msgstr ""
+
+#: apps/charges/models.py:10
+msgid "stripe customer id"
+msgstr ""
+
+#: apps/charges/models.py:16
+msgid "Stripe customer"
+msgstr ""
+
+#: apps/charges/models.py:17
+msgid "Stripe customers"
+msgstr ""
+
+#: apps/charges/models.py:22
+msgid "Created"
+msgstr ""
+
+#: apps/charges/models.py:23
+msgid "Success"
+msgstr ""
+
+#: apps/charges/models.py:24
+msgid "Fail"
+msgstr ""
+
+#: apps/charges/models.py:26
+msgid "Stripe id"
+msgstr ""
+
+#: apps/charges/models.py:27
+msgid "Status"
+msgstr ""
+
+#: apps/charges/models.py:30
+msgid "error"
+msgstr ""
+
+#: apps/charges/models.py:32
+msgid "amount"
+msgstr ""
+
+#: apps/charges/models.py:38
+msgid "Stripe id should not be null"
+msgstr ""
+
+#: apps/charges/models.py:59
+msgid "payment record"
+msgstr ""
+
+#: apps/charges/models.py:60
+msgid "payment records"
+msgstr ""
+
+#: apps/charges/views.py:23
+#, python-format
+msgid "Customer error: %s"
+msgstr ""
+
+#: apps/charges/views.py:24
+#, python-format
+msgid "Charge error: %s. You charge id: #%s"
+msgstr ""
+
+#: apps/charges/views.py:101
+#, python-format
+msgid "Charge error: %s"
+msgstr ""
+
+#: apps/charges/views.py:108
+msgid "Your charge was successfully received"
+msgstr ""
+
+#: apps/core/models.py:18
+msgid "athlete"
+msgstr ""
+
+#: apps/core/models.py:19 apps/core/models.py:103
+msgid "athletes"
+msgstr ""
+
+#: apps/core/models.py:24
+msgid "Wait"
+msgstr ""
+
+#: apps/core/models.py:25
+msgid "Won"
+msgstr ""
+
+#: apps/core/models.py:26
+msgid "Lost"
+msgstr ""
+
+#: apps/core/models.py:37
+msgid "status"
+msgstr ""
+
+#: apps/core/models.py:44
+msgid "bet"
+msgstr ""
+
+#: apps/core/models.py:45
+msgid "bets"
+msgstr ""
+
+#: apps/core/models.py:55 apps/core/models.py:99
+msgid "name"
+msgstr ""
+
+#: apps/core/models.py:62
+msgid "event category"
+msgstr ""
+
+#: apps/core/models.py:63
+msgid "event categories"
+msgstr ""
+
+#: apps/core/models.py:67
+msgid "published"
+msgstr ""
+
+#: apps/core/models.py:68
+msgid "title"
+msgstr ""
+
+#: apps/core/models.py:69 apps/core/models.py:100
+msgid "slug"
+msgstr ""
+
+#: apps/core/models.py:70 apps/core/models.py:101
+msgid "details"
+msgstr ""
+
+#: apps/core/models.py:71
+msgid "starts at"
+msgstr ""
+
+#: apps/core/models.py:74
+msgid "category"
+msgstr ""
+
+#: apps/core/models.py:75
+msgid "logo"
+msgstr ""
+
+#: apps/core/models.py:76
+msgid "logo url"
+msgstr ""
+
+#: apps/core/models.py:79 apps/core/models.py:111
+msgid "teams"
+msgstr ""
+
+#: apps/core/models.py:85
+msgid "event"
+msgstr ""
+
+#: apps/core/models.py:86
+msgid "events"
+msgstr ""
+
+#: apps/core/models.py:91 apps/core/models.py:93
+msgid "Logo or Logo Url field is required on publishing step"
+msgstr ""
+
+#: apps/core/models.py:110
+msgid "team"
+msgstr ""
+
+#: apps/core/models.py:124
+msgid "transaction"
+msgstr ""
+
+#: apps/core/models.py:125
+msgid "transactions"
+msgstr ""
+
+#: apps/core/models.py:130
+msgid "bet percent"
+msgstr ""
+
+#: apps/core/models.py:134 apps/core/models.py:135
+msgid "site config"
+msgstr ""
+
+#: apps/core/views.py:63 templates/core/dashboard-base.html:27
+msgid "History"
+msgstr ""
+
+#: apps/core/views.py:68
+msgid "Open Bets"
+msgstr ""
+
+#: apps/core/views.py:121
+msgid "Bet for this event already exists"
+msgstr ""
+
+#: apps/core/views.py:129
+msgid "You have to replenish your deposit"
+msgstr ""
+
+#: apps/users/admin.py:11
+msgid "Personal info"
+msgstr ""
+
+#: apps/users/admin.py:13
+msgid "Permissions"
+msgstr ""
+
+#: apps/users/admin.py:15
+msgid "Important dates"
+msgstr ""
+
+#: apps/users/apps.py:7 apps/users/models.py:98
+msgid "users"
+msgstr ""
+
+#: apps/users/models.py:54
+msgid "email"
+msgstr ""
+
+#: apps/users/models.py:56
+msgid "staff status"
+msgstr ""
+
+#: apps/users/models.py:59
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: apps/users/models.py:62
+msgid "active"
+msgstr ""
+
+#: apps/users/models.py:65
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: apps/users/models.py:69
+msgid "date joined"
+msgstr ""
+
+#: apps/users/models.py:70
+msgid "updated at"
+msgstr ""
+
+#: apps/users/models.py:72
+msgid "deleted at"
+msgstr ""
+
+#: apps/users/models.py:93
+msgid "phone"
+msgstr ""
+
+#: apps/users/models.py:94
+msgid "avatar"
+msgstr ""
+
+#: apps/users/models.py:97
+msgid "user"
+msgstr ""
+
+#: apps/users/views.py:49
+msgid "We sent you email with confirmation link"
+msgstr ""
+
+#: apps/users/views.py:73
+msgid "Your email successfully confirmed. You may login now."
+msgstr ""
+
+#: apps/users/views.py:78
+msgid "Activation link is invalid"
+msgstr ""
+
+#: settings.py:127 settings.py:128
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:129
+msgid "Korean"
+msgstr ""
+
+#: settings.py:160
+msgid "Auth"
+msgstr ""
+
+#: settings.py:165
+msgid "Core"
+msgstr ""
+
+#: templates/charges/charge-form.html:71
+msgid "Loading payment form"
+msgstr ""
+
+#: templates/charges/charge-form.html:81
+msgid "Submit"
+msgstr ""
+
+#: templates/core/after-login.html:93 templates/core/bets.html:45
+msgid "Empty"
+msgstr ""
+
+#: templates/core/dashboard-base.html:24
+msgid "Open bets"
+msgstr ""
+
+#: templates/core/dashboard-base.html:28 templates/profile/deposit.html:28
+msgid "Deposit"
+msgstr ""
+
+#: templates/core/dashboard-base.html:51
+msgid "Current Balance"
+msgstr ""
+
+#: templates/core/dashboard-base.html:52
+msgid "Amount at Risk"
+msgstr ""
+
+#: templates/core/dashboard-base.html:53
+msgid "Available Balance"
+msgstr ""
+
+#: templates/core/event-bet.html:59
+msgid "Bet percent"
+msgstr ""
+
+#: templates/core/event-bet.html:123
+msgid "Amount"
+msgstr ""
+
+#: templates/profile/deposit.html:25
+msgid "Your Deposit"
+msgstr ""
+
+#: templates/profile/deposit.html:37
+msgid "Refill Deposit"
+msgstr ""
+
+#: templates/profile/profile-edit.html:23
+msgid "Joined at"
+msgstr ""
+
+#: templates/profile/profile-edit.html:36
+msgid "You can change your profile here"
+msgstr ""
+
+#: templates/profile/profile-edit.html:80
+msgid "Your total bets"
+msgstr ""
+
+#: templates/profile/profile.html:33
+msgid "Logout"
+msgstr ""
+
+#: templates/profile/profile.html:35
+msgid "Your Profile"
+msgstr ""
+
+#: templates/profile/profile.html:59
+msgid "Change"
+msgstr ""
+
+#: templates/profile/profile.html:61
+msgid "Full Name"
+msgstr ""
+
+#: templates/profile/profile.html:64
+msgid "Email"
+msgstr ""
+
+#: templates/profile/profile.html:65
+msgid "Phone"
+msgstr ""
+
+#: templates/profile/profile.html:68
+msgid "Joined At"
+msgstr ""
+
+#: templates/profile/profile.html:71
+msgid "Last Login"
+msgstr ""
+
+#: templates/registration/logged_out.html:4
+msgid "Home"
+msgstr ""
+
+#: templates/registration/logged_out.html:8
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: templates/registration/logged_out.html:10
+msgid "Log in again"
+msgstr ""
+
+#: templates/registration/login.html:56
+#: templates/registration/password_reset_confirm.html:50
+msgid "Don't have an account yet?"
+msgstr ""
+
+#: templates/registration/login.html:57
+msgid "Sign Up"
+msgstr ""
+
+#: templates/registration/password_change_done.html:36
+msgid "Your password was changed."
+msgstr ""
+
+#: templates/registration/password_change_form.html:36
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:38
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:40
+msgid "Log in"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:35
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:41
+msgid "Forget Password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:51
+#: templates/registration/password_reset_done.html:35
+msgid "Sign In"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:55
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:33
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:34
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""

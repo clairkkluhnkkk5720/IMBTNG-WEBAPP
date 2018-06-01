@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('accounts/', include(('apps.accounts.urls', 'apps.accounts'), namespace='accounts')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('charges/', include(('apps.charges.urls', 'apps.charges'), namespace='charges')),

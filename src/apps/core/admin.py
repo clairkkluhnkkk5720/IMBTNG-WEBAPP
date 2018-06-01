@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 from solo.admin import SingletonModelAdmin
 
 from apps.core import models
@@ -17,6 +18,9 @@ class EventAdmin(SluggedModelAdmin):
     list_filter = ('published', 'starts_at', 'category')
     filter_horizontal = ('teams',)
 
+
+admin.site.site_header = _('IMBTING')
+admin.site.site_title = _('IMBTING Administration')
 
 admin.site.register(models.Athlete)
 admin.site.register(models.SiteConfig, SingletonModelAdmin)
