@@ -1,3 +1,4 @@
+import os
 import uuid
 
 import requests
@@ -54,8 +55,11 @@ def upload_event_file_from_server(event_id):
     remote_image_url = event.logo_url
     r = requests.get(remote_image_url, stream=True)
     if r.status_code == 200:
-        file_name = 'uploads/{uuid}.{ext}'.format(
-            ext=remote_image_url.rpartition('.')[2], uuid=str(uuid.uuid4()))
+        content_type = r.headers.get('Content-Type')
+        _, _, ext = content_type.partition('/')
+        unique_name = str(uuid.uuid4())
+        file_name = os.path.join('uploads', '{uuid}.{ext}'.format(
+            ext=ext, uuid=unique_name))
         r.raw.decode_content = True
         event.logo.save(file_name, r.raw)
         return file_name
