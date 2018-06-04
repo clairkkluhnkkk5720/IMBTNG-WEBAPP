@@ -1,0 +1,18 @@
+@import "variables";
+
+.im-btn {
+  color: #FFFFFF;
+  border: .5px solid #FFFFFF;
+  border-radius: 0;
+  padding: .175rem .75rem;
+}
+
+.im-btn-danger {
+  @extend .im-btn;
+  background-color: $im-btn-danger;
+}
+
+.im-btn-success {
+  @extend .im-btn;
+  background-color: $im-btn-success;
+}

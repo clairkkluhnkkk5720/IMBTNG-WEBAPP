@@ -1,0 +1,65 @@
+.icon {
+  padding-left: 33px;
+  position: relative;
+
+  &:before {
+    content: '';
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &--ball:before {
+    background-image: url("../../assets/icons/ball.png");
+  }
+
+  &--commenting:before {
+    background-image: url("../../assets/icons/commenting.png");
+  }
+
+  &--help:before {
+    background-image: url("../../assets/icons/help.png");
+  }
+
+  &--home:before {
+    background-image: url("../../assets/icons/home.png");
+  }
+
+  &--horse:before {
+    background-image: url("../../assets/icons/horse.png");
+  }
+
+  &--mail:before {
+    background-image: url("../../assets/icons/mail.png");
+  }
+
+  &--new-list:before {
+    background-image: url("../../assets/icons/new-list.png");
+  }
+
+  &--note:before {
+    background-image: url("../../assets/icons/note.png");
+  }
+
+  &--reward:before {
+    background-image: url("../../assets/icons/reward.png");
+  }
+
+  &--search-list:before {
+    background-image: url("../../assets/icons/search-list.png");
+  }
+
+  &--signal:before {
+    background-image: url("../../assets/icons/signal.png");
+  }
+
+  &--user-group:before {
+    background-image: url("../../assets/icons/user-group.png");
+  }
+}
