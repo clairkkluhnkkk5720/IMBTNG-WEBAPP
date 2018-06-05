@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main template</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+
+</head>
+<body>
+    <div class="container-fluid full-size main-bg">
+        <div class="row align-items-center pb-3 pt-3 first-header">
+            <div class="col-3">
+                <h2 class="text-uppercase"><strong>Imbting</strong></h2>
+            </div>
+            <div class="col-1 offset-7">
+                <button class="btn btn-danger text-uppercase w-100 im-btn-danger"><strong>Login</strong></button>
+            </div>
+            <div class="col-1">
+                <button class="btn btn-success text-uppercase w-100 im-btn-success"><strong>Sign up</strong></button>
+            </div>
+        </div>
+
+        <div class="row justify-content-between pb-3 pt-3 second-header">
+            <div class="col-3">
+                <a href="#"><strong class="text-uppercase d-flex icon icon--home">Home</strong></a>
+            </div>
+            <div class="col-3 text-right">
+                <strong class="mr-1">1:34 PM</strong>
+                <div class="text-center d-inline-block mr-1 btn-question"><strong>?</strong></div>
+                <div class="d-inline-block icon icon--mail" style="height: 16px"></div>
+                <div class="d-inline-block icon icon--commenting" style="height: 16px"></div>
+                <div class="text-center d-inline-block btn-language"><strong>EN</strong></div>
+            </div>
+        </div>
+
+        <div class="row mb-3 mt-3">
+            <div class="col-2 left-menu">
+                <a href="#"><p><strong class="text-uppercase icon icon--ball">Sports</strong></p></a>
+                <a href="#"><p><strong class="text-uppercase icon icon--horse">Horses</strong></p></a>
+                <a href="#"><p><strong class="text-uppercase icon icon--reward">Rewards</strong></p></a>
+                <a href="#"><p><strong class="text-uppercase icon icon--user-group">Refer a friend</strong></p></a>
+                <a href="#"><p><strong class="text-uppercase icon icon--search-list">Match preview</strong></p></a>
+                <a href="#"><p><strong class="text-uppercase icon icon--help">Help</strong></p></a>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-12">
+                        <div id="mainCarouserIndicators" class="carousel slide mb-5" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#mainCarouserIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#mainCarouserIndicators" data-slide-to="1"></li>
+                                <li data-target="#mainCarouserIndicators" data-slide-to="2"></li>
+                                <li data-target="#mainCarouserIndicators" data-slide-to="3"></li>
+                                <li data-target="#mainCarouserIndicators" data-slide-to="4"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <a href="#">
+                                        <img class="d-block w-100" src="../assets/images/slider-item.png" alt="Third slide">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#">
+                                        <img class="d-block w-100" src="../assets/images/slider-item.png" alt="Third slide">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#">
+                                        <img class="d-block w-100" src="../assets/images/slider-item.png" alt="Third slide">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#">
+                                        <img class="d-block w-100" src="../assets/images/slider-item.png" alt="Third slide">
+                                    </a>
+                                </div>
+                                <div class="carousel-item">
+                                    <a href="#">
+                                        <img class="d-block w-100" src="../assets/images/slider-item.png" alt="Third slide">
+                                    </a>
+                                </div>
+                            </div>
+                            <a class="carousel-action carousel-control-prev" href="#mainCarouserIndicators" role="button" data-slide="prev">
+                                <div class="triangle triangle--left"></div>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class=" carousel-action carousel-control-next" href="#mainCarouserIndicators" role="button" data-slide="next">
+                                <div class="triangle triangle--right"></div>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <h3 class="text-uppercase"><strong>Upcoming games</strong></h3>
+                        <div id="gamesCarouserIndicators" class="carousel slide" data-interval="false" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="1 slide">
+                                                    <div class="d-flex justify-content-end period-line live">
+                                                        <div class="d-flex date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>7:05p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="2 slide">
+                                                    <div class="d-flex justify-content-end period-line live">
+                                                        <div class="d-flex date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>8:15p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="3 slide">
+                                                    <div class="d-flex justify-content-end period-line">
+                                                        <div class="d-flex date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>7:05p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="4 slide">
+                                                    <div class="d-flex justify-content-end period-line live">
+                                                        <div class="date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>7:05p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="d-flex status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="5 slide">
+                                                    <div class="d-flex justify-content-end period-line">
+                                                        <div class="d-flex date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>7:05p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="6 slide">
+                                                    <div class="d-flex justify-content-end period-line">
+                                                        <div class="d-flex date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>8:15p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="card">
+                                                <div class="position-relative">
+                                                    <img class="card-img-top" src="../assets/images/background-layer.png" alt="7 slide">
+                                                    <div class="d-flex justify-content-end period-line">
+                                                        <div class="d-flex date">
+                                                            <strong>
+                                                                <span class="text-uppercase">Mon</span>
+                                                                <span>7:05p</span>
+                                                            </strong>
+                                                        </div>
+                                                        <div class="status">
+                                                            <strong class="text-uppercase">Live</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header d-flex justify-content-between">
+                                                    <span class="text-uppercase">Mlb</span>
+                                                    <span class="text-uppercase">Moneyline</span>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>San Francisco</strong>
+                                                        <span>+475</span>
+                                                    </p>
+                                                    <p class="d-flex justify-content-between">
+                                                        <strong>Philadelphia</strong>
+                                                        <span>-850</span>
+                                                    </p>
+                                                </div>
+                                                <div class="card-footer d-flex justify-content-between">
+                                                    <span class="text-uppercase">Game line</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-action carousel-control-prev" href="#gamesCarouserIndicators" role="button" data-slide="prev">
+                                <div class="triangle triangle--left"></div>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class=" carousel-action carousel-control-next" href="#gamesCarouserIndicators" role="button" data-slide="next">
+                                <div class="triangle triangle--right"></div>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 right-menu">
+                <div class="d-flex justify-content-between align-items-center ">
+                    <strong class="text-uppercase icon icon--note">Best slip</strong>
+                    <div class="triangle triangle--down d-inline-block"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <strong class="text-uppercase icon icon--new-list">Open bets</strong>
+                    <div class="triangle triangle--down d-inline-block"></div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <strong class="text-uppercase icon icon--signal">History</strong>
+                    <div class="triangle triangle--down d-inline-block"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <ul class="list-inline">
+                    <li class="list-inline-item mr-3"><strong>Forms&Agreements</strong></li>
+                    <li class="list-inline-item mr-3"><strong>Responsible Gambling</strong></li>
+                    <li class="list-inline-item mr-3"><strong>Terms of Service</strong></li>
+                    <li class="list-inline-item mr-3"><strong>Privacy Policy</strong></li>
+                    <li class="list-inline-item"><strong>Disclaimer</strong></li>
+                </ul>
+                <small>
+                    Gambling should be entertaining. Remember that you always risk losing the money you bet, so do not spend more than you can afford to lose. If you think you may have a problem,
+                    <a href="#" class="footer-link">click here</a>.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+</body>
+</html>

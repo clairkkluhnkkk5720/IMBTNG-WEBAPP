@@ -1,0 +1,17 @@
+{
+  "name": "some-new-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch src/scss/main.scss --ouput src/assets/css/main.css",
+    "build-css": "node-sass --include-path scss src/scss/main.scss   src/assets/css/main.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "node-sass": "^4.9.0"
+  }
+}
