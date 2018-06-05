@@ -14,27 +14,32 @@ body {
   background-size: cover;
 }
 
+.btns-header {
+  margin-left: auto;
+}
+
 .first-header h2 {
-  color: $title-text-color;
+  color: $base-red-color;
 }
 
 .second-header {
+  header: 56px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, .2);
-  background-color: rgba(23, 61, 119, .3);
+  //background-color: rgba(23, 61, 119, .3);
+  background-color: rgba(31, 185, 82, 0.6);
 }
 
 .btn-question {
-  width: 22px;
-  height: 23px;
-  background-color: $main-bg;
-  color: $m2-text-color;
-  border-radius: 50%;
-  text-align: center;
+  //background-color: $main-bg;
+  color: $main-bg;
+  font-size: 18px;
+  //border-radius: 50%;
+  //text-align: center;
 }
 
 .btn-language {
   background-color: $main-bg;
-  color: $m2-text-color;
+  color: $base-green-color;
   padding: 0 4px;
 }
 
@@ -44,11 +49,37 @@ body {
     text-decoration: none;
   }
 }
+.left-menu {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.left-menu-elem {
+  display: block;
+  position: relative;
+  padding: 15px 15px 15px 45px;
+  &:before {
+    top: 15px;
+    left: 15px;
+  }
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+.left-menu-body {
+  background-color: white;
+  color: black;
+}
 .right-menu {
   >* {
-    margin-left: 40%;
+    //margin-left: 40%;
     margin-bottom: 1rem;
   }
+}
+
+.right-menu-header {
+  background-color: rgba(31, 185, 82, 0.6);
+  //background-color: $base-green-color;
 }
 
 .triangle {
@@ -158,4 +189,12 @@ body {
   &:hover {
     color: #c82333;
   }
+}
+
+.icon-header{
+  font-size: 20px;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.3);
 }

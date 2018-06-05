@@ -2,17 +2,23 @@
 
 .im-btn {
   color: #FFFFFF;
-  border: .5px solid #FFFFFF;
+  width: 120px;
+  //border: .5px solid #FFFFFF;
   border-radius: 0;
   padding: .175rem .75rem;
+  &:not(:last-of-type) {
+    margin-right: 0.6rem;
+  }
 }
 
 .im-btn-danger {
   @extend .im-btn;
-  background-color: $im-btn-danger;
+  border-bottom: 2px solid #BF4431;
+  background-color: $base-red-color;
 }
 
 .im-btn-success {
   @extend .im-btn;
-  background-color: $im-btn-success;
+  border-bottom: 2px solid #348B51;
+  background-color: $base-green-color;
 }

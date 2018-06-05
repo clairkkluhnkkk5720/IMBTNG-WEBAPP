@@ -5,45 +5,69 @@
     <title>Main template</title>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 </head>
 <body>
     <div class="container-fluid full-size main-bg">
-        <div class="row align-items-center pb-3 pt-3 first-header">
-            <div class="col-3">
-                <h2 class="text-uppercase"><strong>Imbting</strong></h2>
-            </div>
-            <div class="col-1 offset-7">
-                <button class="btn btn-danger text-uppercase w-100 im-btn-danger"><strong>Login</strong></button>
-            </div>
-            <div class="col-1">
-                <button class="btn btn-success text-uppercase w-100 im-btn-success"><strong>Sign up</strong></button>
-            </div>
-        </div>
-
-        <div class="row justify-content-between pb-3 pt-3 second-header">
-            <div class="col-3">
-                <a href="#"><strong class="text-uppercase d-flex icon icon--home">Home</strong></a>
-            </div>
-            <div class="col-3 text-right">
-                <strong class="mr-1">1:34 PM</strong>
-                <div class="text-center d-inline-block mr-1 btn-question"><strong>?</strong></div>
-                <div class="d-inline-block icon icon--mail" style="height: 16px"></div>
-                <div class="d-inline-block icon icon--commenting" style="height: 16px"></div>
-                <div class="text-center d-inline-block btn-language"><strong>EN</strong></div>
+        <div class="d-flex align-items-center justify-content-between pt-3 pb-3 first-header">
+            <h2 class="text-uppercase"><strong>Imbting</strong></h2>
+            <div class="btns-header">
+                <button class="btn btn-danger text-uppercase im-btn-danger">
+                    Login
+                </button>
+                <button class="btn btn-success text-uppercase im-btn-success">
+                    Sign up
+                </button>
             </div>
         </div>
 
-        <div class="row mb-3 mt-3">
-            <div class="col-2 left-menu">
-                <a href="#"><p><strong class="text-uppercase icon icon--ball">Sports</strong></p></a>
-                <a href="#"><p><strong class="text-uppercase icon icon--horse">Horses</strong></p></a>
-                <a href="#"><p><strong class="text-uppercase icon icon--reward">Rewards</strong></p></a>
-                <a href="#"><p><strong class="text-uppercase icon icon--user-group">Refer a friend</strong></p></a>
-                <a href="#"><p><strong class="text-uppercase icon icon--search-list">Match preview</strong></p></a>
-                <a href="#"><p><strong class="text-uppercase icon icon--help">Help</strong></p></a>
+        <div class="row justify-content-between pb-2 pt-2 second-header">
+            <div class="col-3 d-flex align-items-center">
+                <a href="#">
+                    <i class="fas fa-home"></i>
+                    <span class="ml-2 text-uppercase">Home</span>
+                </a>
             </div>
-            <div class="col-8">
+            <div class="col-2 text-right d-flex align-items-center justify-content-between">
+                <span class="mr-1">1:34 PM</span>
+                <div class="d-inline-block mr-1 icon-header">
+                    <i class="far fa-question-circle"></i>
+                </div>
+                <div class="d-inline-block icon-header">
+                    <i class="far fa-envelope"></i>
+                </div>
+                <div class="d-inline-block icon-header">
+                    <i class="far fa-comment-dots"></i>
+                </div>
+                <div class="d-inline-block btn-language">
+                    EN
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2 pt-3 left-menu">
+                <a href="#" class="left-menu-elem icon icon--ball">
+                    Sports
+                </a>
+                <a href="#" class="left-menu-elem icon icon--horse">
+                   Horses
+                </a>
+                <a href="#" class="left-menu-elem icon icon--reward">
+                    Rewards
+                </a>
+                <a href="#" class="left-menu-elem icon icon--user-group">
+                   Refer a friend
+                </a>
+                <a href="#" class="left-menu-elem icon icon--search-list">
+                    Match preview
+                </a>
+                <a href="#" class="left-menu-elem icon icon--help">
+                    Help
+                </a>
+            </div>
+            <div class="col-8 mb-3 mt-3">
                 <div class="row">
                     <div class="col-12">
                         <div id="mainCarouserIndicators" class="carousel slide mb-5" data-ride="carousel">
@@ -362,23 +386,62 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2 right-menu">
-                <div class="d-flex justify-content-between align-items-center ">
-                    <strong class="text-uppercase icon icon--note">Best slip</strong>
-                    <div class="triangle triangle--down d-inline-block"></div>
+            <div class="col-2 pt-3 right-menu" id="rightMenu">
+                <div class="right-menu-elem">
+                    <div class="right-menu-header p-3" id="headingOne">
+                        <div class="d-flex justify-content-between align-items-center "
+                             data-toggle="collapse"
+                             data-target="#collapseOne"
+                             aria-expanded="false"
+                             aria-controls="collapseOne">
+                            <strong class="text-uppercase icon icon--note">Best slip</strong>
+                            <div class="triangle triangle--down d-inline-block"></div>
+                        </div>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#rightMenu">
+                        <div class="left-menu-body">
+                            hi 1
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <strong class="text-uppercase icon icon--new-list">Open bets</strong>
-                    <div class="triangle triangle--down d-inline-block"></div>
+                <div class="right-menu-elem">
+                    <div class="right-menu-header p-3" id="headingTwo">
+                        <div class="d-flex justify-content-between align-items-center"
+                             data-toggle="collapse"
+                             data-target="#collapseTwo"
+                             aria-expanded="false"
+                             aria-controls="collapseTwo">
+                            <strong class="text-uppercase icon icon--new-list">Open bets</strong>
+                            <div class="triangle triangle--down d-inline-block"></div>
+                        </div>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#rightMenu">
+                        <div class="left-menu-body">
+                            hi 2
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <strong class="text-uppercase icon icon--signal">History</strong>
-                    <div class="triangle triangle--down d-inline-block"></div>
+                <div class="right-menu-elem">
+                    <div class="right-menu-header p-3" id="headingThree">
+                        <div class="d-flex justify-content-between align-items-center"
+                             data-toggle="collapse"
+                             data-target="#collapseThree"
+                             aria-expanded="false"
+                             aria-controls="collapseThree">
+                            <strong class="text-uppercase icon icon--signal">History</strong>
+                            <div class="triangle triangle--down d-inline-block"></div>
+                        </div>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingTree" data-parent="#rightMenu">
+                        <div class="left-menu-body">
+                            hi 3
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row footer">
             <div class="col-12 text-center">
                 <ul class="list-inline">
                     <li class="list-inline-item mr-3"><strong>Forms&Agreements</strong></li>
