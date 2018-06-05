@@ -25,29 +25,29 @@
     bottom: 0;
     left: 0; }
   .icon--ball:before {
-    background-image: url("../../assets/icons/ball.png"); }
+    background-image: url("../icons/ball.png"); }
   .icon--commenting:before {
-    background-image: url("../../assets/icons/commenting.png"); }
+    background-image: url("../icons/commenting.png"); }
   .icon--help:before {
-    background-image: url("../../assets/icons/help.png"); }
+    background-image: url("../icons/help.png"); }
   .icon--home:before {
-    background-image: url("../../assets/icons/home.png"); }
+    background-image: url("../icons/home.png"); }
   .icon--horse:before {
-    background-image: url("../../assets/icons/horse.png"); }
+    background-image: url("../icons/horse.png"); }
   .icon--mail:before {
-    background-image: url("../../assets/icons/mail.png"); }
+    background-image: url("../icons/mail.png"); }
   .icon--new-list:before {
-    background-image: url("../../assets/icons/new-list.png"); }
+    background-image: url("../icons/new-list.png"); }
   .icon--note:before {
-    background-image: url("../../assets/icons/note.png"); }
+    background-image: url("../icons/note.png"); }
   .icon--reward:before {
-    background-image: url("../../assets/icons/reward.png"); }
+    background-image: url("../icons/reward.png"); }
   .icon--search-list:before {
-    background-image: url("../../assets/icons/search-list.png"); }
+    background-image: url("../icons/search-list.png"); }
   .icon--signal:before {
-    background-image: url("../../assets/icons/signal.png"); }
+    background-image: url("../icons/signal.png"); }
   .icon--user-group:before {
-    background-image: url("../../assets/icons/user-group.png"); }
+    background-image: url("../icons/user-group.png"); }
 
 body {
   color: #FFFFFF; }
@@ -56,7 +56,7 @@ body {
   min-height: 100vh; }
 
 .main-bg {
-  background: url("../../assets/images/background-layer.png") top no-repeat;
+  background: url("../images/background-layer.png") top no-repeat;
   background-size: cover; }
 
 .first-header h2 {
