@@ -1,18 +1,14 @@
 .im-btn, .im-btn-danger, .im-btn-success {
   color: #FFFFFF;
-  width: 120px;
+  border: .5px solid #FFFFFF;
   border-radius: 0;
   padding: .175rem .75rem; }
-  .im-btn:not(:last-of-type), .im-btn-danger:not(:last-of-type), .im-btn-success:not(:last-of-type) {
-    margin-right: 0.6rem; }
 
 .im-btn-danger {
-  border-bottom: 2px solid #BF4431;
-  background-color: #D00000; }
+  background-color: #FF2502; }
 
 .im-btn-success {
-  border-bottom: 2px solid #348B51;
-  background-color: #0F8965; }
+  background-color: #1FB952; }
 
 .icon {
   padding-left: 33px;
@@ -63,54 +59,33 @@ body {
   background: url("../images/background-layer.png") top no-repeat;
   background-size: cover; }
 
-.btns-header {
-  margin-left: auto; }
-
 .first-header h2 {
-  color: #D00000; }
+  color: #FF1000; }
 
 .second-header {
-  header: 56px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: rgba(31, 185, 82, 0.6); }
+  background-color: rgba(23, 61, 119, 0.3); }
 
 .btn-question {
-  color: #FFFFFF;
-  font-size: 18px; }
+  width: 22px;
+  height: 23px;
+  background-color: #FFFFFF;
+  color: #2F62C7;
+  border-radius: 50%;
+  text-align: center; }
 
 .btn-language {
   background-color: #FFFFFF;
-  color: #0F8965;
+  color: #2F62C7;
   padding: 0 4px; }
 
 .left-menu a, .right-menu a, .second-header a {
   color: inherit;
   text-decoration: none; }
 
-.left-menu {
-  padding-left: 0;
-  padding-right: 0;
-  background-color: rgba(0, 0, 0, 0.3); }
-
-.left-menu-elem {
-  display: block;
-  position: relative;
-  padding: 15px 15px 15px 45px; }
-  .left-menu-elem:before {
-    top: 15px;
-    left: 15px; }
-  .left-menu-elem:hover {
-    background-color: rgba(0, 0, 0, 0.3); }
-
-.left-menu-body {
-  background-color: white;
-  color: black; }
-
 .right-menu > * {
+  margin-left: 40%;
   margin-bottom: 1rem; }
-
-.right-menu-header {
-  background-color: rgba(31, 185, 82, 0.6); }
 
 .triangle {
   width: 0;
@@ -184,9 +159,3 @@ body {
   color: #FF1000; }
   .footer-link:hover {
     color: #c82333; }
-
-.icon-header {
-  font-size: 20px; }
-
-.footer {
-  background-color: rgba(0, 0, 0, 0.3); }
