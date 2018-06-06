@@ -7,12 +7,16 @@
     margin-right: 0.6rem; }
 
 .im-btn-danger {
-  border-bottom: 2px solid #BF4431;
+  border-bottom: 2px solid #990000;
   background-color: #D00000; }
 
 .im-btn-success {
-  border-bottom: 2px solid #348B51;
-  background-color: #0F8965; }
+  border-color: #224cb5;
+  border-bottom: 2px solid #0d3495;
+  background-color: #224cb5; }
+  .im-btn-success:hover {
+    border-color: #0d3495;
+    background-color: #0d3495; }
 
 .icon {
   padding-left: 33px;
@@ -70,7 +74,7 @@ body {
 .second-header {
   header: 56px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: rgba(31, 185, 82, 0.6); }
+  background-color: rgba(34, 76, 181, 0.6); }
 
 .btn-question {
   color: #FFFFFF;
@@ -78,7 +82,7 @@ body {
 
 .btn-language {
   background-color: #FFFFFF;
-  color: #0F8965;
+  color: #224cb5;
   padding: 0 4px; }
 
 .left-menu a, .right-menu a, .second-header a {
@@ -101,6 +105,7 @@ body {
     background-color: rgba(0, 0, 0, 0.3); }
 
 .left-menu-body {
+  padding: 15px;
   background-color: white;
   color: black; }
 
@@ -108,7 +113,9 @@ body {
   margin-bottom: 1rem; }
 
 .right-menu-header {
-  background-color: rgba(31, 185, 82, 0.6); }
+  background-color: rgba(34, 76, 181, 0.6); }
+  .right-menu-header > div {
+    cursor: pointer; }
 
 .triangle {
   width: 0;
@@ -188,3 +195,19 @@ body {
 
 .footer {
   background-color: rgba(0, 0, 0, 0.3); }
+
+html, body {
+  height: 100%; }
+
+.main-bg-filter:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  display: block;
+  background: url("../../assets/images/background-layer.png") top no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  filter: grayscale(0.3); }

@@ -3,7 +3,6 @@
 .im-btn {
   color: #FFFFFF;
   width: 120px;
-  //border: .5px solid #FFFFFF;
   border-radius: 0;
   padding: .175rem .75rem;
   &:not(:last-of-type) {
@@ -13,12 +12,17 @@
 
 .im-btn-danger {
   @extend .im-btn;
-  border-bottom: 2px solid #BF4431;
+  border-bottom: 2px solid #990000;
   background-color: $base-red-color;
 }
 
 .im-btn-success {
   @extend .im-btn;
-  border-bottom: 2px solid #348B51;
-  background-color: $base-green-color;
+  border-color: $base-blue;
+  border-bottom: 2px solid #0d3495;
+  background-color: $base-blue;
+  &:hover {
+    border-color: #0d3495;
+    background-color: #0d3495;
+  }
 }
