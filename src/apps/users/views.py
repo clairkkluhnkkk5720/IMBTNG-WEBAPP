@@ -1,3 +1,5 @@
+import base64
+
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -7,6 +9,7 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.encoding import force_bytes, force_text
 from django.utils.translation import ugettext_lazy as _
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -34,7 +37,17 @@ class SignUpView(BootstrapFormViewMixin, AuthenticatedRedirectMixin,
         user = form.save()
         form.account_form.save(user=user)
         self.send_confirmation_email(user)
+        self.process_referral(user)
         return super(SignUpView, self).form_valid(form)
+
+    def process_referral(self, referral_user):
+        user_id = self.request.COOKIES.get(settings.REFERRAL_COOKIE_NAME)
+        if user_id:
+            value = force_text(urlsafe_base64_decode(user_id))
+            queryset = UserModel.objects.filter(pk=value)
+            if queryset.exists():
+                user = queryset.get()
+                user.referral_records.create(referral=referral_user)
 
     def send_confirmation_email(self, user):
         current_site = get_current_site(self.request)
@@ -84,3 +97,18 @@ class SignOutView(LogoutView):
 
     def get_next_page(self):
         return settings.LOGIN_URL
+
+
+class ReferralView(generic.View):
+
+    def get(self, request, *args, **kwargs):
+        response = redirect('users:signup')
+        if request.user.is_authenticated:
+            return response
+        if UserModel.objects.filter(pk=kwargs['pk']).exists():
+            value = urlsafe_base64_encode(force_bytes(kwargs['pk'])).decode()
+            response.set_cookie(
+                settings.REFERRAL_COOKIE_NAME, value,
+                expires=timezone.now() + timezone.timedelta(days=30)
+            )
+        return response

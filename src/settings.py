@@ -195,6 +195,8 @@ DEPOSIT_COEFFICIENT = 1
 THOUSAND_SEPARATOR = '-'
 USE_THOUSAND_SEPARATOR = True
 
+REFERRAL_COOKIE_NAME = 'ref_link'
+
 try:
     from local_settings import *
 except ImportError:

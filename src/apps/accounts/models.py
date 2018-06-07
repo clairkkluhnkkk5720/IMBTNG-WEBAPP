@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from model_utils import Choices
 
 from apps.common.models import TimeStampedModel
 
@@ -32,3 +33,30 @@ class Account(models.Model):
     class Meta:
         verbose_name = _('account')
         verbose_name_plural = _('accounts')
+
+
+class ReferralRecord(models.Model):
+    STATUS_CHOICES = Choices(
+        (None, 'WAIT', _('wait')),
+        (True, 'ACCEPTED', _('accepted')),
+        (False, 'CANCELLED', _('cancelled')),
+    )
+
+    referral = models.OneToOneField(settings.AUTH_USER_MODEL,
+                                    on_delete=models.PROTECT,
+                                    verbose_name=_('referral'),
+                                    related_name='referral_record')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.PROTECT,
+                             verbose_name=_('user'),
+                             related_name='referral_records')
+
+    status = models.NullBooleanField(_('status'), choices=STATUS_CHOICES, default=STATUS_CHOICES.WAIT)
+    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
+
+    def __str__(self):
+        return '{} {}'.format(self.created_at, self.get_status_display())
+
+    class Meta:
+        verbose_name = _('referral record')
+        verbose_name_plural = _('referral records')
