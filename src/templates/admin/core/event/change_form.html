@@ -6,11 +6,11 @@
 {% endblock %}
 {% block extrastyle %}
 {{ block.super }}
-<link as=style href="{% static 'assets/css/image-widget/app.2b628540.css' %}" rel=preload>
-<link as=script href="{% static 'assets/js/image-widget/app.07b6578b.js' %}" rel=preload>
-<link as=script href="{% static 'assets/js/image-widget/vendors~app.0d67488b.js' %}" rel=preload>
-<link href="{% static 'assets/css/image-widget/app.2b628540.css' %}" rel=stylesheet>
-<link href="{% static 'assets/css/extended_admin.css' %}" rel=stylesheet>
+<link as=style href="{% static 'extra_admin/css/image-widget/app.2b628540.css' %}" rel=preload>
+<link as=script href="{% static 'extra_admin/js/image-widget/app.07b6578b.js' %}" rel=preload>
+<link as=script href="{% static 'extra_admin/js/image-widget/vendors~app.0d67488b.js' %}" rel=preload>
+<link href="{% static 'extra_admin/css/image-widget/app.2b628540.css' %}" rel=stylesheet>
+<link href="{% static 'extra_admin/css/extended_admin.css' %}" rel=stylesheet>
 {% endblock %}
 
 {% block field_sets %}
@@ -22,8 +22,8 @@
         <div id=app></div>
     </div>
 </div>
-<script type=text/javascript src="{% static 'assets/js/image-widget/vendors~app.0d67488b.js' %}"></script>
-<script type=text/javascript src="{% static 'assets/js/image-widget/app.07b6578b.js' %}"></script>
-<script type="text/javascript" src="{% static 'assets/js/extended_admin.js' %}"></script>
+<script type=text/javascript src="{% static 'extra_admin/js/image-widget/vendors~app.0d67488b.js' %}"></script>
+<script type=text/javascript src="{% static 'extra_admin/js/image-widget/app.07b6578b.js' %}"></script>
+<script type="text/javascript" src="{% static 'extra_admin/js/extended_admin.js' %}"></script>
 {{ block.super }}
 {% endblock %}
