@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
@@ -38,12 +37,6 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self._create_user(email, password, **extra_fields)
-
-    def generate_superuser(self):
-        """
-        Создание супервользователя.
-        """
-        return self.create_superuser(settings.ADMIN_EMAIL, '1')
 
 
 class AbstractUser(AbstractBaseUser, PermissionsMixin):

@@ -100,13 +100,17 @@ class SignOutView(LogoutView):
 
 
 class ReferralView(generic.View):
+    """
+    Setup COOKIES using passed PK through kwargs.
+    PK will be encoded into string value and saved in COOKIES.
+    """
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request, pk):
         response = redirect('users:signup')
         if request.user.is_authenticated:
             return response
-        if UserModel.objects.filter(pk=kwargs['pk']).exists():
-            value = urlsafe_base64_encode(force_bytes(kwargs['pk'])).decode()
+        if UserModel.objects.filter(pk=pk).exists():
+            value = urlsafe_base64_encode(force_bytes(pk)).decode()
             response.set_cookie(
                 settings.REFERRAL_COOKIE_NAME, value,
                 expires=timezone.now() + timezone.timedelta(days=30)
