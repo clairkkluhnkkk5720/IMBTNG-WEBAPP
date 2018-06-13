@@ -1,14 +1,22 @@
 .im-btn, .im-btn-danger, .im-btn-success {
   color: #FFFFFF;
-  border: .5px solid #FFFFFF;
+  width: 120px;
   border-radius: 0;
   padding: .175rem .75rem; }
+  .im-btn:not(:last-of-type), .im-btn-danger:not(:last-of-type), .im-btn-success:not(:last-of-type) {
+    margin-right: 0.6rem; }
 
 .im-btn-danger {
-  background-color: #FF2502; }
+  border-bottom: 2px solid #990000;
+  background-color: #D00000; }
 
 .im-btn-success {
-  background-color: #1FB952; }
+  border-color: #224cb5;
+  border-bottom: 2px solid #0d3495;
+  background-color: #224cb5; }
+  .im-btn-success:hover {
+    border-color: #0d3495;
+    background-color: #0d3495; }
 
 .icon {
   padding-left: 33px;
@@ -30,8 +38,6 @@
     background-image: url("../icons/commenting.png"); }
   .icon--help:before {
     background-image: url("../icons/help.png"); }
-  .icon--home:before {
-    background-image: url("../icons/home.png"); }
   .icon--horse:before {
     background-image: url("../icons/horse.png"); }
   .icon--mail:before {
@@ -59,33 +65,57 @@ body {
   background: url("../images/background-layer.png") top no-repeat;
   background-size: cover; }
 
+.btns-header {
+  margin-left: auto; }
+
 .first-header h2 {
-  color: #FF1000; }
+  color: #D00000; }
 
 .second-header {
+  header: 56px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: rgba(23, 61, 119, 0.3); }
+  background-color: rgba(34, 76, 181, 0.6); }
 
 .btn-question {
-  width: 22px;
-  height: 23px;
-  background-color: #FFFFFF;
-  color: #2F62C7;
-  border-radius: 50%;
-  text-align: center; }
+  color: #FFFFFF;
+  font-size: 18px; }
 
 .btn-language {
   background-color: #FFFFFF;
-  color: #2F62C7;
+  color: #224cb5;
   padding: 0 4px; }
 
 .left-menu a, .right-menu a, .second-header a {
   color: inherit;
   text-decoration: none; }
 
+.left-menu {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: rgba(0, 0, 0, 0.3); }
+
+.left-menu-elem {
+  display: block;
+  position: relative;
+  padding: 15px 15px 15px 45px; }
+  .left-menu-elem:before {
+    top: 15px;
+    left: 15px; }
+  .left-menu-elem:hover {
+    background-color: rgba(0, 0, 0, 0.3); }
+
+.left-menu-body {
+  padding: 15px;
+  background-color: white;
+  color: black; }
+
 .right-menu > * {
-  margin-left: 40%;
   margin-bottom: 1rem; }
+
+.right-menu-header {
+  background-color: rgba(34, 76, 181, 0.6); }
+  .right-menu-header > div {
+    cursor: pointer; }
 
 .triangle {
   width: 0;
@@ -159,3 +189,12 @@ body {
   color: #FF1000; }
   .footer-link:hover {
     color: #c82333; }
+
+.icon-header {
+  font-size: 20px; }
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.3); }
+
+html, body {
+  height: 100%; }

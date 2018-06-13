@@ -7,61 +7,73 @@
   <link rel="stylesheet"
         href="{% static 'packages/bootstrap/css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
   {% block head-js %}{% endblock %}
   {% block head-css %}{% endblock %}
 </head>
 <body>
 <div class="container-fluid full-size main-bg">
-  <div class="row align-items-center pb-3 pt-3 first-header">
-    <div class="col-3">
-      <h2 class="text-uppercase"><a href="{% url 'core:index' %}">Imbting</a></h2>
-    </div>
-    <div class="col-1 offset-7">
-      <a class="btn btn-danger text-uppercase w-100 im-btn-danger"
+  <div class="d-flex align-items-center justify-content-between pt-3 pb-3 first-header">
+    <h2 class="text-uppercase"><strong>Imbting</strong></h2>
+    <div class="btns-header">
+      <a class="btn btn-danger text-uppercase im-btn-danger"
          href="{% url 'login' %}">
-        <strong>Login</strong></a>
-    </div>
-    <div class="col-1">
-      <a href="{% url 'users:signup' %}"
-         class="btn btn-success text-uppercase w-100 im-btn-success">
-        <strong>Sign up</strong>
+        Login
+      </a>
+      <a class="btn btn-success text-uppercase im-btn-success"
+         href="{% url 'users:signup' %}">
+        Sign up
       </a>
     </div>
   </div>
 
-  <div class="row justify-content-between pb-3 pt-3 second-header">
-    <div class="col-3">
-      <a href="#"><strong
-              class="text-uppercase d-flex icon icon--home">Home</strong></a>
+  <div class="row justify-content-between pb-2 pt-2 second-header">
+    <div class="col-3 d-flex align-items-center">
+      <a href="{% url 'core:index' %}">
+        <i class="fas fa-home"></i>
+        <span class="ml-2 text-uppercase">Home</span>
+      </a>
     </div>
-    <div class="col-3 text-right">
-      <strong class="mr-1">1:34 PM</strong>
-      <div class="text-center d-inline-block mr-1 btn-question">
-        <strong>?</strong></div>
-      <div class="d-inline-block icon icon--mail" style="height: 16px"></div>
-      <div class="d-inline-block icon icon--commenting"
-           style="height: 16px"></div>
-      <div class="text-center d-inline-block btn-language">
-        <strong>EN</strong>
-{#        {% get_current_language as LANGUAGE_CODE %}#}
-{#        {% get_available_languages as LANGUAGES %}#}
-{#        {% get_language_info_list for LANGUAGES as languages %}#}
-{#        {% for language in languages %}#}
-{#          <option value="{{ language.code }}"#}
-{#                  {% if language.code == LANGUAGE_CODE %} selected{% endif %}>#}
-{#            {{ language.name_local }} ({{ language.code }})#}
-{#          </option>#}
-{#        {% endfor %}#}
+    <div class="col-2 text-right d-flex align-items-center justify-content-between">
+      <span class="mr-1">1:34 PM</span>
+      <div class="d-inline-block mr-1 icon-header">
+        <i class="far fa-question-circle"></i>
+      </div>
+      <div class="d-inline-block icon-header">
+        <i class="far fa-envelope"></i>
+      </div>
+      <div class="d-inline-block icon-header">
+        <i class="far fa-comment-dots"></i>
+      </div>
+      <div class="d-inline-block btn-language">
+        <form action="{% url 'set_language' %}" method="post" id="lang-form">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ redirect_to }}"/>
+          <select name="language" class="form-control"
+                  onchange="document.getElementById('lang-form').submit()">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+              <option value="{{ language.code }}"
+                      {% if language.code == LANGUAGE_CODE %}
+                      selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+              </option>
+            {% endfor %}
+          </select>
+        </form>
       </div>
     </div>
   </div>
 
-  <div class="row mb-3 mt-3">
-    {% block content %}{% endblock %}
-  </div>
+  <div class="row">{% block content %}{% endblock %}</div>
 
-  <div class="row">
-    <div class="col-12 text-center">
+  <div class="row footer">
+    <div class="col-12 text-center pt-3 pb-3">
       <ul class="list-inline">
         <li class="list-inline-item mr-3"><strong>Forms&Agreements</strong>
         </li>
